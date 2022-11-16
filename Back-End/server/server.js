@@ -1,11 +1,25 @@
-const express = require('express')
-const app = express()
-const port = 3000
+const {sql, poolPromise} = require('./component/SqlDb')
+const app = require('./component/app')
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+//init route
+const routes = require('./routes/index.routes')
+routes(app)
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+app.get('/', async (req, res) => {
+    try {
+        const pool = await poolPromise
+        const result = await pool.request()
+        .query('select * from KHACHHANG', (err, profileSet) =>{
+            if(err){
+                console.log(err)
+            } else {
+                let send_data = profileSet.recordset
+                res.json(send_data)
+            }
+        })
+    } catch(err){
+        res.status(500)
+        res.send(err.message)
+    }
 })
+app.listen(3000, () => console.log("Hello World: ", poolPromise))
