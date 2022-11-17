@@ -1,5 +1,4 @@
-const { sql, poolPromise } = require('../components/SqlDb')
-
+const DB = require('../components/SqlDB')
 
 class KhachHangControllers {
     index(req, res) {

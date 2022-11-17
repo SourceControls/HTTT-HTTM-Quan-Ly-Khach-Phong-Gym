@@ -9,29 +9,11 @@ const config = {
 
 
 class SqlDB {
-    poolPromise = new sql.ConnectionPool(config)
-        .connect()
-        .then(pool => {
-            console.log('Connected to MSSQL')
-            return pool
-        })
-        .catch(err => console.log('Database Connection Failed! Bad Config: ', err)
-        )
-    select = async (res, query) => {
-        try {
-            const result = await poolPromise.request()
-                .query('select * from KHACHHANG', (err, profileSet) => {
-                    if (err) {
-                        console.log(err)
-                    } else {
-                        res.json(profileSet.recordset)
-                    }
-                })
-        } catch (err) {
-            res.status(500)
-            res.send(err.message)
-        }
+    query = async (queryStr) => {
+        let pool = await sql.connect(config);
+        return (await pool.request().query(queryStr)).recordset;
     }
 }
+const DB = new SqlDB()
 
-module.exports = new SqlDB();
+module.exports = DB;
