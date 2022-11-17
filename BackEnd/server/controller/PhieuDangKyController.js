@@ -1,6 +1,6 @@
 
 class PhieuDangKyControllers {
-    index(req, res){
+    index(req, res) {
         res.send("Phiếu đăng ký")
     }
 }

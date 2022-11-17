@@ -34,7 +34,4 @@ class SqlDB {
     }
 }
 
-module.exports = {
-    sql,
-    poolPromise
-}
+module.exports = new SqlDB();
