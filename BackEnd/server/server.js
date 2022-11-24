@@ -4,17 +4,17 @@ const app = require('./components/app')
 const routes = require('./routes/index.routes')
 routes(app)
 
-// async function a() {
-//   const cl = require('./controller/TaiKhoanController');
-//   let req = {
-//     body: {
-//       TENDANGNHAP: 'NV03',
-//       MATKHAU: 'lal8yg1k'
-//     }
-//   }
-//   cl.capTaiKhoan(req).then(rs => console.log(rs));
-// }
-// a()
+async function a() {
+  const cl = require('./controller/TaiKhoanController');
+  let req = {
+    body: {
+      TENDANGNHAP: 'NV03',
+      MATKHAU: '123'
+    }
+  }
+  cl.dangNhap(req).then(rs => console.log(rs));
+}
+a()
 
 // async function a() {
 //   const cl = require('./controller/KhachHangController');
