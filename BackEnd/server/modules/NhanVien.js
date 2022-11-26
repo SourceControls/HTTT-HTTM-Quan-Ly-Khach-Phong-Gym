@@ -9,7 +9,7 @@ class NhanVien {
     }
 
     static getListNhanVien() {
-        return DB.query('SELECT * FROM V_XEM_NHAN_VIEN')
+        return DB.query('SELECT * FROM [V_XEM_NHAN_VIEN]')
     }
     static insertNhanVien(params) {
         return DB.excute('SP_THEM_NHAN_VIEN', params)
