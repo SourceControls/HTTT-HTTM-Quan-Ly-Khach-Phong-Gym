@@ -17,6 +17,12 @@ class NhanVien {
     static updateNhanVien(params) {
         return DB.excute('SP_CAP_NHAT_NHAN_VIEN', params)
     }
+    static deleteNhanVien(params) {
+        return DB.excute('SP_XOA_NHAN_VIEN', params)
+    }
+    static searchNhanVien(params) {
+        return DB.excute('SP_TIM_KIEM_NHAN_VIEN', params)
+    }
 }
 
 module.exports = NhanVien

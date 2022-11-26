@@ -109,7 +109,7 @@ EXEC @ReturnCode = msdb.dbo.sp_add_jobstep @job_id=@jobId, @step_name=N'Update P
 SET TRANGTHAI = N''Đã hủy'' 
 WHERE DATEDIFF(DAY, NGAYDK, GETDATE()) > 3
 AND TRANGTHAI = N''Chờ kích hoạt''', 
-		@database_name=N'master', 
+		@database_name=N'QLPG', 
 		@flags=0
 IF (@@ERROR <> 0 OR @ReturnCode <> 0) GOTO QuitWithRollback
 EXEC @ReturnCode = msdb.dbo.sp_update_job @job_id = @jobId, @start_step_id = 1

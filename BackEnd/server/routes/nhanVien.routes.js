@@ -5,6 +5,7 @@ const nhanVienController = require('../controller/NhanVienController')
 router.use('/GetList', nhanVienController.getList)
 router.use('/Insert', nhanVienController.themNv)
 router.use('/Update', nhanVienController.capNhatNv)
+router.use('/Search', nhanVienController.timKiemNv)
 router.use('/', nhanVienController.index)
 
 module.exports = router;

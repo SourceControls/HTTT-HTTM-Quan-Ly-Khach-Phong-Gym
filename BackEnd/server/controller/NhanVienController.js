@@ -12,7 +12,7 @@ class NhanVienControllers {
     }
 
     themNv = async (req, res) => {
-        const { hoTen, sdt, chucVu } = req.body
+        const { HOTEN, SDT, CHUCVU } = req.body
         let params = [
             {name: 'HOTEN', type: 'Nvarchar(50)', value: 'Lê Lâm Tuấn'},
             {name: 'SDT', type: 'Char(10)', value: '039239560'},
@@ -30,7 +30,7 @@ class NhanVienControllers {
     }
 
     capNhatNv = async (req, res) => {
-        const { maNv, hoTen, sdt, chucVu } = req.body
+        const { MANV, HOTEN, SDT, CHUCVU } = req.body
         let params = [
             {name: 'MANV', type: 'Char(10)', value: 'NV00000001'},
             {name: 'HOTEN', type: 'Nvarchar(50)', value: 'Nguyễn Thị Yến Vy'},
@@ -43,6 +43,29 @@ class NhanVienControllers {
         } else {
             res.send(json(false, rs))
         }
+    }
+
+    xoaNv = async (req, res) => {
+        const MANV = req.body
+        let params = [{name: 'MANV', type: 'Char(10)', value: 'NV00000001'}]
+        let rs = await NhanVien.deleteNhanVien(params)
+        if(rs.rowsAffected > 0){
+            res.send(json(true, rs))
+        } else {
+            res.send(json(false, rs))
+        }
+    }
+
+    timKiemNv = async (req, res) => {
+        const HOTEN = req.body
+        let params = [{name: 'HOTEN', type: 'Nvarchar(50)', value: ' Yến'}]
+        let rs = await NhanVien.searchNhanVien(params)
+        if(rs.recordset.length == 0){
+            res.send(json(false, 'Không có kết quả phù hợp'))   
+            console.log(json(false, 'Không có kết quả phù hợp'))
+            return
+        }
+        res.send(json(true, rs.recordset))
     }
 }
 
