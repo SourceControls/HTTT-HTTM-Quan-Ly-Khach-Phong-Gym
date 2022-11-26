@@ -7,6 +7,7 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý khách hàng</title>
 </head>
 
 <body>
@@ -14,19 +15,19 @@
         <div class="container">
             <section class="sidebar">
                 <div class="logo-details">
-                    <i class='bx bxl-c-plus-plus'></i>
+                    <i class='bx bx-cube-alt'></i>
                     <span class="logo_name">GymCenter</span>
                 </div>
                 <ul class="nav-links">
                     <li>
-                        <a href="/NhanVien/NhanVien.html" class="active">
-                            <i class='bx bx-grid-alt'></i>
+                        <a href="/NhanVien/NhanVien.html">
+                            <i class='bx bxs-user-account'></i>
                             <span class="links_name">NHÂN VIÊN</span>
                         </a>
                     </li>
                     <li>
                         <a href="/KhachHang/KhachHang.html">
-                            <i class='bx bx-box'></i>
+                            <i class='bx bx-user'></i>
                             <span class="links_name">KHÁCH HÀNG</span>
                         </a>
                     </li>
@@ -38,19 +39,19 @@
                     </li>
                     <li>
                         <a href="/PhieuDangKy/PhieuDangKy.html">
-                            <i class='bx bx-pie-chart-alt-2'></i>
+                            <i class='bx bxs-notepad'></i>
                             <span class="links_name">PHIẾU ĐĂNG KÝ</span>
                         </a>
                     </li>
                     <li>
                         <a href="/LichSu/LichSu.html">
-                            <i class='bx bx-coin-stack'></i>
+                            <i class='bx bxs-door-open' ></i>
                             <span class="links_name">LỊCH SỬ VÀO PHÒNG</span>
                         </a>
                     </li>
                     <li>
                         <a href="/ThongKe/ThongKe.html">
-                            <i class='bx bx-book-alt'></i>
+                            <i class='bx bx-bar-chart-alt'></i>
                             <span class="links_name">THỐNG KÊ</span>
                         </a>
                     </li>
@@ -75,9 +76,8 @@
                     <div class="sidebar-button">
                         <i class='bx bx-menu sidebarBtn'></i>
                     </div>
-                    <div class="search-box">
-                        <input type="text" placeholder="Tìm khách hàng...">
-                        <i class='bx bx-search' style="cursor: pointer;"></i>
+                    <div class="page-header">
+                        <h2>Danh Sách Khách Hàng</h2>
                     </div>
                     <div class="profile-details">
                         <img src="h1.jpg" alt="">
@@ -89,7 +89,13 @@
                 </nav>
                 <!-- TABLE -->
                 <div class="home-content">
-                    <button type="button" class="btn btn-add">Thêm mới</button>
+                    <div class="body-header">
+                        <button type="button" class="btn btn-add">Thêm mới</button>
+                        <div class="search-box">
+                            <input type="text" placeholder="Tìm khách hàng...">
+                            <i class='bx bx-search' style="cursor: pointer;"></i>
+                        </div>
+                    </div>
                     <table>
                         <thead>
                             <tr>

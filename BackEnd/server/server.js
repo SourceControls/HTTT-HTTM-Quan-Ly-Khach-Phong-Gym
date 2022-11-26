@@ -9,10 +9,10 @@ routes(app)
 //   let req = {
 //     body: {
 //       TENDANGNHAP: 'NV03',
-//       MATKHAU: 'lal8yg1k'
+//       MATKHAU: '123'
 //     }
 //   }
-//   cl.capTaiKhoan(req).then(rs => console.log(rs));
+//   cl.dangNhap(req).then(rs => console.log(rs));
 // }
 // a()
 
@@ -30,10 +30,10 @@ routes(app)
 //   cl.themKh(req).then(rs => console.log(rs))
 // }
 // a()
-app.get('/', async (req, res) => {
-  // console.log(DB.query("SELECT * FROM KHACHHANG"));
+// app.get('/', async (req, res) => {
+//   // console.log(DB.query("SELECT * FROM KHACHHANG"));
 
-})
-app.listen(3000, () => console.log("Hello World: "))
+// })
+app.listen(8080, () => console.log("App running"))
 
 

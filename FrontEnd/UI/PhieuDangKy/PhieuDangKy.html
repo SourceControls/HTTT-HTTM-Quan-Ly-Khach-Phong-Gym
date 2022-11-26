@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="PhieuDangKy.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý phiếu đăng ký</title>
+</head>
+
+<body>
+    <div class="overlay">
+        <div class="container">
+            <section class="sidebar">
+                <div class="logo-details">
+                    <i class='bx bx-cube-alt'></i>
+                    <span class="logo_name">GymCenter</span>
+                </div>
+                <ul class="nav-links">
+                    <li>
+                        <a href="/NhanVien/NhanVien.html">
+                            <i class='bx bxs-user-account'></i>
+                            <span class="links_name">NHÂN VIÊN</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/KhachHang/KhachHang.html">
+                            <i class='bx bx-user'></i>
+                            <span class="links_name">KHÁCH HÀNG</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/DichVu/DichVu.html">
+                            <i class='bx bx-list-ul'></i>
+                            <span class="links_name">DỊCH VỤ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/PhieuDangKy/PhieuDangKy.html">
+                            <i class='bx bxs-notepad'></i>
+                            <span class="links_name">PHIẾU ĐĂNG KÝ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/LichSu/LichSu.html">
+                            <i class='bx bxs-door-open' ></i>
+                            <span class="links_name">LỊCH SỬ VÀO PHÒNG</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/ThongKe/ThongKe.html">
+                            <i class='bx bx-bar-chart-alt'></i>
+                            <span class="links_name">THỐNG KÊ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="btn-change-password" href="#">
+                            <i class='bx bx-book-alt'></i>
+                            <span class="links_name">ĐỔI MẬT KHẨU</span>
+                        </a>
+                    </li>
+                    <li class="log_out">
+                        <a href="../Login/Login.html">
+                            <i class='bx bx-log-out'></i>
+                            <span class="links_name">ĐĂNG XUẤT</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+            <!-- HOME SECTION -->
+            <section class="home-section">
+                <!-- NAVBAR -->
+                <nav>
+                    <div class="sidebar-button">
+                        <i class='bx bx-menu sidebarBtn'></i>
+                    </div>
+                    <div class="page-header">
+                        <h2>Danh Sách Phiếu Đăng Ký</h2>
+                    </div>
+                    <div class="profile-details">
+                        <img src="h1.jpg" alt="">
+                        <div class="admin_name">
+                            <span>Nguyễn Văn A</span>
+                            <span>Nhân Viên</span>
+                        </div>
+                    </div>
+                </nav>
+                <!-- TABLE -->
+                <div class="home-content">
+                    <div class="body-header">
+                        <div class="search-box">
+                            <input type="text" placeholder="Tìm phiếu đăng ký...">
+                            <i class='bx bx-search' style="cursor: pointer;"></i>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="h_col_1">Mã PĐK</th>
+                                <th class="h_col_1 center modified">Mã KH</th>
+                                <th class="h_col_3 right">Họ tên</th>
+                                <th class="h_col_2 right">SĐT</th>
+                                <th class="h_col_2 right">Dịch vụ</th>
+                                <th class="h_col_3 right">Ngày đăng ký</th>
+                                <th class="h_col_3">Ngày bắt đầu</th>
+                                <th class="h_col_3 left">Ngày kết thúc</th>
+                                <th class="h_col_2 left">Trạng thái</th>
+                                <th class="h_col_2 left">Tổng tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col_1 center">PDK113</td>
+                                <td class="col_1 center">KH115</td>
+                                <td class="col_3">Hoang Nguyen Truong Thanh</td>
+                                <td class="col_2">0755236485</td>
+                                <td class="col_1">Gói tập 1 tháng</td>
+                                <td class="col_2">01/02/2022</td>
+                                <td class="col_2">02/02/2022</td>
+                                <td class="col_2">02/03/2022</td>
+                                <td class="col_2">Đã kích hoạt</td>
+                                <td class="col_2">1500000</td>
+                            </tr>
+                            <tr>
+                                <td class="col_1 center">PDK113</td>
+                                <td class="col_1 center">KH115</td>
+                                <td class="col_3">Hoang Nguyen Truong Thanh</td>
+                                <td class="col_2">0755236485</td>
+                                <td class="col_1">Gói tập 1 tháng</td>
+                                <td class="col_2">01/02/2022</td>
+                                <td class="col_2">02/02/2022</td>
+                                <td class="col_2">02/03/2022</td>
+                                <td class="col_2">Đã kích hoạt</td>
+                                <td class="col_2">1500000</td>
+                            </tr>
+                            <tr>
+                                <td class="col_1 center">PDK113</td>
+                                <td class="col_1 center">KH115</td>
+                                <td class="col_3">Hoang Nguyen Truong Thanh</td>
+                                <td class="col_2">0755236485</td>
+                                <td class="col_1">Gói tập 1 tháng</td>
+                                <td class="col_2">01/02/2022</td>
+                                <td class="col_2">02/02/2022</td>
+                                <td class="col_2">02/03/2022</td>
+                                <td class="col_2">Đã kích hoạt</td>
+                                <td class="col_2">1500000</td>
+                            </tr>
+                            <tr>
+                                <td class="col_1 center">PDK113</td>
+                                <td class="col_1 center">KH115</td>
+                                <td class="col_3">Hoang Nguyen Truong Thanh</td>
+                                <td class="col_2">0755236485</td>
+                                <td class="col_1">Gói tập 1 tháng</td>
+                                <td class="col_2">01/02/2022</td>
+                                <td class="col_2">02/02/2022</td>
+                                <td class="col_2">02/03/2022</td>
+                                <td class="col_2">Đã kích hoạt</td>
+                                <td class="col_2">1500000</td>
+                            </tr>
+                            <tr>
+                                <td class="col_1 center">PDK113</td>
+                                <td class="col_1 center">KH115</td>
+                                <td class="col_3">Hoang Nguyen Truong Thanh</td>
+                                <td class="col_2">0755236485</td>
+                                <td class="col_1">Gói tập 1 tháng</td>
+                                <td class="col_2">01/02/2022</td>
+                                <td class="col_2">02/02/2022</td>
+                                <td class="col_2">02/03/2022</td>
+                                <td class="col_2">Đã kích hoạt</td>
+                                <td class="col_2">1500000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="panel">
+                        <div class="img">
+                            <img src="h1.jpg" alt="">
+                        </div>
+                        <div class="input">
+                            <div class="input-item">
+                                <label for="">Mã PĐK:</label>
+                                <input type="text" value="PĐK1" disabled>
+                            </div>
+                            <div class="input-item">
+                                <label for="">Khách hàng:</label>
+                                <input type="text" value="KH007" disabled>
+                            </div>
+                        </div>
+                        <div class="panel-btn">
+                            <button type="button" class="btn-pay">Thanh toán</button>
+                            <button type="button" class="btn-view">Xem phiếu thu tiền</button>
+                            <button type="button" class="btn-cancel">Hủy đăng ký</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- POPUP PAYMENT -->
+            <div class="popup popup-payment">
+                <div class="popup-header">
+                    <h2>Thanh Toán</h2>
+                </div>
+                <div class="popup-body">
+                    <form id="payment-form">
+                        <label>Họ tên khách hàng:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" disabled>
+                        </div>
+                        <label>Mã phiếu đăng ký:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" disabled>
+                        </div>
+                        <label>Ngày thu:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" disabled>
+                        </div>
+                        <label>Dịch vụ:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" disabled>
+                        </div>
+                        <label>Số tiền:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" disabled>
+                        </div>
+                        <label>Nhân viên thu tiền:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" disabled>
+                        </div>
+                    </form>
+                </div>
+                <div class="button-center">
+                    <button type="submit" class="btn-form btn-pay-form">Thanh toán</button>
+                    <button type="submit" class="btn-form btn-cancel-form">Hủy</button>
+                </div>
+            </div>
+            <!-- POPUP CHANGE PASSWORD -->
+            <div class="popup popup-change-password">
+                <div class="popup-header">
+                    <h2>Đổi Mật Khẩu</h2>
+                </div>
+                <div class="popup-body">
+                    <form id="change-password-form">
+                        <label>Mật khẩu cũ</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control" placeholder="Mật khẩu cũ">
+                        </div>
+                        <label>Mật khẩu mới</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control" placeholder="Mật khẩu mới">
+                        </div>
+                        <label>Nhập lại mật khẩu mới</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control" placeholder="Nhập lại mật khẩu mới">
+                        </div>
+                    </form>
+                </div>
+                <div class="button-center">
+                    <button type="submit" class="btn-form btn-password-form">Cập nhật</button>
+                    <button type="submit" class="btn-form btn-cancel-form">Hủy</button>
+                </div>
+            </div>
+            <!-- POPUP VIEW PAYMENT -->
+            <div class="popup popup-view-payment">
+                <div class="popup-header">
+                    <h2>Phiếu Thu Tiền</h2>
+                </div>
+                <div class="popup-body">
+                    <form id="view-payment-form">
+                        <div class="group">
+                            <div class="group1">
+                                <div class="label-group">
+                                    <label>Mã phiếu thu tiền:</label>
+                                    <label id="MaPhieuThu">PT113</label>
+                                </div>
+                                <div class="label-group">
+                                    <label>Họ tên khách hàng:</label>
+                                    <label id="HoTen">NGUYEN VĂN A</label>
+                                </div>
+                                <div class="label-group">
+                                    <label>Mã phiếu đăng ký:</label>
+                                    <label id="MaPhieuDK">DK113</label>
+                                </div>
+                            </div>
+                            <div class="group2">
+                                <div class="label-group">
+                                    <label>Ngày thu:</label>
+                                    <label id="Ngay">11/12/2022</label>
+                                </div>
+                                <div class="label-group">
+                                    <label>Dịch vụ:</label>
+                                    <label id="DichVu">Gói tập 1 tháng</label>
+                                </div>
+                                <div class="label-group">
+                                    <label>Nhân viên thu tiền:</label>
+                                    <label id="NV">NGUYEN VAN B</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group3">
+                            <div class="label-group">
+                                <label>Số tiền:</label>
+                                <label id="Tien">1.000.000</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="button-center">
+                    <button type="submit" class="btn-form btn-print-form">In phiếu</button>
+                    <button type="submit" class="btn-form btn-cancel-form">Hủy</button>
+                </div>
+            </div>
+            <!-- POPUP DELETE CONFIRM -->
+            <div class="popup popup-delete-confirm">
+                <div class="popup-body">
+                    <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                    <div class="delete-confirm">
+                        <h4>Bạn có chắn chắn muốn hủy đăng ký?</h4>
+                    </div>
+                </div>
+                <div class="button-center">
+                    <button type="submit" class="btn-form btn-delete-form">Chắc chắn</button>
+                    <button type="submit" class="btn-form btn-cancel-form">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="PhieuDangKy.js"></script>
+
+</body>
+
+</html>

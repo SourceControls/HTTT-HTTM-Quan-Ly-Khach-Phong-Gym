@@ -7,6 +7,7 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý nhân viên</title>
 </head>
 
 <body>
@@ -14,19 +15,19 @@
         <div class="container">
             <section class="sidebar">
                 <div class="logo-details">
-                    <i class='bx bxl-c-plus-plus'></i>
+                    <i class='bx bx-cube-alt'></i>
                     <span class="logo_name">GymCenter</span>
                 </div>
                 <ul class="nav-links">
                     <li>
                         <a href="/NhanVien/NhanVien.html">
-                            <i class='bx bx-grid-alt'></i>
+                            <i class='bx bxs-user-account'></i>
                             <span class="links_name">NHÂN VIÊN</span>
                         </a>
                     </li>
                     <li>
                         <a href="/KhachHang/KhachHang.html">
-                            <i class='bx bx-box'></i>
+                            <i class='bx bx-user'></i>
                             <span class="links_name">KHÁCH HÀNG</span>
                         </a>
                     </li>
@@ -38,19 +39,19 @@
                     </li>
                     <li>
                         <a href="/PhieuDangKy/PhieuDangKy.html">
-                            <i class='bx bx-pie-chart-alt-2'></i>
+                            <i class='bx bxs-notepad'></i>
                             <span class="links_name">PHIẾU ĐĂNG KÝ</span>
                         </a>
                     </li>
                     <li>
                         <a href="/LichSu/LichSu.html">
-                            <i class='bx bx-coin-stack'></i>
+                            <i class='bx bxs-door-open' ></i>
                             <span class="links_name">LỊCH SỬ VÀO PHÒNG</span>
                         </a>
                     </li>
                     <li>
                         <a href="/ThongKe/ThongKe.html">
-                            <i class='bx bx-book-alt'></i>
+                            <i class='bx bx-bar-chart-alt'></i>
                             <span class="links_name">THỐNG KÊ</span>
                         </a>
                     </li>
@@ -75,10 +76,10 @@
                     <div class="sidebar-button">
                         <i class='bx bx-menu sidebarBtn'></i>
                     </div>
-                    <div class="search-box">
-                        <input type="text" placeholder="Tìm khách hàng...">
-                        <i class='bx bx-search' style="cursor: pointer;"></i>
+                    <div class="page-header">
+                        <h2>Danh Sách Nhân Viên</h2>
                     </div>
+
                     <div class="profile-details">
                         <img src="h1.jpg" alt="">
                         <div class="admin_name">
@@ -89,7 +90,13 @@
                 </nav>
                 <!-- TABLE -->
                 <div class="home-content">
-                    <button type="button" class="btn btn-add">Thêm mới</button>
+                    <div class="body-header">
+                        <button type="button" class="btn btn-add">Thêm mới</button>
+                        <div class="search-box">
+                            <input type="text" placeholder="Tìm khách hàng...">
+                            <i class='bx bx-search' style="cursor: pointer;"></i>
+                        </div>
+                    </div>
                     <table>
                         <thead>
                             <tr>
@@ -112,46 +119,12 @@
                                     <div class="btn-container">
                                         <button type="button" class="btn btn-edit">Sửa</button>
                                         <button type="button" class="btn btn-delete">Xóa</button>
-                                        <button type="button" class="btn btn-account">Cấp TK</button>
-                                        <button type="button" class="btn btn-reset">Reset MK</button>
+                                        <button type="button" class="btn btn-create-reset">Cấp TK/Reset MK</button>
                                         <button type="button" class="btn btn-lock">Khóa/Mở khóa TK</button>
                                     </div>
                                 </td>
                             </tr>
-                            <!-- <tr>
-                                <td class="col_2">asssssss</td>
-                                <td class="col_3_left">Hoang Nguyen Truong Thanh</td>
-                                <td class="col_2_left">0911987241</td>
-                                <td class="col_1_right_1">Nam</td>
-                                <td class="col_1_right">1999</td>
-                                <td class="col_2_right">27/10/2011</td>
-                                <td class="col_3_1"><img class="table-img" src="h1.jpg" alt=""></td>
-                                <td class="col_4">
-                                    <div class="btn-container">
-                                        <button type="button" class="btn btn-edit">Sửa</button>
-                                        <button type="button" class="btn btn-delete">Xóa</button>
-                                        <button type="button" class="btn btn-register">ĐKDV</button>
-                                        <button type="button" class="btn btn-inbody">Xem Biểu Đồ Inbody</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col_2">asssssss</td>
-                                <td class="col_3_left">Hoang Nguyen Truong Thanh</td>
-                                <td class="col_2_left">0911987241</td>
-                                <td class="col_1_right_1">Nam</td>
-                                <td class="col_1_right">1999</td>
-                                <td class="col_2_right">27/10/2011</td>
-                                <td class="col_3_1"><img class="table-img" src="h1.jpg" alt=""></td>
-                                <td class="col_4">
-                                    <div class="btn-container">
-                                        <button type="button" class="btn btn-edit">Sửa</button>
-                                        <button type="button" class="btn btn-delete">Xóa</button>
-                                        <button type="button" class="btn btn-register">ĐKDV</button>
-                                        <button type="button" class="btn btn-inbody">Xem Biểu Đồ Inbody</button>
-                                    </div>
-                                </td>
-                            </tr> -->
+                        
                         </tbody>
                     </table>
                 </div>

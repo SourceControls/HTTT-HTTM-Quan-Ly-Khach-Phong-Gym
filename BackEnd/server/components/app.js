@@ -8,6 +8,10 @@ function app() {
   const app = express();
   app.use(express.static(publicPath));
   app.use(express.json());
+  app.use(cors({
+    origin: '*',
+  }));
+
   return app;
 }
 module.exports = app();

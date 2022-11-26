@@ -133,36 +133,36 @@ nav .sidebar-button i{
   margin-right: 10px;
 }
 /* HEADER SECTION */
-.home-section nav .search-box{
+.search-box{
   position: relative;
   height: 50px;
-  max-width: 550px;
+  max-width: 400px;
   width: 100%;
-  margin: 0 20px;
+  margin: 0 2px;
 }
-nav .search-box input{
-  height: 100%;
+.search-box input{
+  height: 90%;
   width: 100%;
   outline: none;
   background: #F5F6FA;
   border: 2px solid #EFEEF1;
   border-radius: 6px;
-  font-size: 18px;
+  font-size: 17px;
   padding: 0 15px;
 }
-nav .search-box .bx-search{
+.search-box .bx-search{
   position: absolute;
-  height: 40px;
-  width: 40px;
+  height: 35px;
+  width: 35px;
   background: var(--blue);
   right: 5px;
-  top: 50%;
+  top: 45%;
   transform: translateY(-50%);
   border-radius: 4px;
-  line-height: 40px;
+  line-height: 36px;
   text-align: center;
   color: #fff;
-  font-size: 22px;
+  font-size: 23px;
   transition: all 0.4 ease;
 }
 .home-section nav .profile-details{
@@ -201,6 +201,10 @@ nav .profile-details i{
   height: 42em;
   padding: 90px 30px 0px 30px;
 }
+.body-header{
+  display: flex;
+  justify-content: space-between;
+}
 table {
   box-shadow: 1px 2px 8px rgb(1, 11, 31);
   display: flex;
@@ -210,7 +214,7 @@ table {
   width: 100%;
   border-radius: 15px;
   font-size: 14px;
-  margin-top: 13px;
+  margin-top: 8px;
 }
 .col_1_right{
   width: 14%;
@@ -293,12 +297,14 @@ table thead, table tbody tr {
   height: 35px;
   border: none;
   border-radius: 5px;
-  color: #fff;
+  color: #000;
   cursor: pointer;
-  background: var(--blue);
+  background-color: #fff;
+  border: 2px solid var(--blue);
 }
 .btn-add{
   margin: 0;
+  align-self: center;
   width: 95px;
   height: 32px;
   background: #fff;
@@ -308,8 +314,9 @@ table thead, table tbody tr {
   font-weight: bolder;
 }
 .btn:hover{
-  background: var(--purple);
-  transition: .2s;
+  background: var(--blue);
+  transition: .4s;
+  color: #fff;
 }
 .btn-add:hover{
   background: var(--blue);
@@ -494,9 +501,6 @@ select{
   .home-section nav .profile-details{
     height: 50px;
     min-width: 40px;
-  }
-  .home-content .sales-boxes .sales-details{
-    width: 560px;
   }
 }
 @media (max-width: 550px) {

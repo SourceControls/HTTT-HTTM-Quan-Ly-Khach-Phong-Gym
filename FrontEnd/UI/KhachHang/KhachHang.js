@@ -14,6 +14,7 @@ let btn_delete = document.querySelectorAll(".btn-delete");
 let btn_register = document.querySelectorAll(".btn-register");
 let btn_cancel = document.querySelectorAll(".btn-cancel-form");
 let btn_change_password = document.querySelector(".btn-change-password");
+
 let popup_add = document.getElementsByClassName("popup-add");
 let popup_edit = document.getElementsByClassName("popup-update");
 let popup_register = document.getElementsByClassName("popup-register");
@@ -59,7 +60,7 @@ btn_cancel[3].addEventListener("click", () => {
     popup_change_password[0].classList.remove("show");
 });
 
-
+/* POPUP DELETE CONFIRM */
 for (var i = 0; i < btn_delete.length; i++) {
     btn_delete[i].addEventListener('click', () => {
         popup_delete_confirm[0].classList.add("show");

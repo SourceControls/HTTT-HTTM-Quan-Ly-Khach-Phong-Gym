@@ -1,8 +1,8 @@
 const sql = require("mssql/msnodesqlv8")
 const config = {
     user: 'sa',
-    password: '2711', //123
-    server: 'TRUONG', //localhost
+    password: '123', //123
+    server: 'localhost', //localhost
     database: 'QLPG',
     driver: 'msnodesqlv8'
 }
@@ -21,11 +21,11 @@ class SqlDB {
                 request.input(param.name, param.type, param.value)
             })
             return await request.execute(proc)
-            .then(record => { return record })
-            .catch(err => { return err.message})
+                .then(record => { return record })
+                .catch(err => { return err.message })
             // return (await request.execute(proc)).recordset;
         }
-        catch(err){
+        catch (err) {
             return err.message
         }
     }
