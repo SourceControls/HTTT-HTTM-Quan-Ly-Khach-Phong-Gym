@@ -83,6 +83,30 @@ class Server {
     },
 
   }
+  DichVu = {
+    getList(data = {}) {
+      //key =  SOTIENTHU, MAPDK, MANV
+      let api = 'http://localhost:8080/DichVu/GetList'
+      return excute(api, data)
+    },
+    themDichVu(data = {}) {
+      //key =  TENDV, SONGAYSUDUNG, GIA 
+      let api = 'http://localhost:8080/DichVu/Insert'
+      return excute(api, data)
+    },
+    capNhatDichVu(data = {}) {
+      //key = MADV, TENDV, SONGAYSUDUNG, GIA, HIENHANH
+      let api = 'http://localhost:8080/DichVu/Update'
+      return excute(api, data)
+    },
+    xoaDichVu(data = {}) {
+      //key = MADV
+      let api = 'http://localhost:8080/DichVu/Delete'
+      return excute(api, data)
+    },
+
+  }
+
 }
 
 
