@@ -7,6 +7,8 @@ sidebarBtn.onclick = function () {
     } else
         sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
 }
+
+
 /* POPUP ADD */
 let btn_add = document.querySelector(".btn-add");
 let btn_edit = document.querySelectorAll(".btn-edit");
@@ -61,7 +63,7 @@ for (var i = 0; i < btn_account.length; i++) {
     });
 }
 
-btn_cancel[2].addEventListener("click", () => {
+btn_cancel[1].addEventListener("click", () => {
     popup_create_account[0].classList.remove("show");
 });
 
@@ -94,3 +96,6 @@ for (var i = 0; i < btn_lock.length; i++) {
 btn_cancel[4].addEventListener("click", () => {
     popup_lock[0].classList.remove("show");
 });
+
+
+

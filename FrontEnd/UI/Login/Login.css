@@ -141,6 +141,7 @@ form{
 	font-size: 1.2rem;
 	color: #555;
 	font-family: 'poppins', sans-serif;
+	font-weight: 600;
 }
 
 .input-div.pass{
@@ -181,6 +182,13 @@ a:hover{
 	background-position: right;
 }
 
+#alert{
+	text-align: left;
+	color: red; 
+	font-size: 14px;
+	font-family: 'poppins', sans-serif;
+	font-weight: 600;
+}
 
 @media screen and (max-width: 1050px){
 	.container{

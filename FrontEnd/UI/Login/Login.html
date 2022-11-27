@@ -5,11 +5,11 @@
     <title>Animated Login Form</title>
     <link rel="stylesheet" type="text/css" href="Login.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&family=Roboto+Slab:wght@600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Đăng nhập</title>
 </head>
-
 <body>
 <!--     <img class="wave" src="wave.png"> -->
     <div class="container">
@@ -17,7 +17,7 @@
             <img src="trainer.svg">
         </div>
         <div class="login-content">
-            <form action="../KhachHang/KhachHang.html">
+            <form>
                 <h2 class="title">Welcome</h2>
                 <div class="input-div one">
                     <div class="i">
@@ -25,7 +25,7 @@
                     </div>
                     <div class="div">
                         <h5>Tên đăng nhập</h5>
-                        <input type="text" class="input">
+                        <input type="text" class="input" id="account">
                     </div>
                 </div>
                 <div class="input-div pass">
@@ -34,14 +34,16 @@
                     </div>
                     <div class="div">
                         <h5>Mật khẩu</h5>
-                        <input type="password" class="input">
+                        <input type="password" class="input" id="pass">
                     </div>
                 </div>
-                <input type="submit" class="btn" value="Đăng nhập">
+                <p id="alert"></p>
+                <input type="button" class="btn btn-login" value="Đăng nhập">
             </form>
         </div>
     </div>
     <script src="Login.js"></script>
+    <script type="module" src="module.js"></script>
 </body>
 
 </html>

@@ -20,37 +20,37 @@
                 </div>
                 <ul class="nav-links">
                     <li>
-                        <a href="/NhanVien/NhanVien.html">
+                        <a href="/FrontEnd/UI/NhanVien/NhanVien.html">
                             <i class='bx bxs-user-account'></i>
                             <span class="links_name">NHÂN VIÊN</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/KhachHang/KhachHang.html">
+                        <a href="/FrontEnd/UI/KhachHang/KhachHang.html">
                             <i class='bx bx-user'></i>
                             <span class="links_name">KHÁCH HÀNG</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/DichVu/DichVu.html">
+                        <a href="/FrontEnd/UI/DichVu/DichVu.html">
                             <i class='bx bx-list-ul'></i>
                             <span class="links_name">DỊCH VỤ</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/PhieuDangKy/PhieuDangKy.html">
+                        <a href="/FrontEnd/UI/PhieuDangKy/PhieuDangKy.html">
                             <i class='bx bxs-notepad'></i>
                             <span class="links_name">PHIẾU ĐĂNG KÝ</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/LichSu/LichSu.html">
-                            <i class='bx bxs-door-open' ></i>
+                        <a href="/FrontEnd/UI/LichSu/LichSu.html">
+                            <i class='bx bxs-door-open'></i>
                             <span class="links_name">LỊCH SỬ VÀO PHÒNG</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/ThongKe/ThongKe.html">
+                        <a href="/FrontEnd/UI/ThongKe/ThongKe.html">
                             <i class='bx bx-bar-chart-alt'></i>
                             <span class="links_name">THỐNG KÊ</span>
                         </a>
@@ -62,7 +62,7 @@
                         </a>
                     </li>
                     <li class="log_out">
-                        <a href="../Login/Login.html">
+                        <a href="/FrontEnd/UI/Login/Login.html">
                             <i class='bx bx-log-out'></i>
                             <span class="links_name">ĐĂNG XUẤT</span>
                         </a>
@@ -97,34 +97,18 @@
                             <i class='bx bx-search' style="cursor: pointer;"></i>
                         </div>
                     </div>
-                    <table>
+                    <table id="table">
                         <thead>
                             <tr>
-                                <th class="h_col_2">Mã nhân viên</th>
-                                <th class="h_col_3">Họ tên</th>
-                                <th class="h_col_2">SĐT</th>
-                                <th class="h_col_1">Chức vụ</th>
-                                <th class="h_col_1">Tài khoản</th>
-                                <th class="h_col_4"></th>
+                                <th>Mã nhân viên</th>
+                                <th>Họ tên</th>
+                                <th>SĐT</th>
+                                <th>Chức vụ</th>
+                                <th>Tài khoản</th>
+                                <th></th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td class="col_2">asssssss</td>
-                                <td class="col_3_left">Hoang Nguyen Truong Thanh</td>
-                                <td class="col_2_left">0911987241</td>
-                                <td class="col_1_right_1">Tiếp tân</td>
-                                <td class="col_1_right"></td>
-                                <td class="col_4">
-                                    <div class="btn-container">
-                                        <button type="button" class="btn btn-edit">Sửa</button>
-                                        <button type="button" class="btn btn-delete">Xóa</button>
-                                        <button type="button" class="btn btn-create-reset">Cấp TK/Reset MK</button>
-                                        <button type="button" class="btn btn-lock">Khóa/Mở khóa TK</button>
-                                    </div>
-                                </td>
-                            </tr>
-                        
+                        <tbody id="NhanVienList">
                         </tbody>
                     </table>
                 </div>
@@ -210,11 +194,11 @@
                     <form id="create-account-form">
                         <label>Tên tài khoản</label>
                         <div class="input-group">
-                            <input type="password" class="form-control" disabled>
+                            <input type="text" class="form-control create-name" disabled>
                         </div>
                         <label>Mật khẩu</label>
                         <div class="input-group">
-                            <input type="password" class="form-control" disabled>
+                            <input type="text" class="form-control create-pass" disabled>
                         </div>
                     </form>
                 </div>
@@ -231,11 +215,11 @@
                     <form id="reset-password-form">
                         <label>Tên tài khoản</label>
                         <div class="input-group">
-                            <input type="password" class="form-control" disabled>
+                            <input type="text" class="form-control reset-name" disabled>
                         </div>
                         <label>Mật khẩu</label>
                         <div class="input-group">
-                            <input type="password" class="form-control" disabled>
+                            <input type="text" class="form-control reset-pass" disabled>
                         </div>
                     </form>
                 </div>
@@ -312,6 +296,8 @@
         </div>
     </div>
 
+    
+    <script type="module" src="module.js"></script>
     <script src="NhanVien.js"></script>
 
 </body>
