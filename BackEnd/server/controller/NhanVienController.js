@@ -13,6 +13,7 @@ class NhanVienControllers {
 
     themNv = async (req, res) => {
         const { HOTEN, SDT, CHUCVU } = req.body
+
         let params = [
             { name: 'HOTEN', type: 'Nvarchar(50)', value: HOTEN },
             { name: 'SDT', type: 'Char(20)', value: SDT },
@@ -25,7 +26,7 @@ class NhanVienControllers {
             res.send(json(true, rs))
         } else {
             // return json(false, rs)
-            res.send(json(false, 'Số điện thoại không hợp lệ'))
+            res.send(json(false, rs))
         }
     }
 

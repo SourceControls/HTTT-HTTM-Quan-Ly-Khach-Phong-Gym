@@ -46,7 +46,7 @@ class DichVuControllers {
     }
 
     xoaDv = async (req, res) => {
-        const MADV = req.body
+        const { MADV } = req.body
         let params = [{ name: 'MADV', type: 'Char(10)', value: MADV }]
         let rs = await DichVu.deleteDichVu(params)
         if (rs.returnValue == 1) {
