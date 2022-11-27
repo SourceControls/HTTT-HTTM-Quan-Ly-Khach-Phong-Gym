@@ -13,17 +13,17 @@ class KhachHangControllers {
     themKh = async (req, res) => {
         const { HOTEN, GIOITINH, NAMSINH, SDT, HINHANH } = req.body
         let params = [
-            {name: 'HOTEN', type: 'NvarChar(10)', value: 'Vũ Việt Trường'},
-            {name: 'GIOITINH', type: 'NvarChar(5)', value: 'Nam'},
-            {name: 'NAMSINH', type: 'Char(5)', value: '2001'},
-            {name: 'SDT', type: 'Char(10)', value: '0392395607'},
-            {name: 'HINHANH', type: 'Char(200)', value: 'test'},
+            { name: 'HOTEN', type: 'NvarChar(10)', value: HOTEN },
+            { name: 'GIOITINH', type: 'NvarChar(5)', value: GIOITINH },
+            { name: 'NAMSINH', type: 'Char(5)', value: NAMSINH },
+            { name: 'SDT', type: 'Char(10)', value: SDT },
+            { name: 'HINHANH', type: 'Char(200)', value: HINHANH },
         ]
         let rs = await KhachHang.insertKhachHang(params)
-        if(rs.returnValue == 1){
+        if (rs.returnValue == 1) {
             // return json(true, rs)
             res.send(json(false, 'Số điện thoại không hợp lệ'))
-        } else if(rs.returnValue == 2){
+        } else if (rs.returnValue == 2) {
             res.send(json(false, 'Năm sinh không hợp lệ'))
         }
         else {
@@ -34,9 +34,9 @@ class KhachHangControllers {
 
     xoaKh = async (req, res) => {
         const { MAKH } = req.body
-        let params = [{name: 'MAKH', type: 'Char(10)', value: 'KH00000015'}]
+        let params = [{ name: 'MAKH', type: 'Char(10)', value: MAKH }]
         let rs = await KhachHang.deleteKhachHang(params)
-        if(rs.rowsAffected > 0){
+        if (rs.rowsAffected > 0) {
             res.send(json(true, rs))
         } else {
             res.send(json(false, rs))
@@ -46,18 +46,18 @@ class KhachHangControllers {
     capNhat = async (req, res) => {
         const { MAKH, HOTEN, GIOITINH, NAMSINH, SDT, HINHANH } = req.body
         let params = [
-            {name: 'MAKH', type: 'Char(10)', value: 'KH00000005'},
-            {name: 'HOTEN', type: 'NvarChar(10)', value: 'Vũ Việt Trường 3'},
-            {name: 'GIOITINH', type: 'NvarChar(5)', value: 'Nam'},
-            {name: 'NAMSINH', type: 'Char(5)', value: '2001'},
-            {name: 'SDT', type: 'Char(10)', value: '012345678'},
-            {name: 'HINHANH', type: 'Char(200)', value: 'test'},
+            { name: 'MAKH', type: 'Char(10)', value: MAKH },
+            { name: 'HOTEN', type: 'NvarChar(10)', value: HOTEN },
+            { name: 'GIOITINH', type: 'NvarChar(5)', value: GIOITINH },
+            { name: 'NAMSINH', type: 'Char(5)', value: NAMSINH },
+            { name: 'SDT', type: 'Char(10)', value: SDT },
+            { name: 'HINHANH', type: 'Char(200)', value: HINHANH },
         ]
         let rs = await KhachHang.updateKhachHang(params)
-        if(rs.returnValue == 1){
+        if (rs.returnValue == 1) {
             // return json(true, rs)
             res.send(json(false, 'Số điện thoại không hợp lệ'))
-        } else if(rs.returnValue == 2){
+        } else if (rs.returnValue == 2) {
             res.send(json(false, 'Năm sinh không hợp lệ'))
         }
         else {
@@ -68,10 +68,10 @@ class KhachHangControllers {
 
     timKiem = async (req, res) => {
         const HOTEN = req.body
-        let params = [{name: 'HOTEN', type: 'NVarChar(50)', value: 'Trườ'}]
+        let params = [{ name: 'HOTEN', type: 'NVarChar(50)', value: HOTEN }]
         let rs = await KhachHang.searchKhachHang(params)
-        if(rs.recordset.length == 0){
-            res.send(json(false, 'Không có kết quả phù hợp'))   
+        if (rs.recordset.length == 0) {
+            res.send(json(false, 'Không có kết quả phù hợp'))
             console.log(json(false, 'Không có kết quả phù hợp'))
             return
         }
@@ -80,14 +80,14 @@ class KhachHangControllers {
 
     xemKh = async (req, res) => {
         const MAKH = req.body
-        let params = [{name: 'MAKH', type: 'Char(10)', value: 'KH00000005'}]
+        let params = [{ name: 'MAKH', type: 'Char(10)', value: MAKH }]
         let rs = await KhachHang.selectKhachHang(params)
         res.send(json(true, rs.recordset))
     }
 
     xemCsInbody = async (req, res) => {
         const MAKH = req.body
-        let params = [{name: 'MAKH', type: 'Char(10)', value: 'KH00000005'}]
+        let params = [{ name: 'MAKH', type: 'Char(10)', value: MAKH }]
         let rs = await KhachHang.selectInbodyKhachHang(params)
         res.send(json(true, rs.recordset))
     }
