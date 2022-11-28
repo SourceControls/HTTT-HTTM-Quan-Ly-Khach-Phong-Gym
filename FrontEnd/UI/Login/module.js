@@ -16,6 +16,7 @@ btn.addEventListener("click", ()=>{
     }
 
     server.TaiKhoan.dangNhap(data).then((result) => {
+        console.log(result);
         if(result.status)
         window.location.replace("../NhanVien/NhanVien.html");
         else if(result.status==0&&result.data=='')
