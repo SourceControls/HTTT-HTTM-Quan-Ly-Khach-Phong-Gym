@@ -45,7 +45,7 @@
                     </li>
                     <li>
                         <a href="/FrontEnd/UI/LichSu/LichSu.html">
-                            <i class='bx bxs-door-open' ></i>
+                            <i class='bx bxs-door-open'></i>
                             <span class="links_name">LỊCH SỬ VÀO PHÒNG</span>
                         </a>
                     </li>
@@ -150,17 +150,12 @@
                                         <th>Mã khách hàng</th>
                                         <th>Họ tên</th>
                                         <th>Giới tính</th>
-                                        <th>Thời gian vào phòng</th>
+                                        <th style="padding-right: 15px;">Thời gian vào phòng</th>
+                                        <th>Tổng</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>KH007</td>
-                                        <td>Hoang Trung Thanh Khương</td>
-                                        <td>Nam</td>
-                                        <td>01:01:78 11/12/2022</td>
-                                    </tr>
+                                <tbody id="list">
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -174,30 +169,32 @@
                 </div>
                 <div class="popup-body">
                     <form id="change-password-form">
-                        <label>Mật khẩu cũ</label>
+                        <label>Tên đăng nhập</label>
                         <div class="input-group">
-                            <input type="password" class="form-control" placeholder="Mật khẩu cũ">
+                            <input type="text" class="form-control change-password-input" placeholder="Tên đăng nhập">
                         </div>
                         <label>Mật khẩu mới</label>
                         <div class="input-group">
-                            <input type="password" class="form-control" placeholder="Mật khẩu mới">
+                            <input type="password" class="form-control change-password-input"
+                                placeholder="Mật khẩu mới">
                         </div>
-                        <label>Nhập lại mật khẩu mới</label>
+                        <!-- <label>Nhập lại mật khẩu mới</label>
                         <div class="input-group">
                             <input type="password" class="form-control" placeholder="Nhập lại mật khẩu mới">
-                        </div>
+                        </div> -->
                     </form>
                 </div>
                 <div class="button-center">
                     <button type="submit" class="btn-form btn-password-form">Cập nhật</button>
-                    <button class="btn-form btn-cancel-form">Hủy</button>
+                    <button type="submit" class="btn-form btn-cancel-form">Hủy</button>
                 </div>
             </div>
-            
+
         </div>
     </div>
 
     <script src="LichSu.js"></script>
+    <script type="module" src="module.js"></script>
 
 </body>
 
