@@ -24,7 +24,7 @@ class PhieuThuTienControllers {
     }
 
     xemPtt = async (req, res) => {
-        const MAPDK = req.body
+        const { MAPDK } = req.body
         let params = [{ name: 'MAPDK', type: 'Char(10)', value: MAPDK }]
         let rs = await PhieuThuTien.selectPhieuThuTien(params)
         if (rs.returnValue == 1) {

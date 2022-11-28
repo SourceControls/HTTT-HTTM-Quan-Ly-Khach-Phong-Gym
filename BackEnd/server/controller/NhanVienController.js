@@ -8,8 +8,8 @@ class NhanVienControllers {
     }
 
     getList = async (req, res) => {
-        const KEY = req.body
-        let params = [{name: 'HOTEN', type: 'Nvarchar(50)', value: ' Yến'}]
+        const { KEY } = req.body
+        let params = [{name: 'KEY', type: 'Nvarchar(20)', value: KEY}]
         if(KEY == ''){
             let rs = await NhanVien.getListNhanVien()
             res.send(json(true, rs))

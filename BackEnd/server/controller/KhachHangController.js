@@ -7,7 +7,7 @@ class KhachHangControllers {
     }
     getList = async (req, res) => {
         const { KEY } = req.body
-        let params = [{ name: 'KEY', type: 'NVarChar(50)', value: KEY }]
+        let params = [{ name: 'KEY', type: 'NVarChar(20)', value: KEY }]
         if (!KEY) {
             let rs = await KhachHang.getListKhachHang()
             res.send(json(true, rs))
@@ -104,16 +104,16 @@ class KhachHangControllers {
     }
 
     xemCsInbody = async (req, res) => {
-        const MAKH = req.body
+        const { MAKH } = req.body
         let params = [{ name: 'MAKH', type: 'Char(10)', value: MAKH }]
         let rs = await KhachHang.selectInbodyKhachHang(params)
         res.send(json(true, rs.recordset))
     }
 
     xemLichSu = async (req, res) => {
-        const HOTEN = 'a'
-        let params = [{ name: 'HOTEN', type: 'NVarChar(50)', value: 'Trườ' }]
-        if (HOTEN == '') {
+        const { KEY } = req.body
+        let params = [{ name: 'KEY', type: 'NVarChar(20)', value: KEY }]
+        if (KEY == '') {
             let rs = await KhachHang.lichSuVaoPhong()
             res.send(json(true, rs))
             return
@@ -130,7 +130,7 @@ class KhachHangControllers {
 
     chiTietLichSu = async (req, res) => {
         const { STT } = req.body
-        let params = [{ name: 'STT', type: 'Int', value: 5 }]
+        let params = [{ name: 'STT', type: 'Int', value: STT }]
         let rs = await KhachHang.chiTietLichSu(params)
         res.send(json(true, rs.recordset))
     }

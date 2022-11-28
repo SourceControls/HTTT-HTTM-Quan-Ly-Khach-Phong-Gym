@@ -27,6 +27,9 @@ class PhieuDangKy {
     static selectPhieuDangKy(params) {
         return DB.excute('SP_XEM_PHIEU_DANG_KY', params)
     }
+    static searchPhieuDangKy(params) {
+        return DB.excute('SP_TIM_KIEM_PHIEU_DANG_KY', params)
+    }
 }
 
 module.exports = PhieuDangKy

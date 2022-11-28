@@ -7,8 +7,8 @@ class DichVuControllers {
     }
 
     getList = async (req, res) => {
-        const KEY = req.body
-        let params = [{name: 'TENDV', type: 'Nvarchar(50)', value: 'a'}]
+        const { KEY } = req.body
+        let params = [{name: 'KEY', type: 'Nvarchar(20)', value: KEY}]
         if(KEY == ''){
             let rs = await DichVu.getListDichVu()
             res.send(json(true, rs))
@@ -16,19 +16,19 @@ class DichVuControllers {
         }
         let rs = await DichVu.searchDichVu(params)
         if(rs.recordset.length == 0){
-            res.send(json(false, rs))   
-            return json(false, 'Không có kết quả phù hợp')
+            res.send(json(false, 'Không có kết quả phù hợp'))
+            return
         }
         res.send(json(true, rs.recordset))
     }
 
     themDv = async (req, res) => {
-        const { TENDV, SONGAYSUDUNG, GIA } = req.body
+        const { TENDV, SONGAYSUDUNG, GIA, HIENHANH } = req.body
         let params = [
             { name: 'TENDV', type: 'Nvarchar(50)', value: TENDV },
             { name: 'SONGAYSUDUNG', type: 'Int', value: SONGAYSUDUNG },
             { name: 'GIA', type: 'Money', value: GIA },
-            { name: 'HIENHANH', type: 'Bit', value: 0 }
+            { name: 'HIENHANH', type: 'Bit', value: HIENHANH }
         ]
         let rs = await DichVu.insertDichVu(params)
         if (rs.rowsAffected > 0) {

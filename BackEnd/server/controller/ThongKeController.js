@@ -19,8 +19,8 @@ class ThongKeControllers {
     xemDoanhThu = async (req, res) => {
         const { TUNGAY, DENNGAY } = req.body
         let params = [
-            {name: 'TUNGAY', type: 'Date', value: ''},
-            {name: 'DENNGAY', type: 'Date', value: ''},
+            {name: 'TUNGAY', type: 'Date', value: TUNGAY},
+            {name: 'DENNGAY', type: 'Date', value: DENNGAY},
         ]
         let rs = await DB.excute('SP_THONG_KE_DOANH_THU', params)
         res.send(json(true, rs))
