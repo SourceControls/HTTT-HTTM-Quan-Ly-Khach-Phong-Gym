@@ -1,5 +1,5 @@
 const json = require('../components/json');
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 const TaiKhoan = require('../modules/TaiKhoan');
 
 class TaiKhoanControllers {

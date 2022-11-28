@@ -31,6 +31,15 @@ class KhachHang {
   static selectInbodyKhachHang(params) {
     return DB.excute('XEM_CHI_SO_INBODY', params)
   }
+  static lichSuVaoPhong() {
+    return DB.query('EXEC SP_LICH_SU_VAO_PHONG')
+  }
+  static chiTietLichSu(params) {
+    return DB.excute('SP_CHI_TIET_LICH_SU', params)
+  }
+  static timKiemLichSu(params) {
+    return DB.excute('SP_TIM_KIEM_LICH_SU', params)
+  }
 }
 
 module.exports = KhachHang

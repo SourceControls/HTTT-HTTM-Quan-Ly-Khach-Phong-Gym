@@ -7,8 +7,19 @@ class PhieuDangKyControllers {
     }
 
     getList = async (req, res) => {
-        let rs = await PhieuDangKy.getListPhieuDangKy()
-        res.send(json(true, rs))
+        const KEY = req.body
+        let params = [{name: 'MAPDK', type: 'Char(10)', value: '0005'}]
+        if(KEY == ''){
+            let rs = await PhieuDangKy.getListPhieuDangKy()
+            res.send(json(true, rs))
+            return
+        }
+        let rs = await DB.excute('SP_TIM_KIEM_PHIEU_DANG_KY', params)
+        if(rs.recordset.length == 0){
+            res.send(json(false, rs))   
+            return json(false, 'Không có kết quả phù hợp')
+        }
+        res.send(json(true, rs.recordset))
     }
 
     themPhieu = async (req, res) => {

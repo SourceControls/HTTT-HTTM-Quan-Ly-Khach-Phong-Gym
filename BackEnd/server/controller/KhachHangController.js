@@ -6,8 +6,20 @@ class KhachHangControllers {
         res.send('Khach Hang')
     }
     getList = async (req, res) => {
-        let rs = await KhachHang.getListKhachHang()
-        res.send(json(true, rs))
+        const KEY = req.body
+        let params = [{name: 'HOTEN', type: 'NVarChar(50)', value: 'Trườ'}]
+        if(KEY == '') {
+            let rs = await KhachHang.getListKhachHang()
+            res.send(json(true, rs))
+            return
+        } 
+        let rs = await KhachHang.searchKhachHang(params)
+        if(rs.recordset.length == 0){
+            res.send(json(false, 'Không có kết quả phù hợp'))   
+            console.log(json(false, 'Không có kết quả phù hợp'))
+            return
+        }
+        res.send(json(true, rs.recordset))
     }
 
     themKh = async (req, res) => {
@@ -36,7 +48,7 @@ class KhachHangControllers {
         const { MAKH } = req.body
         let params = [{name: 'MAKH', type: 'Char(10)', value: 'KH00000015'}]
         let rs = await KhachHang.deleteKhachHang(params)
-        if(rs.rowsAffected > 0){
+        if(rs.returnValue == 1){
             res.send(json(true, rs))
         } else {
             res.send(json(false, rs))
@@ -69,6 +81,11 @@ class KhachHangControllers {
     timKiem = async (req, res) => {
         const HOTEN = req.body
         let params = [{name: 'HOTEN', type: 'NVarChar(50)', value: 'Trườ'}]
+        if(HOTEN == '') {
+            let rs = await KhachHang.getListKhachHang()
+            res.send(json(true, rs))
+            return
+        } 
         let rs = await KhachHang.searchKhachHang(params)
         if(rs.recordset.length == 0){
             res.send(json(false, 'Không có kết quả phù hợp'))   
@@ -91,6 +108,33 @@ class KhachHangControllers {
         let rs = await KhachHang.selectInbodyKhachHang(params)
         res.send(json(true, rs.recordset))
     }
+
+    xemLichSu = async (req, res) => {
+        const HOTEN = 'a'
+        let params = [{name: 'HOTEN', type: 'NVarChar(50)', value: 'Trườ'}]
+        if(HOTEN == '') {
+            let rs = await KhachHang.lichSuVaoPhong()
+            res.send(json(true, rs))
+            return
+        }
+        let rs = await KhachHang.timKiemLichSu(params)
+        if(rs.recordset.length == 0){
+            res.send(json(false, 'Không có kết quả phù hợp'))   
+            console.log(json(false, 'Không có kết quả phù hợp'))
+            return
+        }
+        res.send(json(true, rs.recordset))
+
+    }
+
+    chiTietLichSu = async (req, res) => {
+        const { STT } = req.body
+        let params = [{name: 'STT', type: 'Int', value: 5}]
+        let rs = await KhachHang.chiTietLichSu(params)
+        res.send(json(true, rs.recordset))
+    }
+
+    
 }
 
 module.exports = new KhachHangControllers

@@ -1,4 +1,5 @@
 const json = require('../components/json')
+const DB = require('../components/SqlDb')
 const NhanVien = require('../modules/NhanVien')
 
 class NhanVienControllers {
@@ -7,8 +8,20 @@ class NhanVienControllers {
     }
 
     getList = async (req, res) => {
-        let rs = await NhanVien.getListNhanVien()
-        res.send(json(true, rs))
+        const KEY = req.body
+        let params = [{name: 'HOTEN', type: 'Nvarchar(50)', value: ' Yến'}]
+        if(KEY == ''){
+            let rs = await NhanVien.getListNhanVien()
+            res.send(json(true, rs))
+            return
+        }
+        let rs = await NhanVien.searchNhanVien(params)
+        if(rs.recordset.length == 0){
+            res.send(json(false, 'Không có kết quả phù hợp'))   
+            console.log(json(false, 'Không có kết quả phù hợp'))
+            return
+        }
+        res.send(json(true, rs.recordset))
     }
 
     themNv = async (req, res) => {
@@ -67,6 +80,7 @@ class NhanVienControllers {
         }
         res.send(json(true, rs.recordset))
     }
+
 }
 
 module.exports = new NhanVienControllers

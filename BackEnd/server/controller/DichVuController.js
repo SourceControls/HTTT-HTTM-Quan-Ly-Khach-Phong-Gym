@@ -7,8 +7,19 @@ class DichVuControllers {
     }
 
     getList = async (req, res) => {
-        let rs = await DichVu.getListDichVu()
-        res.send(json(true, rs))
+        const KEY = req.body
+        let params = [{name: 'TENDV', type: 'Nvarchar(50)', value: 'a'}]
+        if(KEY == ''){
+            let rs = await DichVu.getListDichVu()
+            res.send(json(true, rs))
+            return
+        }
+        let rs = await DichVu.searchDichVu(params)
+        if(rs.recordset.length == 0){
+            res.send(json(false, rs))   
+            return json(false, 'Không có kết quả phù hợp')
+        }
+        res.send(json(true, rs.recordset))
     }
 
     themDv = async (req, res) => {

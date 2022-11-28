@@ -34,6 +34,6 @@ routes(app)
 //   // console.log(DB.query("SELECT * FROM KHACHHANG"));
 
 // })
-app.listen(8080, () => console.log("App running"))
+app.listen(3000, () => console.log("App running"))
 
 

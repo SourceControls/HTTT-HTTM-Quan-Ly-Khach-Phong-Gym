@@ -9,6 +9,8 @@ router.use('/Insert', khachHangController.themKh)
 router.use('/Delete', khachHangController.xoaKh)
 router.use('/Infor', khachHangController.xemKh)
 router.use('/Inbody', khachHangController.xemCsInbody)
+router.use('/History', khachHangController.xemLichSu)
+router.use('/Detail', khachHangController.chiTietLichSu)
 router.use('/', khachHangController.index)
 
 
