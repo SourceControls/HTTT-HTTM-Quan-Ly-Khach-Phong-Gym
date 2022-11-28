@@ -1,6 +1,8 @@
+import loadListKhachHang from "./loadListKhachHang.js";
+import server from "../../server/main.js"
+import uploadImg from "../../Image/main.js";
 
-
-export default function initPopups() {
+function init() {
   const btns_update = document.querySelectorAll(".btn-update");
   const btns_delete = document.querySelectorAll(".btn-delete");
   const btns_register = document.querySelectorAll(".btn-register");
@@ -17,8 +19,10 @@ export default function initPopups() {
     });
   })
   btns_delete.forEach((btn) => {
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", (e) => {
       showPopup("popup-delete-confirm");
+      let idKH = e.target.parentElement.parentElement.parentElement.id;
+      document.querySelector(".popup-delete-confirm .btn-delete-form").MAKH = idKH;
     });
   })
   btns_register.forEach((btn) => {
@@ -31,6 +35,8 @@ export default function initPopups() {
       showPopup("popup-inbody");
     });
   })
+
+  //thoát popup
   btns_cancel.forEach((btn) => {
     btn.addEventListener("click", () => {
       popups.forEach((popup) => {
@@ -39,7 +45,14 @@ export default function initPopups() {
       })
     })
   })
+}
 
+
+export default function initPopups() {
+  init();
 
 
 }
+
+
+

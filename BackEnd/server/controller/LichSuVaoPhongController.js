@@ -2,14 +2,14 @@ const DB = require('../components/SqlDb')
 const json = require('../components/json')
 
 class LichSuVaoPhongControllers {
-    index(req, res){
+    index(req, res) {
         res.send('Lịch sử vào phòng')
     }
 
     xemLichSu = async (req, res) => {
         const { KEY } = req.body
         let params = [{ name: 'KEY', type: 'NVarChar(20)', value: KEY }]
-        if (KEY == '') {
+        if (!KEY) {
             let rs = await DB.query('EXEC SP_LICH_SU_VAO_PHONG')
             res.send(json(true, rs))
             return

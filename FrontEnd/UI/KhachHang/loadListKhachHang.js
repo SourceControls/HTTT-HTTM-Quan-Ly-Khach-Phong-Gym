@@ -1,8 +1,7 @@
 import server from '../../server/main.js';
-import initPopupBtns from "./initPopupBtns.js";
+import initDynamicEvents from "./initDynamicEvents.js";
 
-export default async function loadListKhachHang(KEY) {
-
+async function loadList(KEY) {
   const tblKhachHang = document.querySelector('.tbl-khachHang')
   var listKhachHang = await server.KhachHang.getList({ KEY })
   tblKhachHang.innerHTML = ""
@@ -12,9 +11,9 @@ export default async function loadListKhachHang(KEY) {
   listKhachHang = listKhachHang.data;
   listKhachHang = listKhachHang.sort((a, b) => (a.MAKH > b.MAKH) ? -1 : 0);
   listKhachHang.forEach(e => {
+    //set default image
     if (e.HINHANH.trim().length == 0) {
       e.HINHANH = "./defaultAvt.jpg"
-      console.log("emptyimg");
     }
     tblKhachHang.innerHTML += `
                <tr id="${e.MAKH}">
@@ -36,5 +35,10 @@ export default async function loadListKhachHang(KEY) {
                 </tr>
     `
   });
-  initPopupBtns();
 }
+
+export default async function loadListKhachHang(KEY) {
+  await loadList(KEY);
+  initDynamicEvents();
+}
+
