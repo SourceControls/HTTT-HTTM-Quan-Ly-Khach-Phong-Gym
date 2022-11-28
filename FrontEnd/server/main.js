@@ -68,6 +68,11 @@ class Server {
     },
   }
   PhieuDangKy = {
+    getList(data = {}) {
+      //key = KEY
+      let api = 'http://localhost:8080/PhieuDangKy/GetList'
+      return excute(api, data)
+    },
     dangKyDichVu(data = {}) {
       //key = TILEKM, TONGTIEN, MAKH, MANV, MADV
       let api = 'http://localhost:8080/PhieuDangKy/Create'
