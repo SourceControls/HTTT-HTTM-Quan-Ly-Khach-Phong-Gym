@@ -1,19 +1,21 @@
 import server from '../../server/main.js';
-import initEvents from "./initEvent.js";
+import initPopupBtns from "./initPopupBtns.js";
 
 export default async function loadListKhachHang(KEY) {
 
   const tblKhachHang = document.querySelector('.tbl-khachHang')
   var listKhachHang = await server.KhachHang.getList({ KEY })
+  tblKhachHang.innerHTML = ""
   if (!listKhachHang.status) {
-    alert(listKhachHang.data)
     return;
   }
-  tblKhachHang.innerHTML = ""
   listKhachHang = listKhachHang.data;
+  listKhachHang = listKhachHang.sort((a, b) => (a.MAKH > b.MAKH) ? -1 : 0);
   listKhachHang.forEach(e => {
-    if (e.HINHANH.trim.length == "0")
+    if (e.HINHANH.trim().length == 0) {
       e.HINHANH = "./defaultAvt.jpg"
+      console.log("emptyimg");
+    }
     tblKhachHang.innerHTML += `
                <tr id="${e.MAKH}">
                   <td>${e.MAKH}</td>
@@ -34,5 +36,5 @@ export default async function loadListKhachHang(KEY) {
                 </tr>
     `
   });
-  initEvents();
+  initPopupBtns();
 }

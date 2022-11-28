@@ -129,33 +129,56 @@
               <div class="img-box">
                 <img src="defaultAvt.jpg" alt="" />
               </div>
-              <div class="input-group">
-                <input type="file" class="form-control" />
-              </div>
             </div>
             <form id="add-customer-form">
               <label>Họ tên</label>
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Họ tên" />
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Họ tên"
+                  name="HOTEN" />
               </div>
               <label>Năm sinh</label>
               <div class="input-group">
-                <input type="tel" class="form-control" placeholder="Năm sinh" />
+                <input
+                  type="tel"
+                  class="form-control"
+                  placeholder="Năm sinh"
+                  name="NAMSINH" />
               </div>
               <label>SĐT</label>
               <div class="input-group">
-                <input type="tel" class="form-control" placeholder="SĐT" />
+                <input
+                  type="tel"
+                  class="form-control"
+                  placeholder="Số điện thoại"
+                  name="SDT" />
               </div>
-              <input type="radio" id="male" name="gender" value="Nam" />
+              <input
+                type="radio"
+                id="add-male"
+                name="GIOITINH"
+                value="NAM"
+                checked />
               <label for="male">Nam</label>
-
-              <input type="radio" id="female" name="gender" value="Nữ" />
+              <input type="radio" id="add-female" name="GIOITINH" value="NỮ" />
               <label for="female">Nữ</label>
+              <div class="input-group">
+                <input
+                  type="file"
+                  class="form-control image-input"
+                  name="HINHANH" />
+              </div>
+              <div class="button-center">
+                <button type="submit" class="btn-form btn-add-form">
+                  Thêm
+                </button>
+                <button type="button" class="btn-form btn-cancel-form">
+                  Hủy
+                </button>
+              </div>
             </form>
-          </div>
-          <div class="button-center">
-            <button type="submit" class="btn-form btn-add-form">Thêm</button>
-            <button type="submit" class="btn-form btn-cancel-form">Hủy</button>
           </div>
         </div>
         <!-- POPUP UPDATE -->
@@ -168,11 +191,8 @@
               <div class="img-box">
                 <img src="defaultAvt.jpg" alt="" />
               </div>
-              <div class="input-group">
-                <input type="file" class="form-control" />
-              </div>
             </div>
-            <form id="add-customer-form">
+            <form id="update-customer-form">
               <span>
                 <h4>Mã khách hàng:</h4>
                 <label id="maKH">KH01</label>
@@ -198,13 +218,18 @@
 
               <input type="radio" id="female" name="gender" value="Nữ" />
               <label for="female">Nữ</label>
+              <div class="input-group">
+                <input type="file" class="form-control" />
+              </div>
+              <div class="button-center">
+                <button type="submit" class="btn-form btn-update-form">
+                  Cập nhật
+                </button>
+                <button type="button" class="btn-form btn-cancel-form">
+                  Hủy
+                </button>
+              </div>
             </form>
-          </div>
-          <div class="button-center">
-            <button type="submit" class="btn-form btn-update-form">
-              Cập nhật
-            </button>
-            <button type="submit" class="btn-form btn-cancel-form">Hủy</button>
           </div>
         </div>
         <!-- POPUP REGISTER -->

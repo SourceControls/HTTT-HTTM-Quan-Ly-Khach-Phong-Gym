@@ -68,6 +68,11 @@ class Server {
     },
   }
   PhieuDangKy = {
+    getList(data = {}) {
+      //key = KEY
+      let api = 'http://localhost:8080/PhieuDangKy/GetList'
+      return excute(api, data)
+    },
     dangKyDichVu(data = {}) {
       //key = TILEKM, TONGTIEN, MAKH, MANV, MADV
       let api = 'http://localhost:8080/PhieuDangKy/Create'
@@ -116,6 +121,29 @@ class Server {
     },
 
   }
+  // LichSuVaoPhong = {
+  //   getList(data = {}) {
+  //     //key =  SOTIENTHU, MAPDK, MANV
+  //     let api = 'http://localhost:8080/DichVu/GetList'
+  //     return excute(api, data)
+  //   },
+  //   themDichVu(data = {}) {
+  //     //key =  TENDV, SONGAYSUDUNG, GIA 
+  //     let api = 'http://localhost:8080/DichVu/Insert'
+  //     return excute(api, data)
+  //   },
+  //   capNhatDichVu(data = {}) {
+  //     //key = MADV, TENDV, SONGAYSUDUNG, GIA, HIENHANH
+  //     let api = 'http://localhost:8080/DichVu/Update'
+  //     return excute(api, data)
+  //   },
+  //   xoaDichVu(data = {}) {
+  //     //key = MADV
+  //     let api = 'http://localhost:8080/DichVu/Delete'
+  //     return excute(api, data)
+  //   },
+
+}
 
 }
 
