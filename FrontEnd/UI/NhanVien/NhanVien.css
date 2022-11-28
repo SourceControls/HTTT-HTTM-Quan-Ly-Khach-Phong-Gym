@@ -304,7 +304,7 @@
     background-color: var(--purple);
   }
   .popup-add, .popup-update, .popup-create-account,.popup-change-password, .popup-delete-confirm, .popup-reset-password
-  ,.popup-lock{
+  ,.popup-lock, .popup-unlock, .popup-notTK{
    padding: 25px 30px 30px 30px;
    width: 650px;
    background: #fff;
@@ -322,12 +322,17 @@
     left: 40%;
     width: 400px;
   }
-  .popup-change-password, .popup-create-account, .popup-reset-password,.popup-lock{
+  .popup-change-password, .popup-create-account, .popup-reset-password{
     top: 15%;
     left: 38%;
     width: 500px;
   }
-  .popup-create-account .popup-body, .popup-reset-password .popup-body, .popup-lock .popup-body{
+  .popup-lock, .popup-notTK, .popup-unlock{
+    top: 30%;
+    left: 38%;
+    width: 500px;
+  }
+  .popup-create-account .popup-body, .popup-reset-password .popup-body, .popup-lock .popup-body, .popup-unlock .popup-body, .popup-notTK .popup-body{
     margin-left: 70px;
   }
   .popup-delete-confirm .popup-body i{
@@ -338,6 +343,13 @@
   #change-password-form{
     width: 100%;
     margin-left: 75px;
+  }
+  .popup-update .popup-body, .popup-add .popup-body,.popup-unlock .popup-body, .popup-notTk .popup-body, .popup-unlock .popup-body{
+    display: flex;
+    justify-content: center;
+  }
+  .popup-updatem ,.popup-add, .popup-unlock, .popup-notTk, .popup-unlock{
+    width: 500px;
   }
   .popup-header{
     text-align: center;
