@@ -354,7 +354,7 @@ table tbody tr:hover{
   height: 350px;
 }
 .img-box img{
-  object-fit: fill;
+  object-fit: cover;
   width:250px;
   height: 340px;
   border-radius: 15px;

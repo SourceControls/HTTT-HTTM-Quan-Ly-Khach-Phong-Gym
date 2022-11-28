@@ -12,12 +12,14 @@ let btn_add = document.querySelector(".btn-add");
 let btn_edit = document.querySelectorAll(".btn-edit");
 let btn_delete = document.querySelectorAll(".btn-delete");
 let btn_register = document.querySelectorAll(".btn-register");
+let btn_body = document.querySelectorAll(".btn-body");
 let btn_cancel = document.querySelectorAll(".btn-cancel-form");
 let btn_change_password = document.querySelector(".btn-change-password");
 
 let popup_add = document.getElementsByClassName("popup-add");
 let popup_edit = document.getElementsByClassName("popup-update");
 let popup_register = document.getElementsByClassName("popup-register");
+let popup_body = document.getElementsByClassName("popup-body");
 let popup_change_password = document.getElementsByClassName("popup-change-password");
 let popup_delete_confirm = document.getElementsByClassName("popup-delete-confirm");
 
@@ -28,6 +30,7 @@ btn_add.addEventListener("click", () => {
 btn_cancel[0].addEventListener("click", () => {
     popup_add[0].classList.remove("show");
 });
+
 
 /* POPUP UPDATE */
 for (var i = 0; i < btn_edit.length; i++) {
@@ -68,4 +71,11 @@ for (var i = 0; i < btn_delete.length; i++) {
 }
 btn_cancel[4].addEventListener("click", () => {
     popup_delete_confirm[0].classList.remove("show");
+});
+
+
+
+// POPUP BODY
+btn_body[0].addEventListener("click", () => {
+    btn_body[0].classList.remove("show");
 });

@@ -16,6 +16,11 @@ class Server {
       //key = TENDANGNHAP, MATKHAU
       let api = 'http://localhost:8080/TaiKhoan/DangNhap'
       return excute(api, data)
+    },
+    khoaOrMoKhoaTaiKhoan(data = {}) {
+      //key = TENDANGNHAP
+      let api = 'http://localhost:8080/TaiKhoan/KhoaOrMoKhoaTaiKhoan'
+      return excute(api, data)
     }
   }
   NhanVien = {
@@ -32,6 +37,11 @@ class Server {
     capNhatNhanVien(data = {}) {
       //key = MANV, HOTEN, SDT, CHUCVU
       let api = 'http://localhost:8080/NhanVien/Update'
+      return excute(api, data)
+    },
+    xoaNhanVien(data = {}) {
+      //key = MANV
+      let api = 'http://localhost:8080/NhanVien/Delete'
       return excute(api, data)
     }
   }
