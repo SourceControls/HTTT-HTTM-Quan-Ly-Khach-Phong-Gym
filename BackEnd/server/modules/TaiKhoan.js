@@ -11,11 +11,13 @@ class TaiKhoan {
   static insertTaiKhoan(taiKhoan) {
     return DB.query(`insert into TAIKHOAN(TENDANGNHAP,MATKHAU) values ('${taiKhoan.TENDANGNHAP}','${taiKhoan.MATKHAU}')`)
   }
-  static updateTaiKhoan(TENDANGNHAP, MATKHAU, KHOA = "") {
-    if (KHOA != "") {
-      return DB.query(`UPDATE TAIKHOAN SET KHOA = '${KHOA}' WHERE TENDANGNHAP ='${TENDANGNHAP}'`)
+  static updateTaiKhoan(TENDANGNHAP, MATKHAU, KHOA) {
+    if (MATKHAU.length > 0) {
+      return DB.query(`UPDATE TAIKHOAN SET MATKHAU = '${MATKHAU}' WHERE TENDANGNHAP ='${TENDANGNHAP}'`)
     }
-    return DB.query(`UPDATE TAIKHOAN SET MATKHAU = '${MATKHAU}' WHERE TENDANGNHAP ='${TENDANGNHAP}'`)
+    else {
+      return DB.query(`UPDATE TAIKHOAN SET KHOA ='${KHOA}' WHERE TENDANGNHAP ='${TENDANGNHAP}'`)
+    }
   }
 }
 

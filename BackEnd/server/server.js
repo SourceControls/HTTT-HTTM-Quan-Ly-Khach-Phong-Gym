@@ -8,11 +8,11 @@ routes(app)
 //   const cl = require('./controller/TaiKhoanController');
 //   let req = {
 //     body: {
-//       TENDANGNHAP: 'NV01',
+//       TENDANGNHAP: 'NV00000001',
 //       MATKHAU: '123'
 //     }
 //   }
-//   cl.dangNhap(req).then(rs => console.log(rs));
+//   cl.khoaOrMoKhoaTaiKhoan(req).then(rs => console.log(rs));
 // }
 // a()
 
@@ -34,6 +34,6 @@ routes(app)
 //   // console.log(DB.query("SELECT * FROM KHACHHANG"));
 
 // })
-app.listen(3000, () => console.log("App running"))
+app.listen(8080, () => console.log("App running 8080"))
 
 

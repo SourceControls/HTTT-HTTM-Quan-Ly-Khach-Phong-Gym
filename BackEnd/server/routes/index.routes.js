@@ -9,7 +9,7 @@ const thongKeRouter = require('./thongKe.routes')
 
 function routes(app) {
 
-  // app.use('/TaiKhoan', taiKhoanRouters)
+  app.use('/TaiKhoan', taiKhoanRouters)
   app.use('/NhanVien', nhanVienRouters)
   app.use('/KhachHang', khachHangRouters)
   app.use('/PhieuDangKy', phieuDangKyRouter)

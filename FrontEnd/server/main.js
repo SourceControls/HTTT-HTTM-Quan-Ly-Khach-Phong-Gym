@@ -46,7 +46,7 @@ class Server {
     }
   }
   KhachHang = {
-    getList(data = {}) {
+    getList(data) {
       //key = KEY or {}
       let api = 'http://localhost:8080/KhachHang/GetList'
       return excute(api, data)

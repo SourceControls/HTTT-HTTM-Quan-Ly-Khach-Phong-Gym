@@ -1,5 +1,5 @@
 const json = require('../components/json');
-// const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 const TaiKhoan = require('../modules/TaiKhoan');
 
 class TaiKhoanControllers {
@@ -38,7 +38,7 @@ class TaiKhoanControllers {
         res.send(json())
     }
     khoaOrMoKhoaTaiKhoan = async (req, res) => {
-        let TENDANGNHAP = req.body.TENDANGNHAP;
+        let { TENDANGNHAP } = req.body;
         let rs = await TaiKhoan.selectTaiKhoan(TENDANGNHAP);
         if (rs.length == 0) {
             console.log(json(false, "Nhân viên không có tài khoản"))
