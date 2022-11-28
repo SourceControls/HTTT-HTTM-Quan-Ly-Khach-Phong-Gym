@@ -23,15 +23,15 @@ class DichVuControllers {
     }
 
     themDv = async (req, res) => {
-        const { TENDV, SONGAYSUDUNG, GIA, HIENHANH } = req.body
+        const { TENDV, SONGAYSUDUNG, GIA } = req.body
         let params = [
-            {name: 'TENDV', type: 'Nvarchar(50)', value: 'Gói tập 6 tháng'},
-            {name: 'SONGAYSUDUNG', type: 'Int', value: '180'},
-            {name: 'GIA', type: 'Money', value: '1700000'},
-            {name: 'HIENHANH', type: 'Bit', value: 0}
+            { name: 'TENDV', type: 'Nvarchar(50)', value: TENDV },
+            { name: 'SONGAYSUDUNG', type: 'Int', value: SONGAYSUDUNG },
+            { name: 'GIA', type: 'Money', value: GIA },
+            { name: 'HIENHANH', type: 'Bit', value: 0 }
         ]
         let rs = await DichVu.insertDichVu(params)
-        if(rs.rowsAffected > 0){
+        if (rs.rowsAffected > 0) {
             res.send(json(true, rs))
         } else {
             res.send(json(false, rs))
@@ -41,15 +41,15 @@ class DichVuControllers {
     capNhatDv = async (req, res) => {
         const { MADV, TENDV, SONGAYSUDUNG, GIA, HIENHANH } = req.body
         let params = [
-            {name: 'MADV', type: 'Char(10)', value: 'DV00000003'},
-            {name: 'TENDV', type: 'Nvarchar(50)', value: 'Gói tập 365 ngày'},
-            {name: 'SONGAYSUDUNG', type: 'Int', value: '365'},
-            {name: 'GIA', type: 'Money', value: '3400000'},
-            {name: 'HIENHANH', type: 'Bit', value: 1},
+            { name: 'MADV', type: 'Char(10)', value: MADV },
+            { name: 'TENDV', type: 'Nvarchar(50)', value: TENDV },
+            { name: 'SONGAYSUDUNG', type: 'Int', value: SONGAYSUDUNG },
+            { name: 'GIA', type: 'Money', value: GIA },
+            { name: 'HIENHANH', type: 'Bit', value: HIENHANH },
         ]
 
         let rs = await DichVu.updateDichVu(params)
-        if(rs.returnValue == 1) {
+        if (rs.returnValue == 1) {
             res.send(json(true, rs))
         } else {
             res.send(json(false, 'Dịch vụ đang được sử dụng. Không thể sửa !!'))
@@ -57,10 +57,10 @@ class DichVuControllers {
     }
 
     xoaDv = async (req, res) => {
-        const MADV = req.body
-        let params = [{name: 'MADV', type: 'Char(10)', value: 'DV00000003'}]
+        const { MADV } = req.body
+        let params = [{ name: 'MADV', type: 'Char(10)', value: MADV }]
         let rs = await DichVu.deleteDichVu(params)
-        if(rs.returnValue == 1) {
+        if (rs.returnValue == 1) {
             res.send(json(true, rs))
         } else {
             res.send(json(false, 'Dịch vụ đang được sử dụng. Không thể xóa !!'))
@@ -69,10 +69,10 @@ class DichVuControllers {
 
     timKiemDv = async (req, res) => {
         const TENDV = req.body
-        let params = [{name: 'TENDV', type: 'Nvarchar(50)', value: 'a'}]
+        let params = [{ name: 'TENDV', type: 'Nvarchar(50)', value: TENDV }]
         let rs = await DichVu.searchDichVu(params)
-        if(rs.recordset.length == 0){
-            res.send(json(false, rs))   
+        if (rs.recordset.length == 0) {
+            res.send(json(false, rs))
             return json(false, 'Không có kết quả phù hợp')
         }
         res.send(json(true, rs.recordset))

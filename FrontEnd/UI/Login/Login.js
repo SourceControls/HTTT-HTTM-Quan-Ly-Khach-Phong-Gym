@@ -1,5 +1,5 @@
-const inputs = document.querySelectorAll(".input");
 
+const inputs = document.querySelectorAll(".input");
 
         function addcl() {
             let parent = this.parentNode.parentNode;
@@ -18,3 +18,4 @@ const inputs = document.querySelectorAll(".input");
             input.addEventListener("focus", addcl);
             input.addEventListener("blur", remcl);
         });
+ 

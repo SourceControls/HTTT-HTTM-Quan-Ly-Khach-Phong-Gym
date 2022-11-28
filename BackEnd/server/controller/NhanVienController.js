@@ -3,7 +3,7 @@ const DB = require('../components/SqlDb')
 const NhanVien = require('../modules/NhanVien')
 
 class NhanVienControllers {
-    index(req, res){
+    index(req, res) {
         res.send('nhanvien')
     }
 
@@ -26,32 +26,33 @@ class NhanVienControllers {
 
     themNv = async (req, res) => {
         const { HOTEN, SDT, CHUCVU } = req.body
+
         let params = [
-            {name: 'HOTEN', type: 'Nvarchar(50)', value: 'Lê Lâm Tuấn'},
-            {name: 'SDT', type: 'Char(10)', value: '039239560'},
-            {name: 'CHUCVU', type: 'Char(20)', value: 'QUANLY'}
+            { name: 'HOTEN', type: 'Nvarchar(50)', value: HOTEN },
+            { name: 'SDT', type: 'Char(20)', value: SDT },
+            { name: 'CHUCVU', type: 'Char(20)', value: CHUCVU }
         ]
 
         let rs = await NhanVien.insertNhanVien(params)
-        if(rs.returnValue == 1){
+        if (rs.returnValue == 1) {
             // return json(true, rs)
             res.send(json(true, rs))
         } else {
             // return json(false, rs)
-            res.send(json(false, 'Số điện thoại không hợp lệ'))
+            res.send(json(false, rs))
         }
     }
 
     capNhatNv = async (req, res) => {
         const { MANV, HOTEN, SDT, CHUCVU } = req.body
         let params = [
-            {name: 'MANV', type: 'Char(10)', value: 'NV00000001'},
-            {name: 'HOTEN', type: 'Nvarchar(50)', value: 'Nguyễn Thị Yến Vy'},
-            {name: 'SDT', type: 'Char(10)', value: '0392395607'},
-            {name: 'CHUCVU', type: 'Char(20)', value: 'QUANLY'}
+            { name: 'MANV', type: 'Char(10)', value: MANV },
+            { name: 'HOTEN', type: 'Nvarchar(50)', value: HOTEN },
+            { name: 'SDT', type: 'Char(20)', value: SDT },
+            { name: 'CHUCVU', type: 'Char(20)', value: CHUCVU }
         ]
         let rs = await NhanVien.updateNhanVien(params)
-        if(rs.rowsAffected > 0){
+        if (rs.rowsAffected > 0) {
             res.send(json(true, rs))
         } else {
             res.send(json(false, rs))
@@ -60,9 +61,9 @@ class NhanVienControllers {
 
     xoaNv = async (req, res) => {
         const MANV = req.body
-        let params = [{name: 'MANV', type: 'Char(10)', value: 'NV00000001'}]
+        let params = [{ name: 'MANV', type: 'Char(10)', value: 'NV00000001' }]
         let rs = await NhanVien.deleteNhanVien(params)
-        if(rs.rowsAffected > 0){
+        if (rs.rowsAffected > 0) {
             res.send(json(true, rs))
         } else {
             res.send(json(false, rs))
@@ -71,10 +72,10 @@ class NhanVienControllers {
 
     timKiemNv = async (req, res) => {
         const HOTEN = req.body
-        let params = [{name: 'HOTEN', type: 'Nvarchar(50)', value: ' Yến'}]
+        let params = [{ name: 'HOTEN', type: 'Nvarchar(50)', value: ' Yến' }]
         let rs = await NhanVien.searchNhanVien(params)
-        if(rs.recordset.length == 0){
-            res.send(json(false, 'Không có kết quả phù hợp'))   
+        if (rs.recordset.length == 0) {
+            res.send(json(false, 'Không có kết quả phù hợp'))
             console.log(json(false, 'Không có kết quả phù hợp'))
             return
         }

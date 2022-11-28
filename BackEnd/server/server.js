@@ -8,7 +8,7 @@ routes(app)
 //   const cl = require('./controller/TaiKhoanController');
 //   let req = {
 //     body: {
-//       TENDANGNHAP: 'NV03',
+//       TENDANGNHAP: 'NV01',
 //       MATKHAU: '123'
 //     }
 //   }

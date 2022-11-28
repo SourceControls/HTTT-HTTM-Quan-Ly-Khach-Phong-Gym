@@ -205,68 +205,48 @@
     display: flex;
     justify-content: space-between;
   }
-  table {
+  .flex2 table {
     box-shadow: 1px 2px 8px rgb(1, 11, 31);
-    display: flex;
+    border-collapse: collapse;
     background-color: #fff;
-    flex-flow: column;
-    height: 100%;
+    height: 50%;
     width: 100%;
     border-radius: 15px;
     font-size: 14px;
     margin-top: 8px;
   }
-  .col_1{
-    width: 10%;
-  }
-  .col_2{
-    width: 18%;
-  }
-  .col_3{
-    width: 12%;
-  }
-  .col_4{
-    width: 10%;
-  }
-  
-  .h_col_1{
-    width: 10%;
-  }
-  .h_col_2{
-    width: 18%;
-  }
-  .h_col_3{
-    width: 12%;
-  }
-  .h_col_4{
-    width: 12%;
-  }
   table thead {
-    flex: 0 0 auto;
     width: calc(100% - 0em);
     background-color: darkgray;
     text-align: center;
-    padding: 10px;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
+    padding: 20px 0;
   }
   table tbody {
-    flex: 1 1 auto;
-    height: 300px;
+    height: 35rem;
     display: block;
     overflow-y: scroll;
-    
+  }
+  tbody td{
+    padding: 10px 0;
   }
   table tbody tr {
     width: 100%;
     text-align: center;
-    padding: 10px 0px;
     border-bottom: .2px solid	#C8C8C8;
     align-content: center;
   }
   table thead, table tbody tr {
     display: table;
     table-layout: fixed;
+  }
+  table thead th{
+    padding: 10px 0;
+  }
+  table tbody tr:hover{
+    background: #EFEEF1;
+    cursor: pointer;
   }
   .popup{
     z-index: 1000;
@@ -349,6 +329,7 @@
   .flex-container{
     display:flex;
     justify-content: space-between;
+    height: 90vh;
   }
   .flex1{
     display: flex;

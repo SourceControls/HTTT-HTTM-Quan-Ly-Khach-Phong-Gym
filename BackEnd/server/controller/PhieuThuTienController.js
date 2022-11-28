@@ -9,12 +9,12 @@ class PhieuThuTienControllers {
     themPtt = async (req, res) => {
         const { SOTIENTHU, MAPDK, MANV } = req.body
         let params = [
-            {name: 'SOTIENTHU', type: 'Money', value: '300000'},
-            {name: 'MAPDK', type: 'Char(10)', value: 'PDK0000004'},
-            {name: 'MANV', type: 'Char(10)', value: 'NV00000001'},
+            { name: 'SOTIENTHU', type: 'Money', value: SOTIENTHU },
+            { name: 'MAPDK', type: 'Char(10)', value: MAPDK },
+            { name: 'MANV', type: 'Char(10)', value: MANV },
         ]
         let rs = await PhieuThuTien.insertPhieuThuTien(params)
-        if(rs.returnValue == 0){
+        if (rs.returnValue == 0) {
             // return json(true, rs)
             res.send(json(false, `Phiếu này đã được thanh toán !!!`))
         } else {
@@ -25,9 +25,9 @@ class PhieuThuTienControllers {
 
     xemPtt = async (req, res) => {
         const MAPDK = req.body
-        let params = [{name: 'MAPDK', type: 'Char(10)', value: 'PDK0000001'}]
+        let params = [{ name: 'MAPDK', type: 'Char(10)', value: MAPDK }]
         let rs = await PhieuThuTien.selectPhieuThuTien(params)
-        if(rs.returnValue == 1){
+        if (rs.returnValue == 1) {
             res.send(json(true, rs.recordset))
         } else {
             res.send(json(false, 'Khách hàng chưa thanh toán'))

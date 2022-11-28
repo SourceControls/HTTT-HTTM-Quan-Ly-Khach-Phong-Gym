@@ -67,9 +67,9 @@ class TaiKhoanControllers {
             res.send(json(false, "Tài khoản đã bị khóa"));
             return json(false, "Tài khoản đã bị khóa");
         }
-        rs = await bcrypt.compare(req.body.MATKHAU, rs[0].MATKHAU);
+        rs = await bcrypt.compare(req.body.MATKHAU.trim(), rs[0].MATKHAU.trim());
         console.log("Đăng nhập: " + rs);
-        res.send(json())
+        res.send(json(rs))
     }
 }
 
