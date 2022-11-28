@@ -110,31 +110,6 @@ class KhachHangControllers {
         res.send(json(true, rs.recordset))
     }
 
-    xemLichSu = async (req, res) => {
-        const { KEY } = req.body
-        let params = [{ name: 'KEY', type: 'NVarChar(20)', value: KEY }]
-        if (KEY == '') {
-            let rs = await KhachHang.lichSuVaoPhong()
-            res.send(json(true, rs))
-            return
-        }
-        let rs = await KhachHang.timKiemLichSu(params)
-        if (rs.recordset.length == 0) {
-            res.send(json(false, 'Không có kết quả phù hợp'))
-            console.log(json(false, 'Không có kết quả phù hợp'))
-            return
-        }
-        res.send(json(true, rs.recordset))
-
-    }
-
-    chiTietLichSu = async (req, res) => {
-        const { STT } = req.body
-        let params = [{ name: 'STT', type: 'Int', value: STT }]
-        let rs = await KhachHang.chiTietLichSu(params)
-        res.send(json(true, rs.recordset))
-    }
-
 
 }
 
