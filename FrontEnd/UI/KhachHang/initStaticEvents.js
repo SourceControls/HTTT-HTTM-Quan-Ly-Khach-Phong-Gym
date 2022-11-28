@@ -59,7 +59,7 @@ function initThemKhachHang() {
     if (khachHang.HINHANH.name != '')
       khachHang.HINHANH = await uploadImg(khachHang.HINHANH)
     else
-      khachHang.HINHANH = "./defaultAvt.jpg"
+      khachHang.HINHANH = document.querySelector('.popup-add img').src;
     let rs = await server.KhachHang.themKhachHang(khachHang)
 
     if (!rs.status) {
@@ -74,7 +74,7 @@ function initThemKhachHang() {
 }
 
 function initCapNhatKhachHang() {
-  //Chỉnh sửa khách hàng
+  //Lưu chỉnh sửa
   const imageInput_UpdatePopup = document.querySelector(".popup-update .image-input");
   const image_UpdatePopup = document.querySelector(".popup-update img");
   imageInput_UpdatePopup.addEventListener("change", () => {
@@ -85,6 +85,7 @@ function initCapNhatKhachHang() {
   update_customer_form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const khachHang = Object.fromEntries(new FormData(e.target));
+    khachHang.MAKH = document.querySelector(".popup-update .MAKH").innerText;
     if (khachHang.HOTEN.trim().length == 0) {
       alert("Họ tên không được để trống");
       return;
@@ -101,13 +102,13 @@ function initCapNhatKhachHang() {
     if (khachHang.HINHANH)
       khachHang.HINHANH = await uploadImg(khachHang.HINHANH)
     else
-      khachHang.HINHANH = "./defaultAvt.jpg"
+      khachHang.HINHANH = document.querySelector('.popup-update img').src;
     let rs = await server.KhachHang.capNhatKhachHang(khachHang)
     if (!rs.status) {
       alert(rs.data);
       return
     }
-    alert("Thêm khách hàng thành công");
+    alert("Cập nhật thành công!");
     loadListKhachHang();
   });
 

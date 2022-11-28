@@ -195,31 +195,56 @@
             <form id="update-customer-form">
               <span>
                 <h4>Mã khách hàng:</h4>
-                <label id="maKH">KH01</label>
+                <label class="MAKH"></label>
               </span>
               <span style="margin-bottom: 30px">
                 <h4>Ngày tham gia:</h4>
-                <label id="maKH">05-09-2001</label>
+                <label class="NGAYTHAMGIA"></label>
               </span>
               <label>Họ tên</label>
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Họ tên" />
+                <input
+                  type="text"
+                  class="form-control HOTEN"
+                  placeholder="Họ tên"
+                  name="HOTEN" />
               </div>
               <label>Năm sinh</label>
               <div class="input-group">
-                <input type="tel" class="form-control" placeholder="Năm sinh" />
+                <input
+                  type="tel"
+                  class="form-control NAMSINH"
+                  placeholder="Năm sinh"
+                  name="NAMSINH" />
               </div>
               <label>SĐT</label>
               <div class="input-group">
-                <input type="tel" class="form-control" placeholder="SĐT" />
+                <input
+                  type="tel"
+                  class="form-control SDT"
+                  placeholder="SĐT"
+                  name="SDT" />
               </div>
-              <input type="radio" id="male" name="gender" value="Nam" />
+              <input
+                type="radio"
+                id="male"
+                name="GIOITINH"
+                value="NAM"
+                class="GIOITINH"
+                checked />
               <label for="male">Nam</label>
-
-              <input type="radio" id="female" name="gender" value="Nữ" />
+              <input
+                type="radio"
+                id="female"
+                name="GIOITINH"
+                value="NỮ"
+                class="GIOITINH" />
               <label for="female">Nữ</label>
               <div class="input-group">
-                <input type="file" class="form-control image-input" />
+                <input
+                  type="file"
+                  class="form-control image-input HINHANH"
+                  name="HINHANH" />
               </div>
               <div class="button-center">
                 <button type="submit" class="btn-form btn-update-form">
@@ -238,19 +263,16 @@
             <h2>Đăng Ký Dịch Vụ</h2>
           </div>
           <div class="popup-body">
-            <span>
-              <h4>Mã khách hàng:</h4>
-              <label id="maKH">KH01</label>
-            </span>
             <div class="img-section">
               <div class="img-box">
                 <img src="defaultAvt.jpg" alt="" />
               </div>
-              <div class="input-group">
-                <input type="file" class="form-control" />
-              </div>
             </div>
             <form id="register-customer-form">
+              <span>
+                <h4>Mã khách hàng:</h4>
+                <label id="maKH">KH01</label>
+              </span>
               <label>Gói dịch vụ</label>
               <div class="input-group">
                 <select id="dichVu" name="dichVu">

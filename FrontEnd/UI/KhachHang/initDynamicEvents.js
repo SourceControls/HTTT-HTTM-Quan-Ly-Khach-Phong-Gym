@@ -14,8 +14,30 @@ function init() {
     document.querySelector("." + popupClass).classList.add("show");
   }
   btns_update.forEach((btn) => {
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", async (e) => {
       showPopup("popup-update");
+      let idKH = e.target.parentElement.parentElement.parentElement.id;
+      document.querySelector(".popup-update .btn-update-form").MAKH = idKH;
+
+      //load infor khách hàng lên form
+      let khachHang = await server.KhachHang.getList({ KEY: idKH });
+      khachHang = khachHang.data[0];
+      if (khachHang.HINHANH.trim().length == 0) {
+        khachHang.HINHANH = './defaultAvt.jpg'
+      }
+      document.querySelector(".popup-update .MAKH").innerText = khachHang.MAKH.trim();
+      document.querySelector(".popup-update .NGAYTHAMGIA").innerText = khachHang.NGAYTHAMGIA.trim();
+      document.querySelector(".popup-update .HOTEN").value = khachHang.HOTEN.trim();
+      document.querySelector(".popup-update .SDT").value = khachHang.SDT.trim();
+      document.querySelector(".popup-update .NAMSINH").value = khachHang.NAMSINH.trim();
+      document.querySelector(".popup-update .HINHANH").value = '';
+      document.querySelector(".popup-update img").src = khachHang.HINHANH.trim();
+      if (khachHang.GIOITINH.toUpperCase().trim() == "NAM") {
+        document.querySelectorAll(".popup-update .GIOITINH")[0].checked = true;
+      }
+      else {
+        document.querySelectorAll(".popup-update .GIOITINH")[1].checked = true;
+      }
     });
   })
   btns_delete.forEach((btn) => {

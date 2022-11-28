@@ -19,7 +19,7 @@ class KhachHangControllers {
             console.log(json(false, 'Không có kết quả phù hợp'))
             return
         }
-        console.log(rs.recordset);
+        console.log("rows selected: " + rs.recordset.length);
         res.send(json(true, rs.recordset))
     }
 
@@ -58,6 +58,7 @@ class KhachHangControllers {
 
     capNhat = async (req, res) => {
         const { MAKH, HOTEN, GIOITINH, NAMSINH, SDT, HINHANH } = req.body
+
         let params = [
             { name: 'MAKH', type: 'Char(10)', value: MAKH },
             { name: 'HOTEN', type: 'NvarChar(10)', value: HOTEN },
@@ -66,6 +67,7 @@ class KhachHangControllers {
             { name: 'SDT', type: 'Char(10)', value: SDT },
             { name: 'HINHANH', type: 'Char(200)', value: HINHANH },
         ]
+        console.log(params);
         let rs = await KhachHang.updateKhachHang(params)
         if (rs.returnValue == 1) {
             // return json(true, rs)
