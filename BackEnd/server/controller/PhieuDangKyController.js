@@ -23,7 +23,7 @@ class PhieuDangKyControllers {
     }
 
     themPhieu = async (req, res) => {
-        const { TILEKM, TONGTIEN, MAKH, MANV, MADV } = req.body
+        let { TILEKM, TONGTIEN, MAKH, MANV, MADV } = req.body
         let params = [
             { name: 'TILEKM', type: 'Int', value: TILEKM },
             { name: 'TONGTIEN', type: 'Money', value: TONGTIEN },
@@ -31,6 +31,7 @@ class PhieuDangKyControllers {
             { name: 'MANVLAP', type: 'Char(10)', value: MANV },
             { name: 'MADV', type: 'Char(10)', value: MADV }
         ]
+        console.log(params);
         let rs = await PhieuDangKy.insertPhieuDangKy(params)
         if (rs.returnValue == 0) {
             res.send(json(false, 'Khách hàng đã đăng ký dịch vụ !!!'))

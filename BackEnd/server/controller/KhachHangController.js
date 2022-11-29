@@ -51,8 +51,9 @@ class KhachHangControllers {
         let rs = await KhachHang.deleteKhachHang(params)
         if (rs.returnValue == 1) {
             res.send(json(true, rs))
-        } else {
-            res.send(json(false, rs))
+        }
+        else {
+            res.send(json(false, "Khách đã đăng kí dịch vụ, không thể xóa!"))
         }
     }
 

@@ -66,6 +66,11 @@ class Server {
       let api = 'http://localhost:8080/KhachHang/Delete'
       return excute(api, data)
     },
+    getListInbody(data = {}) {
+      //key = MAKH
+      let api = 'http://localhost:8080/KhachHang/Inbody'
+      return excute(api, data)
+    },
   }
   PhieuDangKy = {
     getList(data = {}) {
@@ -133,6 +138,7 @@ class Server {
       return excute(api, data)
     }
   }
+
 
 }
 

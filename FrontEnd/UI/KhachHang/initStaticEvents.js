@@ -29,7 +29,6 @@ function initPopupBtns() {
   })
 }
 
-
 function initThemKhachHang() {
   //Thêm khách hàng
   const imageInput_AddPopup = document.querySelector(".popup-add .image-input");
@@ -130,6 +129,19 @@ function initXoaKhachHang() {
 }
 function initDangKiDichVu() {
 
+  const register_form = document.querySelector("#register-form");
+  register_form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    let phieuDangKi = Object.fromEntries(new FormData(e.target));
+    phieuDangKi.TONGTIEN = phieuDangKi.TONGTIEN.toString().replace('VND', '').trim();
+    console.log(phieuDangKi);
+    let rs = await server.PhieuDangKy.dangKyDichVu(phieuDangKi)
+    if (!rs.status) {
+      alert(rs.data);
+      return
+    }
+    alert("Đăng kí dịch vụ thành công!");
+  });
 }
 export default function () {
   initPopupBtns();
