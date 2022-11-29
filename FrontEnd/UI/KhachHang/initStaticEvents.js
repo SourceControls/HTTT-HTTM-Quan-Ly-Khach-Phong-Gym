@@ -12,12 +12,6 @@ function initPopupBtns() {
   btn_add.addEventListener("click", () => {
     showPopup("popup-add");
   });
-  //Popup Đổi mật khẩu
-  const btn_change_password = document.querySelector(".btn-change-password");
-  btn_change_password.addEventListener("click", () => {
-    showPopup("popup-change-password");
-  });
-
   // Tìm kiếm
   const searchBar = document.querySelector('.search-bar')
   searchBar.addEventListener("keyup", () => {
@@ -27,6 +21,13 @@ function initPopupBtns() {
     }
     loadListKhachHang(KEY);
   })
+}
+
+async function initNhanVien() {
+  let nhanVienBox = document.querySelectorAll('.admin_name span');
+  let nhanVien = (await server.NhanVien.getList({ KEY: window.localStorage.getItem('username') })).data[0]
+  nhanVienBox[0].innerText = nhanVien.HOTEN;
+  nhanVienBox[1].innerText = nhanVien.MANV + ' - ' + nhanVien.CHUCVU;
 }
 
 function initThemKhachHang() {
@@ -143,10 +144,12 @@ function initDangKiDichVu() {
     alert("Đăng kí dịch vụ thành công!");
   });
 }
+
 export default function () {
   initPopupBtns();
   initThemKhachHang();
   initCapNhatKhachHang();
   initXoaKhachHang();
   initDangKiDichVu();
+  initNhanVien();
 }
