@@ -1,16 +1,7 @@
 import server from "../../server/main.js";
+let nv = document.getElementById("account");
+nv.innerText = window.localStorage.getItem('username');
 
-let btn_change_password = document.querySelector(".btn-change-password");
-let btn_view_payment = document.querySelector(".btn-view");
-let btn_delete_form = document.querySelector(".btn-delete-form");
-let btn_password_form = document.querySelector(".btn-password-form");
-let change_password_input = document.getElementsByClassName(
-  "change-password-input"
-);
-
-let panel_input = document.getElementsByClassName("panel-input");
-let nv_delete_input = document.getElementsByClassName("nv-delete-input");
-// CHANGE PASSWORD
 let data = {
   TENDANGNHAP: "",
   MATKHAUMOI: "",
@@ -31,12 +22,9 @@ btn_change_password.addEventListener("click", () => {
   });
 });
 
-btn_cancel[0].addEventListener("click", () => {
-  popup_change_password[0].classList.remove("show");
-});
 
 // GET LIST
-server.PhieuDangKy.getList({})
+server.PhieuDangKy.getList({ KEY: "" })
   .then((result) => {
     let list = document.querySelector("#list");
     let out = "";
@@ -59,61 +47,108 @@ server.PhieuDangKy.getList({})
     list.innerHTML = out;
 
     //   HIEN THI THONG TIN DUOI INPUT
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1;
+        var yyyy = today.getFullYear();
+        if (dd < 10) 
+            dd = '0' + dd;
+        if (mm < 10) 
+            mm = '0' + mm;
+       today = dd + '/' + mm + '/' + yyyy;
     var rows = document.getElementsByTagName("tbody")[0].rows;
     for (let i = 0; i < rows.length; i++) {
       rows[i].addEventListener("click", () => {
         panel_input[0].value = rows[i].getElementsByTagName("td")[0].innerText;
         panel_input[1].value = rows[i].getElementsByTagName("td")[2].innerText;
+        pay_input[0].value = rows[i].getElementsByTagName("td")[1].innerText;
+        pay_input[1].value = rows[i].getElementsByTagName("td")[0].innerText;
+        pay_input[2].value = today;
+        pay_input[3].value = rows[i].getElementsByTagName("td")[4].innerText;
+        pay_input[4].value = rows[i].getElementsByTagName("td")[9].innerText;
+        pay_input[5].value = nv.innerText;
       });
     }
 
     // XEM PHIEU THU TIEN
     btn_view_payment.addEventListener("click", () => {
-      popup_view_payment[0].classList.add("show");
-      server.PhieuThuTien.detail({ MAPDK: panel_input[0].value })
-        .then((result) => {
-          console.log(result);
-        })
-        .catch((err) => {});
-    });
-
-    btn_cancel[2].addEventListener("click", () => {
-      popup_view_payment[0].classList.remove("show");
-    });
-
-    //HUY DANG KY
-    btn_cancel_register.addEventListener("click", () => {
-      console.log(panel_input[0].value);
-      console.log(panel_input[1].value);
-      if (
-        panel_input[0].value.length == 0 &&
-        panel_input[1].value.length == 0
-      ) {
-        alert("Vui lòng chọn phiếu đăng ký trước khi hủy!!");
-        window.location.reload();
-      } else if (
-        panel_input[0].value.length != 0 &&
-        panel_input[1].value.length != 0
-      ) {
-        popup_delete_confirm[0].classList.add("show");
-        btn_delete_form.addEventListener("click", () => {
-          server.PhieuDangKy.huyPhieuDangKy({
-            MAPDK: panel_input[0].value,
-            MANVHUY: nv_delete_input[0].innerText,
+      if (panel_input[0].value.length == 0 && panel_input[1].value.length == 0)
+        alert("Vui lòng chọn phiếu đăng ký");
+      else {
+        server.PhieuThuTien.detail({ MAPDK: panel_input[0].value })
+          .then((result) => {
+            if (result.status) {
+              view_payment_input[0].innerText = Object.values(result.data[0])[0];
+              view_payment_input[1].innerText = Object.values(result.data[0])[2];
+              view_payment_input[2].innerText = Object.values(result.data[0])[4];
+              view_payment_input[3].innerText = Object.values(result.data[0])[1];
+              view_payment_input[4].innerText = Object.values( result.data[0])[5];
+              view_payment_input[5].innerText = Object.values(result.data[0] )[3];
+              view_payment_input[6].innerText = Object.values(result.data[0] )[6];
+              popup_view_payment[0].classList.add("show");
+            } else 
+              alert(result.data);
           })
-            .then((result) => {
-              console.log(result);
-              popup_delete_confirm[0].classList.remove("show");
-              alert(result.data)
-              window.location.reload()
-            })
-            .catch((err) => {});
-        });
+          .catch((err) => {});
       }
     });
 
-    btn_cancel[3].addEventListener("click", () => {
-      popup_delete_confirm[0].classList.remove("show");
+
+
+    //HUY DANG KY
+    btn_cancel_register.addEventListener("click", () => {
+      if (panel_input[0].value.length == 0 && panel_input[1].value.length == 0)
+        alert("Vui lòng chọn phiếu đăng ký");
+      else {
+        popup_delete_confirm[0].classList.add("show");
+        nv_delete_input[0].value = nv.innerText;
+        btn_delete_form.addEventListener("click",()=>{
+          server.PhieuDangKy.huyPhieuDangKy({
+              MAPDK: panel_input[0].value,
+              MANVHUY: nv.innerText,
+            })
+              .then((result) => {
+                if (result.status) {
+                  popup_delete_confirm[0].classList.remove("show");
+                  alert("Hủy đăng ký thành công");
+                  window.location.reload();
+                } else {
+                  popup_delete_confirm[0].classList.remove("show");
+                  alert(result.data);
+                }
+              })
+              .catch((err) => {});
+        })
+      }
     });
+
+    //THANH TOAN
+    btn_pay.addEventListener("click", () => {
+      if (panel_input[0].value.length == 0 && panel_input[1].value.length == 0)
+        alert("Vui lòng chọn phiếu đăng ký");
+      else {
+        console.log(pay_input[4].value)
+        popup_payment[0].classList.add("show");
+        btn_pay_form.addEventListener("click",()=>{
+          server.PhieuThuTien.thanhToan({
+              SOTIENTHU: pay_input[4].value,
+              MAPDK: panel_input[0].value,
+              MANVHUY: nv.innerText
+            })
+              .then((result) => {
+                if (result.status) {
+                  popup_payment[0].classList.remove("show");
+                  alert("Thanh toán thành công");
+                  window.location.reload();
+                } else {
+                  popup_payment[0].classList.remove("show");
+                  alert(result.data);
+                }
+              })
+              .catch((err) => {});
+        })
+      }
+    });
+
   })
   .catch((err) => {});

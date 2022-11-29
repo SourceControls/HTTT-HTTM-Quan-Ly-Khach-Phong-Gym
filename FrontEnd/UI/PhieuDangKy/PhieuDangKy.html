@@ -82,7 +82,7 @@
                     <div class="profile-details">
                         <img src="h1.jpg" alt="">
                         <div class="admin_name">
-                            <span>Nguyễn Văn A</span>
+                            <span id="account">Nguyễn Văn A</span>
                             <span>Nhân Viên</span>
                         </div>
                     </div>
@@ -147,27 +147,27 @@
                     <form id="payment-form">
                         <label>Họ tên khách hàng:</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" disabled>
+                            <input type="text" class="form-control pay-input" disabled>
                         </div>
                         <label>Mã phiếu đăng ký:</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" disabled>
+                            <input type="text" class="form-control pay-input" disabled>
                         </div>
                         <label>Ngày thu:</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" disabled>
+                            <input type="text" class="form-control pay-input" disabled>
                         </div>
                         <label>Dịch vụ:</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" disabled>
+                            <input type="text" class="form-control pay-input" disabled>
                         </div>
                         <label>Số tiền:</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" disabled>
+                            <input type="text" class="form-control pay-input" disabled>
                         </div>
                         <label>Nhân viên thu tiền:</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" disabled>
+                            <input type="text" class="form-control pay-input" disabled>
                         </div>
                     </form>
                 </div>
@@ -215,36 +215,36 @@
                             <div class="group1">
                                 <div class="label-group">
                                     <label>Mã phiếu thu tiền:</label>
-                                    <label id="MaPhieuThu">PT113</label>
+                                    <label class="view_payment_input"></label>
                                 </div>
                                 <div class="label-group">
                                     <label>Họ tên khách hàng:</label>
-                                    <label id="HoTen">NGUYEN VĂN A</label>
+                                    <label class="view_payment_input"></label>
                                 </div>
                                 <div class="label-group">
                                     <label>Mã phiếu đăng ký:</label>
-                                    <label id="MaPhieuDK">DK113</label>
+                                    <label class="view_payment_input"></label>
                                 </div>
                             </div>
                             <div class="group2">
                                 <div class="label-group">
                                     <label>Ngày thu:</label>
-                                    <label id="Ngay">11/12/2022</label>
+                                    <label class="view_payment_input"></label>
                                 </div>
                                 <div class="label-group">
                                     <label>Dịch vụ:</label>
-                                    <label id="DichVu">Gói tập 1 tháng</label>
+                                    <label class="view_payment_input"></label>
                                 </div>
                                 <div class="label-group">
                                     <label>Nhân viên thu tiền:</label>
-                                    <label id="NV">NGUYEN VAN B</label>
+                                    <label class="view_payment_input"></label>
                                 </div>
                             </div>
                         </div>
                         <div class="group3">
                             <div class="label-group">
                                 <label>Số tiền:</label>
-                                <label id="Tien">1.000.000</label>
+                                <label class="view_payment_input"></label>
                             </div>
                         </div>
                     </form>
@@ -260,7 +260,7 @@
                     <i class="fa fa-times-circle-o" aria-hidden="true"></i>
                     <label>Tên nhân viên hủy</label>
                     <div class="input-group">
-                        <input type="text" class="form-control nv-delete-input" placeholder="Tên NV hủy">
+                        <input type="text" class="form-control nv-delete-input" disabled>
                     </div>
                     <div class="delete-confirm">
                         <h4>Bạn có chắn chắn muốn hủy đăng ký?</h4>

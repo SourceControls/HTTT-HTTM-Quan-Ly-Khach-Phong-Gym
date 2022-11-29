@@ -28,6 +28,7 @@ let btn_delete_form = document.querySelector(".btn-delete-form");
 // POPUP
 let popup_edit = document.getElementsByClassName("popup-update");
 let popup_change_password = document.getElementsByClassName("popup-change-password");
+let account = document.getElementsById("account");
 let popup_create_account = document.getElementsByClassName(
   "popup-create-account"
 );

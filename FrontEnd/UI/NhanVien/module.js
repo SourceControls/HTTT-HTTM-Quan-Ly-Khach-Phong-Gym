@@ -1,7 +1,8 @@
 import server from "../../server/main.js";
+let nv = document.getElementById("account");
+nv.innerText = window.localStorage.getItem('username');
 
-
-server.NhanVien.getList({})
+server.NhanVien.getList({'KEY':''})
   .then((result) => {
     let list = document.querySelector("#NhanVienList");
     let out = "";
@@ -76,32 +77,56 @@ server.NhanVien.getList({})
     btn_add.addEventListener("click", () => {
       popup_add[0].classList.add("show");
       btn_add_form.addEventListener("click", () => {
+        if(add_input[0].value.length==0)
+          alert("Họ tên nhân viên không được để trống")
+          else if(!reg.test(add_input[1].value)||add_input[1].value.length==0)
+          alert("Số điện thọai không tồn tại")
+          else{
         let data3 = {
           HOTEN: add_input[0].value,
           SDT: add_input[1].value,
           CHUCVU: getChucVu(),
         };
-        console.log(data3);
         server.NhanVien.themNhanVien(data3)
           .then((result) => {
-            console.log(result);
+            if(result.data.returnValue==1){
             popup_add[0].classList.remove("show");
-            // window.location.reload()
+            alert("Thêm nhân viên thành công")
+            window.location.reload()
+            }else{
+              alert("Thêm nhân viên thất bại")
+            }
           })
           .catch((err) => {});
+        }
       });
     });
     
     var rows = document.getElementsByTagName("tbody")[0].rows;
 
     // CAP NHAT NHAN VIEN
+    var reg = new RegExp("^0[0-9]{8,9}$")
+    var radio = document.getElementsByClassName("radio")[0]
     for (var i = 0; i < btn_edit.length; i++) {
       let x = i;
       btn_edit[i].addEventListener("click", (event) => {
         popup_edit[0].classList.add("show");
+        // SET INPUT VALUE
+        update_input[1].value = rows[x].getElementsByTagName("td")[1].innerText;
+        update_input[2].value = rows[x].getElementsByTagName("td")[2].innerText;
+        if(rows[x].getElementsByTagName("td")[3].innerText.includes('Quản lý'))
+        radio.checked = true
+        else
+        radio.checked = false
         var td = rows[x].getElementsByTagName("td")[0].innerText;
         update_input[0].value = td;
+
         btn_update_form.addEventListener("click", () => {
+          if(update_input[1].value.length==0)
+          alert("Họ tên nhân viên không được để trống")
+          else if(!reg.test(update_input[2].value)||update_input[2].value.length==0)
+          alert("Số điện thọai không tồn tại")
+          else{
           let data3 = {
             MANV: td,
             HOTEN: update_input[1].value,
@@ -112,13 +137,15 @@ server.NhanVien.getList({})
           server.NhanVien.capNhatNhanVien(data3)
             .then((result) => {
               console.log(result);
+              popup_edit[0].classList.remove("show");
               alert("Cập nhật nhân viên thành công")
               window.location.reload();
-              popup_edit[0].classList.remove("show");
             })
             .catch((err) => {});
+          }
         });
       });
+      
     }
 
     // CAP TK AND OR RESET MK
@@ -208,14 +235,14 @@ server.NhanVien.getList({})
                   popup_lock[0].classList.add("show");
                   btn_lock_form.addEventListener("click", () => {
                     popup_lock[0].classList.remove("show");
-                    // window.location.reload();
+                    window.location.reload();
                   });
                 }
                  else if (result.data.includes("Đã mở khóa tài khoản")) {
                   popup_unlock[0].classList.add("show");
                   btn_unlock_form.addEventListener("click", () => {
                     popup_unlock[0].classList.remove("show");
-                    // window.location.reload();
+                    window.location.reload();
                   });
                 }
                  else {
@@ -230,7 +257,12 @@ server.NhanVien.getList({})
               .catch((err) => {});
           });
         }
-
+        btn_cancel[0].addEventListener("click", () => {
+          popup_add[0].classList.remove("show");
+      });
+  btn_cancel[1].addEventListener("click", () => {
+    popup_edit[0].classList.remove("show");
+});
     btn_cancel[2].addEventListener("click", () => {
       popup_create_account[0].classList.remove("show");
       window.location.reload();
@@ -245,7 +277,6 @@ server.NhanVien.getList({})
     });
     btn_cancel[4].addEventListener("click", () => {
       popup_delete_confirm[0].classList.remove("show");
-      window.location.reload();
     });
     btn_cancel[6].addEventListener("click", () => {
       popup_lock[0].classList.remove("show");
