@@ -19,10 +19,10 @@ async function loadList(KEY) {
                <tr id="${e.MAKH}">
                   <td>${e.MAKH}</td>
                   <td>${e.HOTEN}</td>
-                  <td style="padding-left: 15px">${e.SDT}</td>
-                  <td style="padding-left: 13px">${e.GIOITINH}</td>
-                  <td style="padding-left: 15px">${e.NAMSINH}</td>
-                  <td style="padding-left: 20px">${e.NGAYTHAMGIA}</td>
+                  <td>${e.SDT}</td>
+                  <td>${e.GIOITINH}</td>
+                  <td>${e.NAMSINH}</td>
+                  <td>${e.NGAYTHAMGIA}</td>
                   <td><img class="table-img" src="${e.HINHANH}" alt="AVT" /></td>
                   <td>
                     <div class="btn-container">
