@@ -12,6 +12,7 @@ class TaiKhoan {
     return DB.query(`insert into TAIKHOAN(TENDANGNHAP,MATKHAU) values ('${taiKhoan.TENDANGNHAP}','${taiKhoan.MATKHAU}')`)
   }
   static updateTaiKhoan(TENDANGNHAP, MATKHAU, KHOA) {
+    console.log('update');
     if (MATKHAU.length > 0) {
       return DB.query(`UPDATE TAIKHOAN SET MATKHAU = '${MATKHAU}' WHERE TENDANGNHAP ='${TENDANGNHAP}'`)
     }

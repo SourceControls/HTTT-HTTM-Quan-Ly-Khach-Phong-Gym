@@ -12,12 +12,6 @@ function initPopupBtns() {
   btn_add.addEventListener("click", () => {
     showPopup("popup-add");
   });
-  //Popup Đổi mật khẩu
-  const btn_change_password = document.querySelector(".btn-change-password");
-  btn_change_password.addEventListener("click", () => {
-    showPopup("popup-change-password");
-  });
-
   // Tìm kiếm
   const searchBar = document.querySelector('.search-bar')
   searchBar.addEventListener("keyup", () => {
@@ -29,6 +23,12 @@ function initPopupBtns() {
   })
 }
 
+async function initNhanVien() {
+  let nhanVienBox = document.querySelectorAll('.admin_name span');
+  let nhanVien = (await server.NhanVien.getList({ KEY: window.localStorage.getItem('username') })).data[0]
+  nhanVienBox[0].innerText = nhanVien.HOTEN;
+  nhanVienBox[1].innerText = nhanVien.MANV + ' - ' + nhanVien.CHUCVU;
+}
 
 function initThemKhachHang() {
   //Thêm khách hàng
@@ -130,11 +130,26 @@ function initXoaKhachHang() {
 }
 function initDangKiDichVu() {
 
+  const register_form = document.querySelector("#register-form");
+  register_form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    let phieuDangKi = Object.fromEntries(new FormData(e.target));
+    phieuDangKi.TONGTIEN = phieuDangKi.TONGTIEN.toString().replace('VND', '').trim();
+    console.log(phieuDangKi);
+    let rs = await server.PhieuDangKy.dangKyDichVu(phieuDangKi)
+    if (!rs.status) {
+      alert(rs.data);
+      return
+    }
+    alert("Đăng kí dịch vụ thành công!");
+  });
 }
+
 export default function () {
   initPopupBtns();
   initThemKhachHang();
   initCapNhatKhachHang();
   initXoaKhachHang();
   initDangKiDichVu();
+  initNhanVien();
 }
