@@ -329,12 +329,15 @@
   .flex-container{
     display:flex;
     justify-content: space-between;
-    height: 90vh;
+    height: 80vh;
   }
   .flex1{
     display: flex;
     flex-direction: column;
     width: 53%;
+  }
+  .flex1 .flexdown{
+    height: 42vh;
   }
   .flex2{
     display: flex;
@@ -365,7 +368,7 @@
   .btn-reset:hover, .btn-filter:hover{
     background: var(--purple);
   }
-  .flex2 .body, .flex2 .right{
+  .flex2 .body, .flex2 .right, .flex1 .body{
     display: flex;
   }
   .text .text-block, .chart{
@@ -394,6 +397,7 @@
   }
   .flexup{
     margin-bottom: 20px;
+    margin-top: 7px;
   }
     @media (max-width: 700px) {
       nav .sidebar-button .dashboard,

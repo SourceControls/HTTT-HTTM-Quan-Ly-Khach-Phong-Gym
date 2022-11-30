@@ -323,7 +323,7 @@
     left: 40%;
     width: 400px;
   }
-  .popup-change-password, .popup-create-account, .popup-reset-password{
+  .popup-change-password, .popup-create-account, .popup-reset-password, .popup-add{
     top: 15%;
     left: 38%;
     width: 500px;
