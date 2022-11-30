@@ -189,9 +189,10 @@
     white-space: nowrap;
   }
   nav .profile-details i{
-    font-size: 25px;
+    font-size: 30px;
     color: #333;
   }
+
   /* TABLE SECTION */
   .home-section{
     position: relative;
@@ -224,7 +225,7 @@
     padding: 20px 0;
   }
   table tbody {
-    height: 34.5rem;
+    height: 33.5rem;
     display: block;
     overflow-y: scroll;
   }
