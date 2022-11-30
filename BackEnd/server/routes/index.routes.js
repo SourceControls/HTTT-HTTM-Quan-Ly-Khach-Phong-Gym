@@ -7,6 +7,8 @@ const phieuThuTienRouter = require('./phieuThuTien.routes')
 const dichVuRouter = require('./dichVu.routes')
 const lichSuRouter = require('./lichSuVaoPhong.routes')
 const thongKeRouter = require('./thongKe.routes')
+const thucPhamRouter = require('./thucPham.routes')
+
 
 function routes(app) {
 
@@ -18,6 +20,7 @@ function routes(app) {
   app.use('/DichVu', dichVuRouter)
   app.use('/ThongKe', thongKeRouter)
   app.use('/LichSu', lichSuRouter)
+  app.use('/ThucPham', thucPhamRouter)
 }
 
 module.exports = routes

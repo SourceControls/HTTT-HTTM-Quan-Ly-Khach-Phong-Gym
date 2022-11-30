@@ -105,7 +105,7 @@ class KhachHangControllers {
 
     xemCsInbody = async (req, res) => {
         const { MAKH } = req.body
-        let params = [{ name: 'MAKH', type: 'Char(10)', value: MAKH }]
+        let params = [{ name: 'MAKH', type: 'Char(10)', value: 'KH00000005' }]
         let rs = await KhachHang.selectInbodyKhachHang(params)
         res.send(json(true, rs.recordset))
     }
