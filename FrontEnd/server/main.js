@@ -148,7 +148,7 @@ class Server {
       return excute(api, data)
     },
     thongKeRaVao(data = {}) {
-      //key = TUNGAY&&DENNGAY - TUNGAY - DENNGAY - NULL
+      //key = TUNGAY&&DENNGAY - TUNGAY=''&&DENNGAY=data - TUNGAY=data&&DENNGAY=''
       let api = 'http://localhost:8080/ThongKe/RaVao'
       return excute(api, data)
     }
