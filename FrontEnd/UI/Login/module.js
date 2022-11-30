@@ -1,31 +1,26 @@
-import server from '../../server/main.js'
-
+import server from "../../server/main.js";
+server.ThongKe.thongKeDoanhThu({ TUNGAY: '', DENNGAY: '' }).then(rs => console.log(rs))
 let btn = document.querySelector(".btn-login");
 
-
-
-
-btn.addEventListener("click", ()=>{
+btn.addEventListener("click", () => {
     let pass = document.getElementById("pass").value;
     let account = document.getElementById("account").value;
     let alert = document.getElementById("alert");
 
-    let data= {
+    let data = {
         TENDANGNHAP: account,
-        MATKHAU: pass
-    }
+        MATKHAU: pass,
+    };
 
-    server.TaiKhoan.dangNhap(data).then((result) => {
-        if(result.status)
-        window.location.replace("../NhanVien/NhanVien.html");
-        else if(result.status==0&&result.data=='')
-        alert.innerText = "Sai mật khẩu";
-        else 
-        alert.innerText = result.data;
-    }).catch((err) => {
-    
-    });;
-})
-
-
-
+    server.TaiKhoan.dangNhap(data)
+        .then((result) => {
+            console.log(result);
+            if (result.status) {
+                window.localStorage.setItem("username", account);
+                window.location.replace("../NhanVien/NhanVien.html");
+            } else if (result.status == 0 && result.data == "")
+                alert.innerText = "Sai mật khẩu";
+            else alert.innerText = result.data;
+        })
+        .catch((err) => { });
+});

@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="KhachHang.css" />
     <link
-      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet" />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -41,6 +42,12 @@
               </a>
             </li>
             <li>
+              <a href="/FrontEnd/UI/ThucPhamBoSung/ThucPhamBoSung.html">
+                <i class="bx bxs-baguette"></i>
+                <span class="links_name">THỰC PHẨM BỔ SUNG</span>
+              </a>
+            </li>
+            <li>
               <a href="/FrontEnd/UI/PhieuDangKy/PhieuDangKy.html">
                 <i class="bx bxs-notepad"></i>
                 <span class="links_name">PHIẾU ĐĂNG KÝ</span>
@@ -59,11 +66,12 @@
               </a>
             </li>
             <li>
-              <a class="btn-change-password" href="#">
+              <a href="/FrontEnd/UI/DoiMatKhau/DoiMatKhau.html">
                 <i class="bx bx-book-alt"></i>
                 <span class="links_name">ĐỔI MẬT KHẨU</span>
               </a>
             </li>
+
             <li class="log_out">
               <a href="/FrontEnd/UI/Login/Login.html">
                 <i class="bx bx-log-out"></i>
@@ -113,6 +121,7 @@
                   <th>Ngày tham gia</th>
                   <th>Hình ảnh</th>
                   <th></th>
+                  <th style="width: 25px"></th>
                 </tr>
               </thead>
               <tbody class="tbl-khachHang"></tbody>
@@ -195,31 +204,56 @@
             <form id="update-customer-form">
               <span>
                 <h4>Mã khách hàng:</h4>
-                <label id="maKH">KH01</label>
+                <label class="MAKH"></label>
               </span>
               <span style="margin-bottom: 30px">
                 <h4>Ngày tham gia:</h4>
-                <label id="maKH">05-09-2001</label>
+                <label class="NGAYTHAMGIA"> </label>
               </span>
               <label>Họ tên</label>
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Họ tên" />
+                <input
+                  type="text"
+                  class="form-control HOTEN"
+                  placeholder="Họ tên"
+                  name="HOTEN" />
               </div>
               <label>Năm sinh</label>
               <div class="input-group">
-                <input type="tel" class="form-control" placeholder="Năm sinh" />
+                <input
+                  type="tel"
+                  class="form-control NAMSINH"
+                  placeholder="Năm sinh"
+                  name="NAMSINH" />
               </div>
               <label>SĐT</label>
               <div class="input-group">
-                <input type="tel" class="form-control" placeholder="SĐT" />
+                <input
+                  type="tel"
+                  class="form-control SDT"
+                  placeholder="SĐT"
+                  name="SDT" />
               </div>
-              <input type="radio" id="male" name="gender" value="Nam" />
+              <input
+                type="radio"
+                id="male"
+                name="GIOITINH"
+                value="NAM"
+                class="GIOITINH"
+                checked />
               <label for="male">Nam</label>
-
-              <input type="radio" id="female" name="gender" value="Nữ" />
+              <input
+                type="radio"
+                id="female"
+                name="GIOITINH"
+                value="NỮ"
+                class="GIOITINH" />
               <label for="female">Nữ</label>
               <div class="input-group">
-                <input type="file" class="form-control" />
+                <input
+                  type="file"
+                  class="form-control image-input HINHANH"
+                  name="HINHANH" />
               </div>
               <div class="button-center">
                 <button type="submit" class="btn-form btn-update-form">
@@ -238,89 +272,64 @@
             <h2>Đăng Ký Dịch Vụ</h2>
           </div>
           <div class="popup-body">
-            <span>
-              <h4>Mã khách hàng:</h4>
-              <label id="maKH">KH01</label>
-            </span>
             <div class="img-section">
               <div class="img-box">
                 <img src="defaultAvt.jpg" alt="" />
               </div>
-              <div class="input-group">
-                <input type="file" class="form-control" />
-              </div>
             </div>
-            <form id="register-customer-form">
+            <form id="register-form">
+              <label>Mã khách hàng:</label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control MAKH"
+                  readonly="true"
+                  name="MAKH" />
+              </div>
+              <label>Mã nhân viên:</label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control MANV"
+                  readonly="true"
+                  name="MANV" />
+              </div>
               <label>Gói dịch vụ</label>
               <div class="input-group">
-                <select id="dichVu" name="dichVu">
-                  <option value="1">Gói tập 1 năm</option>
-                  <option value="2">Gói tập 1 tháng</option>
-                </select>
-              </div>
-              <label>Ngày đăng ký</label>
-              <div class="input-group">
-                <input type="text" class="form-control" />
+                <select class="listDichVu" name="MADV"></select>
               </div>
               <label>Giá</label>
               <div class="input-group">
-                <input type="tel" class="form-control" disabled />
+                <input
+                  type="text"
+                  class="form-control giaDichVu"
+                  readonly="true" />
               </div>
               <label>Khuyến mãi</label>
               <div class="input-group">
                 <input
-                  type="tel"
-                  class="form-control"
-                  placeholder="% khuyến mãi" />
+                  type="number"
+                  class="form-control TILEKM"
+                  placeholder="% khuyến mãi"
+                  name="TILEKM" />
               </div>
               <label>Thành tiền</label>
               <div class="input-group">
-                <input type="tel" class="form-control" disabled />
+                <input
+                  type="text"
+                  class="form-control TONGTIEN"
+                  readonly="true"
+                  name="TONGTIEN" />
+              </div>
+              <div class="button-center">
+                <button type="submit" class="btn-form btn-register-form">
+                  Đăng ký
+                </button>
+                <button type="button" class="btn-form btn-cancel-form">
+                  Hủy
+                </button>
               </div>
             </form>
-          </div>
-          <div class="button-center">
-            <button type="submit" class="btn-form btn-register-form">
-              Đăng ký
-            </button>
-            <button type="submit" class="btn-form btn-cancel-form">Hủy</button>
-          </div>
-        </div>
-        <!-- POPUP CHANGE PASSWORD -->
-        <div class="popup popup-change-password">
-          <div class="popup-header">
-            <h2>Đổi Mật Khẩu</h2>
-          </div>
-          <div class="popup-body">
-            <form id="change-password-form">
-              <label>Mật khẩu cũ</label>
-              <div class="input-group">
-                <input
-                  type="password"
-                  class="form-control"
-                  placeholder="Mật khẩu cũ" />
-              </div>
-              <label>Mật khẩu mới</label>
-              <div class="input-group">
-                <input
-                  type="password"
-                  class="form-control"
-                  placeholder="Mật khẩu mới" />
-              </div>
-              <label>Nhập lại mật khẩu mới</label>
-              <div class="input-group">
-                <input
-                  type="password"
-                  class="form-control"
-                  placeholder="Nhập lại mật khẩu mới" />
-              </div>
-            </form>
-          </div>
-          <div class="button-center">
-            <button type="submit" class="btn-form btn-password-form">
-              Cập nhật
-            </button>
-            <button type="submit" class="btn-form btn-cancel-form">Hủy</button>
           </div>
         </div>
         <!-- POPUP DELETE CONFIRM -->
@@ -337,13 +346,57 @@
           </div>
         </div>
         <div class="popup popup-inbody">
-          <div class="popup-body">
-            <h1>INBODY</h1>
+          <div class="inbody-popup-body">
+            <div class="inbody-history">
+              <div class="inbody-customer-info">
+                <div class="img-box">
+                  <img src="defaultAvt.jpg" alt="" />
+                </div>
+                <div>
+                  <label><b>Mã khách hàng:</b></label>
+                  <label class="MAKH">KH01</label>
+                </div>
+                <div>
+                  <label> <b> Họ tên:</b></label>
+                  <label class="HOTEN">Bùi Tuấn Hùng</label>
+                </div>
+              </div>
+              <div class="inbody-table">
+                <h2>Lịch sử đo Inbody</h2>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Thời Gian</th>
+                      <th>Chiều Cao (cm)</th>
+                      <th>Cân Nặng (kg)</th>
+                      <th>Tỉ Lệ Mỡ (%)</th>
+                      <th>Tỉ Lệ Nước (%)</th>
+                      <th>Khối Lượng Cơ (lbs)</th>
+                      <th>BMI (kg/m2)</th>
+                      <th style="width: 25px"></th>
+                    </tr>
+                  </thead>
+                  <tbody class="tbl-inbody"></tbody>
+                </table>
+              </div>
+            </div>
+            <div class="inbody-recomend">
+              <h2>Gợi ý thực phẩm bổ sung</h2>
+              <table width="100%">
+                <thead>
+                  <tr>
+                    <th>Mã Sản Phẩm</th>
+                    <th>Tên Sản Phẩm</th>
+                    <th style="width: 40%">Mô Tả</th>
+                    <th>Hình Ảnh</th>
+                    <th style="width: 25px"></th>
+                  </tr>
+                </thead>
+                <tbody class="tbl-thucPhamBoSung"></tbody>
+              </table>
+            </div>
           </div>
-          <div class="button-center">
-            <button type="submit" class="btn-form btn-delete-form">Xóa</button>
-            <button type="submit" class="btn-form btn-cancel-form">Hủy</button>
-          </div>
+          <button class="btn-form btn-cancel-form">Thoát</button>
         </div>
       </div>
     </div>

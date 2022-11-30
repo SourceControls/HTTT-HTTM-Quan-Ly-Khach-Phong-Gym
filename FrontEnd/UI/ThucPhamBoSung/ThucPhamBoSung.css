@@ -69,9 +69,6 @@
     text-decoration: none;
     transition: all 0.4s ease;
   }
-/*   .nav-links>.active>a{
-    background: #081D45;
-  } */
   .sidebar .nav-links li a:hover{
     background: #081D45;
   }
@@ -81,6 +78,7 @@
     font-size: 18px;
     color: #fff;
   }
+
   .sidebar .nav-links li a .links_name{
     color: #fff;
     font-size: 15px;
@@ -189,10 +187,9 @@
     white-space: nowrap;
   }
   nav .profile-details i{
-    font-size: 30px;
+    font-size: 25px;
     color: #333;
   }
-
   /* TABLE SECTION */
   .home-section{
     position: relative;
@@ -225,7 +222,7 @@
     padding: 20px 0;
   }
   table tbody {
-    height: 33.5rem;
+    height: 34.5rem;
     display: block;
     overflow-y: scroll;
   }
@@ -264,50 +261,51 @@
     background-color: #fff;
     border: 2px solid var(--blue);
   }
-  .btn-container i{
-    font-size: 22px;
-    margin-right: 5px;
-  }
-  .btn-container i:hover{
-    color: var(--blue);
+  .btn-delete{
+    width: 100px;
   }
   .btn-add{
     margin: 0;
     width: 95px;
-    height: 32px;
     align-self: center;
+    height: 32px;
     background: #fff;
     border-radius: 50px;
     border: 2px solid var(--blue);
     color: var(--blue);
     font-weight: bolder;
   }
+  .btn-container i{
+    font-size: 20px;
+  }
+  .btn-container i:hover{
+    color: var(--blue);
+  }
   .btn:hover{
+    background: var(--blue);
+    transition: .5s;
+    color: #fff;
+  }
+  .btn-add:hover{
     background: var(--blue);
     color: #fff;
     transition: .5s;
   }
 
+  
   .popup{
     z-index: 1000;
     position: absolute;
     display: none;
-    left: 35%;
-    top: 8%;
-    transform: scale(0.5);
-    transition: opacity 200ms ease-in-out,
-                transform 200ms ease-in-out;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%,-50%);
   }
   .show{
     display: block;
-    transform: scale(1);
-    transition: transform 500ms ease-in-out;
-    background-color: var(--purple);
   }
-  .popup-add, .popup-update, .popup-create-account,.popup-change-password, .popup-delete-confirm, .popup-reset-password
-  ,.popup-lock, .popup-unlock, .popup-notTK{
+  .popup-add, .popup-update,  .popup-delete-confirm{
    padding: 25px 30px 30px 30px;
-   width: 650px;
    background: #fff;
    border-radius: 20px;
    border: 3px solid var(--blue);
@@ -318,39 +316,14 @@
     text-align: center;
     justify-content: center;
   }
-  .popup-delete-confirm{
-    top: 25%;
-    left: 40%;
-    width: 400px;
-  }
-  .popup-change-password, .popup-create-account, .popup-reset-password{
-    top: 15%;
-    left: 38%;
-    width: 500px;
-  }
-  .popup-lock, .popup-notTK, .popup-unlock{
-    top: 30%;
-    left: 38%;
-    width: 500px;
-  }
-  .popup-create-account .popup-body, .popup-reset-password .popup-body, .popup-lock .popup-body, .popup-unlock .popup-body, .popup-notTK .popup-body{
-    margin-left: 70px;
-  }
+
   .popup-delete-confirm .popup-body i{
     font-size: 70px;
     color: crimson;
     margin-bottom: 15px;
   }
-  #change-password-form{
-    width: 100%;
-    margin-left: 75px;
-  }
-  .popup-update .popup-body, .popup-add .popup-body,.popup-unlock .popup-body, .popup-notTk .popup-body, .popup-unlock .popup-body{
-    display: flex;
-    justify-content: center;
-  }
-  .popup-updatem ,.popup-add, .popup-unlock, .popup-notTk, .popup-unlock{
-    width: 500px;
+  .popup-add, .popup-update{
+    width: fit-content;
   }
   .popup-header{
     text-align: center;
@@ -361,7 +334,7 @@
     justify-content: space-between;
   }
   .img-box{
-    width:210px;
+    width:fit-content;
     height: 350px;
   }
   .img-box img{
@@ -478,9 +451,6 @@
     .home-section nav .profile-details{
       height: 50px;
       min-width: 40px;
-    }
-    .home-content .sales-boxes .sales-details{
-      width: 560px;
     }
   }
   @media (max-width: 550px) {

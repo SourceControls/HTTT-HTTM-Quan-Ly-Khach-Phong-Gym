@@ -2,11 +2,11 @@
 <html lang="en" dir="ltr">
 
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="NhanVien.css">
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="NhanVien.css" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quản lý nhân viên</title>
 </head>
 
@@ -38,6 +38,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="/FrontEnd/UI/ThucPhamBoSung/ThucPhamBoSung.html">
+                            <i class='bx bxs-baguette'></i>
+                            <span class="links_name">THỰC PHẨM BỔ SUNG</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="/FrontEnd/UI/PhieuDangKy/PhieuDangKy.html">
                             <i class='bx bxs-notepad'></i>
                             <span class="links_name">PHIẾU ĐĂNG KÝ</span>
@@ -56,7 +62,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="btn-change-password" href="#">
+                        <a class="btn-change-password" href="/FrontEnd/UI/DoiMatKhau/DoiMatKhau.html">
                             <i class='bx bx-book-alt'></i>
                             <span class="links_name">ĐỔI MẬT KHẨU</span>
                         </a>
@@ -81,10 +87,10 @@
                     </div>
 
                     <div class="profile-details">
-                        <img src="h1.jpg" alt="">
+                        <img src="h1.jpg" alt="" />
                         <div class="admin_name">
-                            <span>Nguyễn Văn A</span>
-                            <span>Nhân Viên</span>
+                            <span></span>
+                            <span></span>
                         </div>
                     </div>
                 </nav>
@@ -93,7 +99,7 @@
                     <div class="body-header">
                         <button type="button" class="btn btn-add">Thêm mới</button>
                         <div class="search-box">
-                            <input type="text" placeholder="Tìm khách hàng...">
+                            <input type="text" class="search" placeholder="Tìm nhân viên...">
                             <i class='bx bx-search' style="cursor: pointer;"></i>
                         </div>
                     </div>
@@ -119,28 +125,16 @@
                     <h2>Thêm Nhân Viên</h2>
                 </div>
                 <div class="popup-body">
-                    <div class="img-section">
-                        <div class="img-box">
-                            <img src="h1.jpg" alt="">
-                        </div>
-                        <div class="input-group">
-                            <input type="file" class="form-control">
-                        </div>
-                    </div>
                     <form id="add-officer-form">
-                        <label>Mã nhân viên</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" disabled>
-                        </div>
                         <label>Họ tên</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Họ tên">
+                            <input type="text" class="form-control add-input" placeholder="Họ tên">
                         </div>
                         <label>SĐT</label>
                         <div class="input-group">
-                            <input type="tel" class="form-control" placeholder="SĐT">
+                            <input type="tel" class="form-control add-input" placeholder="SĐT">
                         </div>
-                        <input type="radio" id="isManager">
+                        <input type="radio" class="add-input">
                         <label>Quản lý</label>
                     </form>
                 </div>
@@ -155,28 +149,20 @@
                     <h2>Cập Nhật Nhân Viên</h2>
                 </div>
                 <div class="popup-body">
-                    <div class="img-section">
-                        <div class="img-box">
-                            <img src="h1.jpg" alt="">
-                        </div>
-                        <div class="input-group">
-                            <input type="file" class="form-control">
-                        </div>
-                    </div>
                     <form id="update-officer-form">
                         <label>Mã nhân viên</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" disabled>
+                            <input type="text" class="form-control update-input" disabled>
                         </div>
                         <label>Họ tên</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Họ tên">
+                            <input type="text" class="form-control update-input" placeholder="Họ tên">
                         </div>
                         <label>SĐT</label>
                         <div class="input-group">
-                            <input type="tel" class="form-control" placeholder="SĐT">
+                            <input type="tel" class="form-control update-input" placeholder="SĐT">
                         </div>
-                        <input type="radio" id="isManager">
+                        <input type="radio" class="update-input radio">
                         <label>Quản lý</label>
                     </form>
                 </div>
@@ -227,59 +213,8 @@
                     <button type="submit" class="btn-form btn-cancel-form">Xác nhận</button>
                 </div>
             </div>
-            <!-- POPUP LOCK -->
-            <div class="popup popup-lock">
-                <div class="popup-header">
-                    <h2>Khóa/Mở khóa TK</h2>
-                </div>
-                <div class="popup-body">
-                    <form id="lock-form">
-                        <label>Tên tài khoản</label>
-                        <div class="input-group">
-                            <input type="password" class="form-control" disabled>
-                        </div>
-                        <label>Mật khẩu</label>
-                        <div class="input-group">
-                            <input type="password" class="form-control" disabled>
-                        </div>
-                        <input type="radio" id="locked" name="lock" value="0" />
-                        <label for="locked">Khóa</label>
 
-                        <input type="radio" id="unlocked" name="lock" value="1" />
-                        <label for="unlocked">Mở khóa</label>
-                    </form>
-                </div>
-                <div class="button-center">
-                    <button type="submit" class="btn-form btn-lock-form">Cập nhật</button>
-                    <button type="submit" class="btn-form btn-cancel-form">Hủy</button>
-                </div>
-            </div>
-            <!-- POPUP CHANGE PASSWORD -->
-            <div class="popup popup-change-password">
-                <div class="popup-header">
-                    <h2>Đổi Mật Khẩu</h2>
-                </div>
-                <div class="popup-body">
-                    <form id="change-password-form">
-                        <label>Mật khẩu cũ</label>
-                        <div class="input-group">
-                            <input type="password" class="form-control" placeholder="Mật khẩu cũ">
-                        </div>
-                        <label>Mật khẩu mới</label>
-                        <div class="input-group">
-                            <input type="password" class="form-control" placeholder="Mật khẩu mới">
-                        </div>
-                        <label>Nhập lại mật khẩu mới</label>
-                        <div class="input-group">
-                            <input type="password" class="form-control" placeholder="Nhập lại mật khẩu mới">
-                        </div>
-                    </form>
-                </div>
-                <div class="button-center">
-                    <button type="submit" class="btn-form btn-password-form">Cập nhật</button>
-                    <button type="submit" class="btn-form btn-cancel-form">Hủy</button>
-                </div>
-            </div>
+
             <!-- POPUP DELETE CONFIRM -->
             <div class="popup popup-delete-confirm">
                 <div class="popup-body">
@@ -293,10 +228,66 @@
                     <button type="submit" class="btn-form btn-cancel-form">Hủy</button>
                 </div>
             </div>
+
+            <!-- POPUP CHANGE PASSWORD -->
+            <div class="popup popup-change-password">
+                <div class="popup-header">
+                    <h2>Đổi Mật Khẩu</h2>
+                </div>
+                <div class="popup-body">
+                    <form id="change-password-form">
+                        <label>Tên đăng nhập</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control change-password-input" placeholder="Tên đăng nhập">
+                        </div>
+                        <label>Mật khẩu mới</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control change-password-input"
+                                placeholder="Mật khẩu mới">
+                        </div>
+
+                    </form>
+                </div>
+                <div class="button-center">
+                    <button type="submit" class="btn-form btn-password-form">Cập nhật</button>
+                    <button type="submit" class="btn-form btn-cancel-form">Hủy</button>
+                </div>
+            </div>
+            <!-- POPUP LOCK -->
+            <div class="popup popup-lock">
+                <div class="popup-header">
+                    <h2>Khóa TK thành công</h2>
+                </div>
+
+                <div class="button-center">
+                    <button type="submit" class="btn-form btn-cancel-form">Đóng</button>
+                </div>
+            </div>
+            <!-- POPUP UNLOCK -->
+            <div class="popup popup-unlock">
+                <div class="popup-header">
+                    <h2>Mở khóa TK thành công</h2>
+                </div>
+
+                <div class="button-center">
+                    <button type="submit" class="btn-form btn-unlock-form">Đóng</button>
+                    <!-- <button type="submit" class="btn-form btn-cancel-form">Hủy</button> -->
+                </div>
+            </div>
+            <!-- POPUP ERROR CHUA CO TK -->
+            <div class="popup popup-notTK">
+                <div class="popup-header">
+                    <h2>Nhân viên chưa có tài khoản</h2>
+                </div>
+                <div class="button-center">
+                    <button type="submit" class="btn-form btn-notTK-form">Đóng</button>
+                </div>
+            </div>
         </div>
     </div>
+    </div>
 
-    
+
     <script type="module" src="module.js"></script>
     <script src="NhanVien.js"></script>
 

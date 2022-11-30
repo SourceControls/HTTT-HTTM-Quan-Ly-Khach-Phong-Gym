@@ -1,204 +1,218 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="LichSu.css">
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="LichSu.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lịch sử vào phòng</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="overlay">
-        <div class="container">
-            <section class="sidebar">
-                <div class="logo-details">
-                    <i class='bx bx-cube-alt'></i>
-                    <span class="logo_name">GymCenter</span>
+      <div class="container">
+        <section class="sidebar">
+          <div class="logo-details">
+            <i class="bx bx-cube-alt"></i>
+            <span class="logo_name">GymCenter</span>
+          </div>
+          <ul class="nav-links">
+            <li>
+              <a href="/FrontEnd/UI/NhanVien/NhanVien.html">
+                <i class="bx bxs-user-account"></i>
+                <span class="links_name">NHÂN VIÊN</span>
+              </a>
+            </li>
+            <li>
+              <a href="/FrontEnd/UI/KhachHang/KhachHang.html">
+                <i class="bx bx-user"></i>
+                <span class="links_name">KHÁCH HÀNG</span>
+              </a>
+            </li>
+            <li>
+              <a href="/FrontEnd/UI/DichVu/DichVu.html">
+                <i class="bx bx-list-ul"></i>
+                <span class="links_name">DỊCH VỤ</span>
+              </a>
+            </li>
+            <li>
+              <a href="/FrontEnd/UI/ThucPhamBoSung/ThucPhamBoSung.html">
+                <i class="bx bxs-baguette"></i>
+                <span class="links_name">THỰC PHẨM BỔ SUNG</span>
+              </a>
+            </li>
+            <li>
+              <a href="/FrontEnd/UI/PhieuDangKy/PhieuDangKy.html">
+                <i class="bx bxs-notepad"></i>
+                <span class="links_name">PHIẾU ĐĂNG KÝ</span>
+              </a>
+            </li>
+            <li>
+              <a href="/FrontEnd/UI/LichSu/LichSu.html">
+                <i class="bx bxs-door-open"></i>
+                <span class="links_name">LỊCH SỬ VÀO PHÒNG</span>
+              </a>
+            </li>
+            <li>
+              <a href="/FrontEnd/UI/ThongKe/ThongKe.html">
+                <i class="bx bx-bar-chart-alt"></i>
+                <span class="links_name">THỐNG KÊ</span>
+              </a>
+            </li>
+            <li>
+              <a
+                class="btn-change-password"
+                href="/FrontEnd/UI/DoiMatKhau/DoiMatKhau.html">
+                <i class="bx bx-book-alt"></i>
+                <span class="links_name">ĐỔI MẬT KHẨU</span>
+              </a>
+            </li>
+            <li class="log_out">
+              <a href="/FrontEnd/UI/Login/Login.html">
+                <i class="bx bx-log-out"></i>
+                <span class="links_name">ĐĂNG XUẤT</span>
+              </a>
+            </li>
+          </ul>
+        </section>
+        <!-- HOME SECTION -->
+        <section class="home-section">
+          <!-- NAVBAR -->
+          <nav>
+            <div class="sidebar-button">
+              <i class="bx bx-menu sidebarBtn"></i>
+            </div>
+            <div class="page-header">
+              <h2>LỊCH SỬ VÀO PHÒNG</h2>
+            </div>
+            <div class="profile-details">
+              <img src="h1.jpg" alt="" />
+              <div class="admin_name">
+                <span>Nguyễn Văn A</span>
+                <span>Nhân Viên</span>
+              </div>
+            </div>
+          </nav>
+          <!-- TABLE -->
+          <div class="home-content">
+            <div class="flex-container">
+              <div class="flex1">
+                <div class="grid1">
+                  <h3>Thông Tin Khách Hàng</h3>
+                  <div class="flex">
+                    <div class="text-section">
+                      <label>Mã khách hàng</label>
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          value="text"
+                          class="form-control"
+                          disabled />
+                      </div>
+                      <label>Họ tên</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" disabled />
+                      </div>
+                      <label>Ngày tham gia</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" disabled />
+                      </div>
+                    </div>
+                    <div class="img-section">
+                      <img src="h1.jpg" alt="" />
+                    </div>
+                  </div>
                 </div>
-                <ul class="nav-links">
-                    <li>
-                        <a href="/FrontEnd/UI/NhanVien/NhanVien.html">
-                            <i class='bx bxs-user-account'></i>
-                            <span class="links_name">NHÂN VIÊN</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/FrontEnd/UI/KhachHang/KhachHang.html">
-                            <i class='bx bx-user'></i>
-                            <span class="links_name">KHÁCH HÀNG</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/FrontEnd/UI/DichVu/DichVu.html">
-                            <i class='bx bx-list-ul'></i>
-                            <span class="links_name">DỊCH VỤ</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/FrontEnd/UI/PhieuDangKy/PhieuDangKy.html">
-                            <i class='bx bxs-notepad'></i>
-                            <span class="links_name">PHIẾU ĐĂNG KÝ</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/FrontEnd/UI/LichSu/LichSu.html">
-                            <i class='bx bxs-door-open' ></i>
-                            <span class="links_name">LỊCH SỬ VÀO PHÒNG</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/FrontEnd/UI/ThongKe/ThongKe.html">
-                            <i class='bx bx-bar-chart-alt'></i>
-                            <span class="links_name">THỐNG KÊ</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="btn-change-password" href="#">
-                            <i class='bx bx-book-alt'></i>
-                            <span class="links_name">ĐỔI MẬT KHẨU</span>
-                        </a>
-                    </li>
-                    <li class="log_out">
-                        <a href="/FrontEnd/UI/Login/Login.html">
-                            <i class='bx bx-log-out'></i>
-                            <span class="links_name">ĐĂNG XUẤT</span>
-                        </a>
-                    </li>
-                </ul>
-            </section>
-            <!-- HOME SECTION -->
-            <section class="home-section">
-                <!-- NAVBAR -->
-                <nav>
-                    <div class="sidebar-button">
-                        <i class='bx bx-menu sidebarBtn'></i>
+                <div class="grid2">
+                  <h3>Dịch Vụ Đăng Ký</h3>
+                  <div class="text-section">
+                    <label>Mã phiếu đăng ký</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" disabled />
                     </div>
-                    <div class="page-header">
-                        <h2>LỊCH SỬ VÀO PHÒNG</h2>
+                    <label>Dịch vụ</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" disabled />
                     </div>
-                    <div class="profile-details">
-                        <img src="h1.jpg" alt="">
-                        <div class="admin_name">
-                            <span>Nguyễn Văn A</span>
-                            <span>Nhân Viên</span>
-                        </div>
+                    <label>Ngày kết thúc</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" disabled />
                     </div>
-                </nav>
-                <!-- TABLE -->
-                <div class="home-content">
-                    <div class="flex-container">
-                        <div class="flex1">
-                            <div class="grid1">
-                                <h3>Thông Tin Khách Hàng</h3>
-                                <div class="flex">
-                                    <div class="text-section">
-                                        <label>Mã khách hàng</label>
-                                        <div class="input-group">
-                                            <input type="text" value="text" class="form-control" disabled>
-                                        </div>
-                                        <label>Họ tên</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" disabled>
-                                        </div>
-                                        <label>Ngày tham gia</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" disabled>
-                                        </div>
-                                    </div>
-                                    <div class="img-section">
-                                        <img src="h1.jpg" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="grid2">
-                                <h3>Dịch Vụ Đăng Ký</h3>
-                                <div class="text-section">
-                                    <label>Mã phiếu đăng ký</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" disabled>
-                                    </div>
-                                    <label>Dịch vụ</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" disabled>
-                                    </div>
-                                    <label>Ngày kết thúc</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" disabled>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex2">
-                            <div class="header">
-                                <div class="search-box">
-                                    <input type="text" placeholder="Tìm khách hàng...">
-                                    <i class='bx bx-search' style="cursor: pointer;"></i>
-                                </div>
-                                <button type="button" class="btn btn-reset">Làm mới</button>
-                                <div class="text">
-                                    <h4>Tổng số lượt: </h4>
-                                    <p class="sum">300</p>
-                                </div>
-                            </div>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>STT</th>
-                                        <th>Mã khách hàng</th>
-                                        <th>Họ tên</th>
-                                        <th>Giới tính</th>
-                                        <th>Thời gian vào phòng</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>KH007</td>
-                                        <td>Hoang Trung Thanh Khương</td>
-                                        <td>Nam</td>
-                                        <td>01:01:78 11/12/2022</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                  </div>
                 </div>
-            </section>
-            <!-- POPUP CHANGE PASSWORD -->
-            <div class="popup popup-change-password">
-                <div class="popup-header">
-                    <h2>Đổi Mật Khẩu</h2>
+              </div>
+              <div class="flex2">
+                <div class="header">
+                  <div class="search-box">
+                    <input type="text" placeholder="Tìm khách hàng..." />
+                    <i class="bx bx-search" style="cursor: pointer"></i>
+                  </div>
+                  <button type="button" class="btn btn-reset">Làm mới</button>
+                  <div class="text">
+                    <h4>Tổng số lượt:</h4>
+                    <p class="sum">300</p>
+                  </div>
                 </div>
-                <div class="popup-body">
-                    <form id="change-password-form">
-                        <label>Mật khẩu cũ</label>
-                        <div class="input-group">
-                            <input type="password" class="form-control" placeholder="Mật khẩu cũ">
-                        </div>
-                        <label>Mật khẩu mới</label>
-                        <div class="input-group">
-                            <input type="password" class="form-control" placeholder="Mật khẩu mới">
-                        </div>
-                        <label>Nhập lại mật khẩu mới</label>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>STT</th>
+                      <th>Mã khách hàng</th>
+                      <th>Họ tên</th>
+                      <th>Giới tính</th>
+                      <th style="padding-right: 15px">Thời gian vào phòng</th>
+                      <th>Tổng</th>
+                    </tr>
+                  </thead>
+                  <tbody id="list"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- POPUP CHANGE PASSWORD -->
+        <div class="popup popup-change-password">
+          <div class="popup-header">
+            <h2>Đổi Mật Khẩu</h2>
+          </div>
+          <div class="popup-body">
+            <form id="change-password-form">
+              <label>Tên đăng nhập</label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control change-password-input"
+                  placeholder="Tên đăng nhập" />
+              </div>
+              <label>Mật khẩu mới</label>
+              <div class="input-group">
+                <input
+                  type="password"
+                  class="form-control change-password-input"
+                  placeholder="Mật khẩu mới" />
+              </div>
+              <!-- <label>Nhập lại mật khẩu mới</label>
                         <div class="input-group">
                             <input type="password" class="form-control" placeholder="Nhập lại mật khẩu mới">
-                        </div>
-                    </form>
-                </div>
-                <div class="button-center">
-                    <button type="submit" class="btn-form btn-password-form">Cập nhật</button>
-                    <button class="btn-form btn-cancel-form">Hủy</button>
-                </div>
-            </div>
-            
+                        </div> -->
+            </form>
+          </div>
+          <div class="button-center">
+            <button type="submit" class="btn-form btn-password-form">
+              Cập nhật
+            </button>
+            <button type="submit" class="btn-form btn-cancel-form">Hủy</button>
+          </div>
         </div>
+      </div>
     </div>
 
     <script src="LichSu.js"></script>
-
-</body>
-
+    <script type="module" src="module.js"></script>
+  </body>
 </html>

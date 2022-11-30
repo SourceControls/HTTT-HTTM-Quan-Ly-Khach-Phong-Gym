@@ -8,14 +8,14 @@ class DichVuControllers {
 
     getList = async (req, res) => {
         const { KEY } = req.body
-        let params = [{name: 'KEY', type: 'Nvarchar(20)', value: KEY}]
-        if(KEY == ''){
+        let params = [{ name: 'KEY', type: 'Nvarchar(20)', value: KEY }]
+        if (!KEY) {
             let rs = await DichVu.getListDichVu()
             res.send(json(true, rs))
             return
         }
         let rs = await DichVu.searchDichVu(params)
-        if(rs.recordset.length == 0){
+        if (rs.recordset.length == 0) {
             res.send(json(false, 'Không có kết quả phù hợp'))
             return
         }
