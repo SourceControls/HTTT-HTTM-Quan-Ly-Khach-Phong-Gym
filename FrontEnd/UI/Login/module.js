@@ -1,5 +1,5 @@
 import server from "../../server/main.js";
-
+server.ThongKe.thongKeRaVao().then(rs => console.log(rs))
 let btn = document.querySelector(".btn-login");
 
 btn.addEventListener("click", () => {

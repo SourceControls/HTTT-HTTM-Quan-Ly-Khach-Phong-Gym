@@ -138,7 +138,21 @@ class Server {
       return excute(api, data)
     }
   }
-
+  ThongKe = {
+    thongKeKhachHang(data = {}) {
+      let api = 'http://localhost:8080/ThongKe/ThongKeKh'
+      return excute(api, data)
+    },
+    thongKeDoanhThu(data = {}) {
+      let api = 'http://localhost:8080/ThongKe/DoanhThu'
+      return excute(api, data)
+    },
+    thongKeRaVao(data = {}) {
+      //key = TUNGAY, DENNGAY
+      let api = 'http://localhost:8080/ThongKe/RaVao'
+      return excute(api, data)
+    }
+  }
 
 }
 
