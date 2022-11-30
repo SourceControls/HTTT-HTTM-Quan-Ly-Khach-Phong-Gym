@@ -1,8 +1,17 @@
 import server from "../../server/main.js";
 
 let search = document.querySelector(".search");
-let nv = document.getElementById("account");
-nv.innerText = window.localStorage.getItem('username');
+async function initNhanVien() {
+  let nhanVienBox = document.querySelectorAll('.admin_name span');
+  let nv_delete = document.querySelector('.nv-delete-input');
+  let nv_pay = document.querySelectorAll('.pay-input')[5];
+  let nhanVien = (await server.NhanVien.getList({ KEY: window.localStorage.getItem('username') })).data[0]
+  nhanVienBox[0].innerText = nhanVien.HOTEN;
+  nhanVienBox[1].innerText = nhanVien.MANV + ' - ' + nhanVien.CHUCVU;
+  nv_delete.value = nhanVien.MANV
+  nv_pay.value = nhanVien.MANV
+}
+initNhanVien()
 
 let data = {
   TENDANGNHAP: "",

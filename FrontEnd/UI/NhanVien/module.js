@@ -1,9 +1,14 @@
 import server from "../../server/main.js";
 
 let search = document.querySelector(".search");
-let nv = document.getElementById("account");
-nv.innerText = window.localStorage.getItem('username');
-
+async function initNhanVien() {
+  let nhanVienBox = document.querySelectorAll('.admin_name span');
+  let nhanVien = (await server.NhanVien.getList({ KEY: window.localStorage.getItem('username') })).data[0]
+  console.log(nhanVienBox[0])
+  nhanVienBox[0].innerText = nhanVien.HOTEN;
+  nhanVienBox[1].innerText = nhanVien.MANV + ' - ' + nhanVien.CHUCVU;
+}
+initNhanVien()
 server.NhanVien.getList({ 'KEY': '' })
   .then((result) => {
     let list = document.querySelector("#NhanVienList");
@@ -35,8 +40,6 @@ server.NhanVien.getList({ 'KEY': '' })
     let btn_edit = document.querySelectorAll(".btn-edit");
     let btn_delete = document.querySelectorAll(".btn-delete");
     let btn_lock = document.querySelectorAll(".btn-lock");
-    let btn_change_password = document.querySelector(".btn-change-password");
-    let btn_password_form = document.querySelector(".btn-password-form");
     let btn_update_form = document.querySelector(".btn-update-form");
     let btn_add_form = document.querySelector(".btn-add-form");
     let btn_lock_form = document.querySelector(".btn-lock-form");
@@ -63,16 +66,12 @@ server.NhanVien.getList({ 'KEY': '' })
     let update_input = document.getElementsByClassName("update-input");
     let add_input = document.getElementsByClassName("add-input");
     let create_pass = document.getElementsByClassName("create-pass");
-    let change_password_input = document.getElementsByClassName(
-      "change-password-input"
-    );
     let create_name = document.getElementsByClassName("create-name");
 
     function getChucVu() {
       if (update_input[3].checked || add_input[2].checked) return "QUANLY";
       else return "TIEPTAN";
     }
-
 
 
     // THEM NHAN VIEN
@@ -199,27 +198,6 @@ server.NhanVien.getList({ 'KEY': '' })
         });
       });
     }
-    // CHANGE PASSWORD
-    let data2 = {
-      TENDANGNHAP: "",
-      MATKHAUMOI: "",
-    };
-    btn_change_password.addEventListener("click", () => {
-      popup_change_password[0].classList.add("show");
-      btn_password_form.addEventListener("click", () => {
-        data2.TENDANGNHAP = change_password_input[0].value;
-        data2.MATKHAUMOI = change_password_input[1].value;
-        console.log(data2);
-        server.TaiKhoan.doiMatKhau(data2)
-          .then((result) => {
-            console.log(result);
-            alert(result.data)
-            popup_change_password[0].classList.remove("show");
-          })
-          .catch((err) => { });
-      });
-    });
-
     // LOCK/UNLOCK TK
     for (var i = 0; i < btn_lock.length; i++) {
       let x = i;
@@ -271,10 +249,6 @@ server.NhanVien.getList({ 'KEY': '' })
     });
     btn_cancel[3].addEventListener("click", () => {
       popup_reset[0].classList.remove("show");
-      window.location.reload();
-    });
-    btn_cancel[5].addEventListener("click", () => {
-      popup_change_password[0].classList.remove("show");
       window.location.reload();
     });
     btn_cancel[4].addEventListener("click", () => {

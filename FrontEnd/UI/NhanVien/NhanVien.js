@@ -28,7 +28,6 @@ let btn_delete_form = document.querySelector(".btn-delete-form");
 // POPUP
 let popup_edit = document.getElementsByClassName("popup-update");
 let popup_change_password = document.getElementsByClassName("popup-change-password");
-let account = document.getElementsById("account");
 let popup_create_account = document.getElementsByClassName(
   "popup-create-account"
 );
@@ -85,13 +84,13 @@ btn_cancel[4].addEventListener("click", () => {
 
 
 /* POPUP CHANGE PASSWORD */
-btn_change_password.addEventListener("click", () => {
-    popup_change_password[0].classList.add("show");
-});
+// btn_change_password.addEventListener("click", () => {
+//     popup_change_password[0].classList.add("show");
+// });
 
-btn_cancel[5].addEventListener("click", () => {
-    btn_change_password[0].classList.remove("show");
-});
+// btn_cancel[5].addEventListener("click", () => {
+//     btn_change_password[0].classList.remove("show");
+// });
 
 // // /* POPUP LOCK */
 // for (var i = 0; i < btn_lock.length; i++) {
