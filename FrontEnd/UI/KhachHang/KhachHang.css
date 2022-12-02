@@ -293,8 +293,6 @@ table tbody tr:hover {
 .table-img {
   width: 65px;
   height: 69px;
-  margin-left: 66px;
-  display: flex;
   border-radius: 8px;
 }
 
