@@ -126,16 +126,26 @@
                                     </div>
                                 </div>
                                 <div class="chart">
-                                    <div id="piechart1" style="width: 240px; height: 200px"></div>
-                                    <div id="piechart2" style="width: 240px; height: 200px"></div>
+                                    <div id="piechart1" style="width: 240px; height: 180px"></div>
+                                    <div id="piechart2" style="width: 240px; height: 180px"></div>
                                 </div>
                             </div>
                             <div class="flexdown">
+                                <div class="body">
+                                    <form>
+                                        <label >Từ ngày:</label>
+                                        <input type="date" id="" name="" />
+                                        <label >Đến ngày:</label>
+                                        <input type="date" id="" name="to" />
+                                    </form>
+                                    <button type="submit" class="btn-filter">Lọc</button>
+                                    <button type="submit" class="btn-reset">Làm mới</button>
+                                </div>
                                 <h3>Thống Kê Lượt Vào Ra Theo Khung Giờ</h3>
                                 <canvas id="lineChart" style="
                       width: 100%;
                       max-width: 600px;
-                      height: 250px;
+                      height: 240px;
                     "></canvas>
                             </div>
                         </div>

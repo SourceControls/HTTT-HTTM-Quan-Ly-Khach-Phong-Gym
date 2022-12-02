@@ -261,9 +261,7 @@
     background-color: #fff;
     border: 2px solid var(--blue);
   }
-  .btn-delete{
-    width: 100px;
-  }
+
   .btn-add{
     margin: 0;
     width: 95px;
