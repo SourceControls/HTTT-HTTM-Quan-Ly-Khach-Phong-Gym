@@ -100,7 +100,27 @@
           </nav>
           <!-- TABLE -->
           <div class="home-content">
-            <div class="body-header">
+            <div class="panel">
+              <div class="img">
+                <img src="h1.jpg" alt="" />
+              </div>
+              <div class="input">
+                <div class="input-item">
+                  <label for="">Mã PĐK:</label>
+                  <input type="text" class="panel-input" disabled required />
+                </div>
+                <div class="input-item">
+                  <label for="">Khách hàng:</label>
+                  <input type="text" class="panel-input" disabled required />
+                </div>
+              </div>
+              <div class="panel-btn">
+                <button type="button" class="btn-pay">Thanh toán</button>
+                <button type="button" class="btn-view">
+                  Xem phiếu thu tiền
+                </button>
+                <button type="button" class="btn-cancel">Hủy đăng ký</button>
+              </div>
               <div class="search-box">
                 <input
                   type="text"
@@ -109,6 +129,7 @@
                 <i class="bx bx-search" style="cursor: pointer"></i>
               </div>
             </div>
+
             <table>
               <thead>
                 <tr>
@@ -126,30 +147,6 @@
               </thead>
               <tbody id="list"></tbody>
             </table>
-            <div class="panel">
-              <div class="img">
-                <img src="h1.jpg" alt="" />
-              </div>
-              <div class="input-button">
-                <div class="input">
-                  <div class="input-item">
-                    <label for="">Mã PĐK:</label>
-                    <input type="text" class="panel-input" disabled required />
-                  </div>
-                  <div class="input-item">
-                    <label for="">Khách hàng:</label>
-                    <input type="text" class="panel-input" disabled required />
-                  </div>
-                </div>
-                <div class="panel-btn">
-                  <button type="button" class="btn-pay">Thanh toán</button>
-                  <button type="button" class="btn-view">
-                    Xem phiếu thu tiền
-                  </button>
-                  <button type="button" class="btn-cancel">Hủy đăng ký</button>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
         <!-- POPUP PAYMENT -->

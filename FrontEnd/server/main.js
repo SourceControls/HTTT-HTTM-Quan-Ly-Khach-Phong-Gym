@@ -153,6 +153,12 @@ class Server {
       return excute(api, data)
     }
   }
+  ThucPhamBoSung = {
+    getList(data = {}) {
+      let api = 'http://localhost:8080/ThucPham/GetList'
+      return excute(api, data)
+    }
+  }
 
 }
 
