@@ -8,12 +8,12 @@ class ThongKeControllers {
 
     xemThongKeKh = async (req, res) => {
         let rs = await DB.query('EXEC SP_THONG_KE_KH')
-        res.send(json(true, rs.recordset))
+        res.send(json(true, rs))
     }
 
     xemThongKeRaVao = async (req, res) => {
         let rs = await DB.query('SELECT * FROM V_LUOT_RA_VAO')
-        res.send(json(true, rs.recordset))
+        res.send(json(true, rs))
     }
 
     xemDoanhThu = async (req, res) => {

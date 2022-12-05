@@ -17,21 +17,6 @@ let data = {
   TENDANGNHAP: "",
   MATKHAUMOI: "",
 };
-btn_change_password.addEventListener("click", () => {
-  popup_change_password[0].classList.add("show");
-  btn_password_form.addEventListener("click", () => {
-    data.TENDANGNHAP = change_password_input[0].value;
-    data.MATKHAUMOI = change_password_input[1].value;
-    console.log(data);
-    server.TaiKhoan.doiMatKhau(data)
-      .then((result) => {
-        console.log(result);
-        alert("Đổi mật khẩu thành công");
-        popup_change_password[0].classList.remove("show");
-      })
-      .catch((err) => { });
-  });
-});
 
 
 // GET LIST

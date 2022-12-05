@@ -90,8 +90,8 @@
                     <div class="profile-details">
                         <img src="h1.jpg" alt="" />
                         <div class="admin_name">
-                            <span>Nguyễn Văn A</span>
-                            <span>Nhân Viên</span>
+                            <span></span>
+                            <span></span>
                         </div>
                     </div>
                 </nav>
@@ -159,12 +159,12 @@
                             </div>
                             <div class="body">
                                 <form>
-                                    <label for="from">Từ ngày:</label>
-                                    <input type="date" id="from" name="from" />
-                                    <label for="to">Đến ngày:</label>
-                                    <input type="date" id="to" name="to" />
+                                    <label>Từ ngày:</label>
+                                    <input type="date" id="fromDT" value=""/>
+                                    <label>Đến ngày:</label>
+                                    <input type="date" id="toDT" value=""/>
                                 </form>
-                                <button type="submit" class="btn-filter">Lọc</button>
+                                <button type="submit" class="btn-filterDT btn-filter">Lọc</button>
                                 <button type="submit" class="btn-reset">Làm mới</button>
                             </div>
                             <table>
@@ -176,13 +176,7 @@
                                         <th>Tổng doanh thu</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>KH001</td>
-                                        <td>Hoang Nguyen Truong Thanh</td>
-                                        <td style="padding-left: 22px">0911987241</td>
-                                        <td style="padding-left: 20px">7.000.000</td>
-                                    </tr>
+                                <tbody id="list">
                                 </tbody>
                             </table>
                         </div>
@@ -222,6 +216,7 @@
     </div>
 
     <script src="ThongKe.js"></script>
+    <script type='module' src="module.js"></script>
 </body>
 
 </html>
