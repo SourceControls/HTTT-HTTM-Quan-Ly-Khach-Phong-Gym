@@ -93,8 +93,8 @@
             <div class="profile-details">
               <img src="h1.jpg" alt="" />
               <div class="admin_name">
-                <span>Nguyễn Văn A</span>
-                <span>Nhân Viên</span>
+                <span></span>
+                <span></span>
               </div>
             </div>
           </nav>
@@ -118,46 +118,7 @@
                   <th></th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>asssssss</td>
-                  <td style="padding-left: 11px">Dịch vụ 1 tháng</td>
-                  <td>30</td>
-                  <td style="padding-left: 20px">1.000.000</td>
-                  <td style="padding-left: 28px">Có</td>
-                  <td>
-                    <div class="btn-container">
-                      <i class="bx bxs-edit"></i>
-                      <i class="bx bx-trash"></i>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>asssssss</td>
-                  <td style="padding-left: 11px">Dịch vụ 1 tháng</td>
-                  <td>30</td>
-                  <td style="padding-left: 20px">1.000.000</td>
-                  <td style="padding-left: 28px">Có</td>
-                  <td>
-                    <div class="btn-container">
-                      <i class="bx bxs-edit"></i>
-                      <i class="bx bx-trash"></i>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>asssssss</td>
-                  <td style="padding-left: 11px">Dịch vụ 1 tháng</td>
-                  <td>30</td>
-                  <td style="padding-left: 20px">1.000.000</td>
-                  <td style="padding-left: 28px">Có</td>
-                  <td>
-                    <div class="btn-container">
-                      <i class="bx bxs-edit"></i>
-                      <i class="bx bx-trash"></i>
-                    </div>
-                  </td>
-                </tr>
+              <tbody id="list">
               </tbody>
             </table>
           </div>
@@ -169,10 +130,6 @@
           </div>
           <div class="popup-body">
             <form id="add-service-form">
-              <label>Mã dịch vụ</label>
-              <div class="input-group">
-                <input type="text" class="form-control" disabled />
-              </div>
               <label>Tên dịch vụ</label>
               <div class="input-group">
                 <input
@@ -191,7 +148,7 @@
               <div class="input-group">
                 <input type="tel" class="form-control" placeholder="Giá" />
               </div>
-              <input type="radio" id="isEnable" />
+              <input type="radio" class="form-control" />
               <label>Hiện hành</label>
             </form>
           </div>
@@ -229,7 +186,7 @@
               <div class="input-group">
                 <input type="tel" class="form-control" placeholder="Giá" />
               </div>
-              <input type="radio" id="isEnable" />
+              <input type="radio" class="form-control" />
               <label>Hiện hành</label>
             </form>
           </div>
@@ -282,7 +239,7 @@
           <div class="popup-body">
             <i class="fa fa-times-circle-o" aria-hidden="true"></i>
             <div class="delete-confirm">
-              <h4>Bạn có chắn chắn muốn ngừng dịch vụ?</h4>
+              <h4>Chắc chắn xóa?</h4>
             </div>
           </div>
           <div class="button-center">
@@ -296,5 +253,6 @@
     </div>
 
     <script src="DichVu.js"></script>
+    <script type="module" src="module.js"></script>
   </body>
 </html>

@@ -148,8 +148,14 @@ class Server {
       return excute(api, data)
     },
     thongKeRaVao(data = {}) {
-      //key = TUNGAY&&DENNGAY - TUNGAY=''&&DENNGAY=data - TUNGAY=data&&DENNGAY=''
+      //key = TUNGAY=''&&DENNGAY='' - TUNGAY=''&&DENNGAY=data - TUNGAY=data&&DENNGAY=''
       let api = 'http://localhost:8080/ThongKe/RaVao'
+      return excute(api, data)
+    }
+  }
+  ThucPhamBoSung = {
+    getList(data = {}) {
+      let api = 'http://localhost:8080/ThucPham/GetList'
       return excute(api, data)
     }
   }

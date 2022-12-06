@@ -13,14 +13,22 @@ server.NhanVien.getList({ 'KEY': '' })
   .then((result) => {
     let list = document.querySelector("#NhanVienList");
     let out = "";
+    console.log(result)
     for (let nv of result.data) {
+      let tk=""
+      if(nv.TAIKHOAN)
+      tk="Đã khóa"
+      else if(nv.TAIKHOAN===null)
+      tk="Chưa có tài khoản"
+      else 
+      tk="Đang hoạt động"
       out += `
     <tr>
        <td>${nv.MANV}</td>
        <td>${nv.HOTEN}</td>
        <td style="padding-left: 15px;">${nv.SDT}</td>
        <td style="padding-left: 16px;">${nv.CHUCVU}</td>
-       <td style="padding-left: 20px;">${nv.TAIKHOAN}</td>
+       <td style="padding-left: 20px;">${tk}</td>
         <td>
             <div class="btn-container">
                 <i class='bx bxs-edit btn-edit'></i>
@@ -283,13 +291,20 @@ search.addEventListener("keyup", () => {
       let list = document.querySelector("#NhanVienList");
       let out = "";
       for (let nv of result.data) {
+        let tk=""
+      if(result.data.TAIKHOAN)
+      tk="Đã khóa"
+      else if(!result.data.TAIKHOAN)
+      tk="Đang hoạt động"
+      else 
+      tk="Chưa có tài khoản"
         out += `
     <tr>
        <td>${nv.MANV}</td>
        <td>${nv.HOTEN}</td>
        <td style="padding-left: 15px;">${nv.SDT}</td>
        <td style="padding-left: 16px;">${nv.CHUCVU}</td>
-       <td style="padding-left: 20px;">${nv.TAIKHOAN}</td>
+       <td style="padding-left: 20px;">${tk}</td>
         <td>
             <div class="btn-container">
                 <i class='bx bxs-edit btn-edit'></i>

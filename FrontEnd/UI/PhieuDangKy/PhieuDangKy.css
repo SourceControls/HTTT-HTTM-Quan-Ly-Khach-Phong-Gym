@@ -134,7 +134,9 @@ nav .sidebar-button i{
 }
 /* HEADER SECTION */
 .search-box{
-  position: relative;
+  position: absolute;
+  right: 0;
+  bottom: 10px;
   height: 50px;
   max-width: 400px;
   width: 100%;
@@ -210,7 +212,7 @@ table {
   display: flex;
   background-color: #fff;
   flex-flow: column;
-  height: 45%;
+  height: 105%;
   width: 100%;
   border-radius: 15px;
   font-size: 14px;
@@ -258,17 +260,12 @@ table thead, table tbody tr {
   background: var(--blue);
 }
 .panel{
-  background-color: #fff;
-  box-shadow: 1px 2px 8px rgb(1, 11, 31);
   border-radius: 15px;
   margin-top: 30px;
-  padding: 20px 0px;
-  height: 38vh;
-  justify-content: center;
+  padding: 0px 0;
   display: flex;
-  width: 65%;
   color: #000;
-  margin-left: 220px;
+  position:relative
 }
 .input-item{
   margin-bottom: 10px;
@@ -282,9 +279,8 @@ table thead, table tbody tr {
   
 }
 .input{
-  margin-left: 85px;
-  width: 450px;
-}
+  margin-left: 22px;
+  }
 .input input{
   height: 35px;
   width: 250px;
@@ -305,7 +301,7 @@ table thead, table tbody tr {
 }
 .panel-btn button{
   width: 140px;
-  height: 45px;
+  height: 35px;
   border-radius: 13px;
   color: #fff;
   background-color: var(--blue);
@@ -313,15 +309,16 @@ table thead, table tbody tr {
   margin-right: 8px;
   cursor: pointer;
   transition: 0.3s;
+  margin-bottom: 10px;
 }
 .panel-btn button:hover{
   background-color: var(--purple);
 }
 .panel-btn{
   display: flex;
-  margin-left: 60px;
-  justify-content: flex-start;
-  margin-top: 43px;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-left: 20px;
 }
 .show{
   display: block;
@@ -381,14 +378,15 @@ table thead, table tbody tr {
 
 .img img{
   object-fit: fill;
-  width:230px;
-  height: 247px;
+  width:80px;
+  height: 80px;
   border-radius: 15px;
 }
 .img-section{
   display: flex;
   flex-direction: column;
 }
+
 .input-group input{
   width: 300px;
   height: 40px;

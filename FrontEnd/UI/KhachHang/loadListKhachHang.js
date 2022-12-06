@@ -15,6 +15,7 @@ async function loadList(KEY) {
     if (e.HINHANH.trim().length == 0) {
       e.HINHANH = "./defaultAvt.jpg"
     }
+    console.log(e.HINHANH);
     tblKhachHang.innerHTML += `
                <tr id="${e.MAKH}">
                   <td>${e.MAKH}</td>
