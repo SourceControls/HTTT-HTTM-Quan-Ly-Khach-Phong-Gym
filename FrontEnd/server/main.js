@@ -155,7 +155,23 @@ class Server {
   }
   ThucPhamBoSung = {
     getList(data = {}) {
+      //key: KEY
       let api = 'http://localhost:8080/ThucPham/GetList'
+      return excute(api, data)
+    },
+    themSanPham(data = {}) {
+      //key: TENSP, MOTA, HINHANH
+      let api = 'http://localhost:8080/ThucPham/Insert'
+      return excute(api, data)
+    },
+    capNhatSanPham(data = {}) {
+      //key:  MASP, TENSP, MOTA, HINHANH
+      let api = 'http://localhost:8080/ThucPham/Update'
+      return excute(api, data)
+    },
+    xoaSanPham(data = {}) {
+      //key = MASP
+      let api = 'http://localhost:8080/ThucPham/Delete'
       return excute(api, data)
     }
   }
