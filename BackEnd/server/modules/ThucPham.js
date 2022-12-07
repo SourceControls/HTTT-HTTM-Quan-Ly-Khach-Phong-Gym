@@ -13,6 +13,15 @@ class ThucPham {
   static searchThucPham(params) {
     return DB.excute('SP_TIM_KIEM_THUC_PHAM', params)
   }
+  static insertThucPham(params) {
+    return DB.excute('SP_THEM_THUC_PHAM', params)
+  }
+  static updateThucPham(params) {
+    return DB.excute('SP_CAP_NHAT_THUC_PHAM', params)
+  }
+  static deleteThucPham(params) {
+    return DB.excute('SP_XOA_THUC_PHAM', params)
+  }
 }
 
 module.exports = ThucPham
