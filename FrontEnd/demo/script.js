@@ -3,8 +3,9 @@ import server from '../server/main.js'
 
 
 
-server.NhanVien.themNhanVien({
-  HOTEN: 'Nguyễn Văn B', SDT: '0973343549', CHUCVU: 'TIEPTAN'
+server.ThucPhamBoSung.xoaSanPham({
+  MASP: 'TP00000003',
+  TENSP: 'Whey 5.02lbs', MOTA: 'Tăng cân tăng cơ, giảm mỡ', HINHANH: './'
 }).then((result) => {
   console.log(result);
 }).catch((err) => {

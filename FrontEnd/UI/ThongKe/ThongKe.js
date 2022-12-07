@@ -8,37 +8,6 @@ sidebarBtn.onclick = function () {
         sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
 }
 
-/* PIE CHART*/
-google.charts.load('current', { 'packages': ['corechart'] });
-        google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-
-            var data1 = google.visualization.arrayToDataTable([
-                ['Gender', 'Person'],
-                ['Nam', 30],
-                ['Nữ', 11]
-            ]);
-            var data2 = google.visualization.arrayToDataTable([
-                ['Gender', 'Person'],
-                ['18-25', 10],
-                ['26-35', 25],
-                ['Trên 35', 6]
-            ]);
-
-            var option1 = {
-                title: 'Giới tính'
-            };
-            var option2 = {
-                title: 'Độ tuổi'
-            };
-
-            var chart1 = new google.visualization.PieChart(document.getElementById('piechart1'));
-            var chart2 = new google.visualization.PieChart(document.getElementById('piechart2'));
-
-            chart1.draw(data1, option1);
-            chart2.draw(data2, option2);
-        }
 
 /* LINE CHART */
 var xValues = ['7-9AM','10-12AM','1-3AM','4-7AM'];
