@@ -12,8 +12,13 @@ class ThongKeControllers {
     }
 
     xemThongKeRaVao = async (req, res) => {
-        let rs = await DB.query('SELECT * FROM V_LUOT_RA_VAO')
-        res.send(json(true, rs))
+        const { TUNGAY, DENNGAY } = req.body
+        let params = [
+            { name: 'TUNGAY', type: 'Date', value: TUNGAY},
+            { name: 'DENNGAY', type: 'Date', value: DENNGAY},
+        ]
+        let rs = await DB.excute('SP_LUOT_RA_VAO', params)
+        res.send(json(true, rs.recordset))
     }
 
     xemDoanhThu = async (req, res) => {
