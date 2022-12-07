@@ -10,7 +10,7 @@ class ThucPhamControllers {
     getList = async (req, res) => {
         const { KEY } = req.body
         let params = [{name: 'KEY', type: 'Nvarchar(20)', value: KEY}]
-        if(!KEY){
+        if(KEY == ''){
             let rs = await ThucPham.getListThucPham()
             res.send(json(true, rs))
             return

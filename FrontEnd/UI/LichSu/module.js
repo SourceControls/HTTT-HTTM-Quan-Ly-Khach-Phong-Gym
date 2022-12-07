@@ -15,10 +15,9 @@ let input = document.querySelectorAll(".form-control")
 
 
 let rows = document.getElementsByTagName("tbody")[0].rows;
-
+let luot = document.querySelector(".text p")
 
 // GET LIST
-
 server.LichSuVaoPhong.getList({'KEY': ''})
   .then((result) => {
     let list = document.querySelector("#list");
@@ -36,6 +35,8 @@ server.LichSuVaoPhong.getList({'KEY': ''})
     `;
     }
     list.innerHTML = out;
+    console.log(rows.length)
+    luot.innerText = Number(rows.length)
     for (let i = 0; i < rows.length; i++) {
       rows[i].addEventListener("click", () => {
         server.LichSuVaoPhong.chiTiet({'STT': result.data[i].STT})
@@ -78,6 +79,8 @@ search.addEventListener("keyup", () => {
     `;
     }
     list.innerHTML = out;
+    console.log(rows.length)
+    luot.innerText = Number(rows.length)
     }).catch((err) => {
 
     });

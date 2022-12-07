@@ -26,8 +26,8 @@ btn.addEventListener("click", () => {
             console.log(result);
             if (result.status) {
                 window.localStorage.setItem("username", account);
-                // window.location.replace("../NhanVien/NhanVien.html");
-                console.log(initNhanVien())
+                window.location.replace("../NhanVien/NhanVien.html");
+                // console.log(initNhanVien())
                 // if(initNhanVien().length==6)
                 // window.location.replace("../DichVu/DichVu.html");
                 // else

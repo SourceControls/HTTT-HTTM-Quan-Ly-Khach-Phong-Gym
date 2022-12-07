@@ -94,8 +94,8 @@
                     <div class="profile-details">
                         <img src="h1.jpg" alt="" />
                         <div class="admin_name">
-                            <span>Nguyễn Văn A</span>
-                            <span>Nhân Viên</span>
+                            <span></span>
+                            <span></span>
                         </div>
                     </div>
                 </nav>
@@ -119,46 +119,7 @@
                                 <th style="width: 25px"></th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td style="width: 10%">SP01</td>
-                                <td>Whey Gold Standard 5Lbs (2.3kg)</td>
-                                <td>
-                                    Whey Gold luôn là biểu tượng tiêu chuẩn trong những sản phẩm
-                                    tăng cơ cho người tập gym, với thành phần chuẩn mực nhất.
-                                </td>
-                                <td>
-                                    <img class="table-img"
-                                        src="https://7ut8g5rmobj.cdn.hostvn.net/wp-content/uploads/2016/10/100-whey-gold-standard-5lbs-2-3kg-13-2-1.jpg"
-                                        alt="AVT" />
-                                </td>
-                                <td>
-                                    <div class="btn-container">
-                                        <i class="bx bxs-edit"></i>
-                                        <i class="bx bx-trash"></i>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width: 10%">SP02</td>
-                                <td>ISO Whey Zero 5Lbs (2.3kg)</td>
-                                <td>
-                                    ISO Whey ZERO được chiết lọc tinh chất từ whey protein (WPI)
-                                    tinh khiết nhất, với thành phần độc đáo ZERO lactose, ZERO
-                                    trans fat và ZERO cholesterol, phát triển cơ bắp vượt trội.
-                                </td>
-                                <td>
-                                    <img class="table-img"
-                                        src="https://7ut8g5rmobj.cdn.hostvn.net/wp-content/uploads/2019/03/Biotech-Iso-Whey-Zero-5lbs-1.jpg"
-                                        alt="AVT" />
-                                </td>
-                                <td>
-                                    <div class="btn-container">
-                                        <i class="bx bxs-edit"></i>
-                                        <i class="bx bx-trash"></i>
-                                    </div>
-                                </td>
-                            </tr>
+                        <tbody id="list">
                         </tbody>
                     </table>
                 </div>
@@ -185,7 +146,7 @@
                             </textarea>
                         </div>
                         <div class="input-group">
-                            <input type="file" class="form-control image-input" name="HINHANH" />
+                            <input type="file" class="form-control image-input" name="" />
                         </div>
                         <div class="button-center">
                             <button type="submit" class="btn-form btn-add-form">Thêm</button>
@@ -209,15 +170,15 @@
                     <form id="update-product-form">
                         <label>Mã sản phẩm</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" value="SP01"/>
+                            <input type="text" class="form-control" disabled/>
                         </div>
                         <label>Tên sản phẩm</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" value="Whey Gold Standard 5Lbs (2.3kg)"/>
+                            <input type="text" class="form-control"/>
                         </div>
                         <label>Mô tả</label>
                         <div class="input-group">
-                            <textarea type="text" class="form-control" cols="40" rows="10">Whey Gold luôn là biểu tượng tiêu chuẩn trong những sản phẩm tăng cơ cho người tập gym, với thành phần chuẩn mực nhất.</textarea>
+                            <textarea type="text" class="form-control" cols="40" rows="10"></textarea>
                             </textarea>
                         </div>
                         <div class="input-group">
@@ -233,6 +194,7 @@
                 </div>
 
             </div>
+            
             <!-- POPUP DELETE CONFIRM -->
             <div class="popup popup-delete-confirm">
                 <div class="popup-body">
@@ -248,10 +210,17 @@
                     <button class="btn-form btn-cancel-form">Hủy</button>
                 </div>
             </div>
+            
         </div>
     </div>
 
     <script src="ThucPhamBoSung.js"></script>
+    <script type="module" src="module.js"></script>
 </body>
 
 </html>
+
+
+
+
+
