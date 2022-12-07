@@ -9,6 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script type="text/javascript">
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script>
     <title>Thống kê</title>
 </head>
 
@@ -133,9 +138,9 @@
                             <div class="flexdown">
                                 <div class="body">
                                     <form>
-                                        <label >Từ ngày:</label>
+                                        <label>Từ ngày:</label>
                                         <input type="date" id="" name="" />
-                                        <label >Đến ngày:</label>
+                                        <label>Đến ngày:</label>
                                         <input type="date" id="" name="to" />
                                     </form>
                                     <button type="submit" class="btn-filter">Lọc</button>
@@ -154,15 +159,15 @@
                                 <h2>Bảng Doanh Thu</h2>
                                 <div class="right">
                                     <h4>Tổng doanh thu:</h4>
-                                    <p>100.000.000 VNĐ</p>
+                                    <p></p>
                                 </div>
                             </div>
                             <div class="body">
                                 <form>
                                     <label>Từ ngày:</label>
-                                    <input type="date" id="fromDT" value=""/>
+                                    <input type="date" id="fromDT" value="" />
                                     <label>Đến ngày:</label>
-                                    <input type="date" id="toDT" value=""/>
+                                    <input type="date" id="toDT" value="" />
                                 </form>
                                 <button type="submit" class="btn-filterDT btn-filter">Lọc</button>
                                 <button type="submit" class="btn-reset">Làm mới</button>
