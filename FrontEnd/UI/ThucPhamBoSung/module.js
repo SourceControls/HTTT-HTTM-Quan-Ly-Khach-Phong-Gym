@@ -54,7 +54,7 @@ async function initEvents() {
   let btn_edit = document.querySelectorAll(".btn-edit");
   let input = document.querySelectorAll(".form-control");
   let btn_delete = document.querySelectorAll(".btn-delete");
-  let btn_cancel = document.querySelectorAll(".btn-cancel-form");
+  let btn_cancel = document.querySelectorAll(".btn-cancel");
   let popup_add = document.getElementsByClassName("popup-add");
   let popup_edit = document.getElementsByClassName("popup-update");
   let popup_delete_confirm = document.getElementsByClassName(
@@ -117,7 +117,7 @@ async function initEvents() {
       img(data);
       server.ThucPhamBoSung.themSanPham(data)
         .then((result) => {
-          console.log(result);
+          // console.log(result.data);
           if (result.status) {
             popup_add[0].classList.remove("show");
             alert("Thêm sản phẩm thành công");
@@ -197,10 +197,13 @@ async function initEvents() {
     });
   }
 }
+
+
 async function loadListSP(KEY) {
   await loadList(KEY);
   initEvents();
 }
+
 loadListSP('');
 
 const searchBar = document.querySelector(".search-box input");

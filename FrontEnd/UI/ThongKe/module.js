@@ -62,8 +62,54 @@ btnReset[2].addEventListener("click", () => {
     .catch((err) => {});
 });
 
+btnReset[0].addEventListener("click", () => {
+  server.ThongKe.thongKeKhachHang({'TUNGAY':'', 'DENNGAY': ''})
+  .then((result) => {
+    // console.log(result)
+    KH.innerText = result.data[0].TONGKH;
+    KHcu.innerText = result.data[0].TONGKHCU;
+    KHmoi.innerText = result.data[0].TONGKHMOI;
+    /* PIE CHART*/
+
+    google.charts.load("current", { packages: ["corechart"] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      var data1 = google.visualization.arrayToDataTable([
+        ["Gender", "Person"],
+        ["Nam", result.data[0].NAM],
+        ["Nữ", result.data[0].NU],
+      ]);
+      var data2 = google.visualization.arrayToDataTable([
+        ["Age", "Person"],
+        ["6-14", result.data[0]["6-14"]],
+        ["15-24", result.data[0]["15-24"]],
+        ["Trên 24", result.data[0]["> 24"]],
+      ]);
+
+      var option1 = {
+        title: "Giới tính",
+      };
+      var option2 = {
+        title: "Độ tuổi",
+      };
+
+      var chart1 = new google.visualization.PieChart(
+        document.getElementById("piechart1")
+      );
+      var chart2 = new google.visualization.PieChart(
+        document.getElementById("piechart2")
+      );
+
+      chart1.draw(data1, option1);
+      chart2.draw(data2, option2);
+    }
+  })
+  .catch((err) => {});
+})
+
 // THONG KE KHACH HANG
-server.ThongKe.thongKeKhachHang()
+server.ThongKe.thongKeKhachHang({'TUNGAY':'', 'DENNGAY': ''})
   .then((result) => {
     // console.log(result)
     KH.innerText = result.data[0].TONGKH;
@@ -108,12 +154,12 @@ server.ThongKe.thongKeKhachHang()
   .catch((err) => {});
 
 // KHACH HANG LOC BUTTON
-btnFilter[1].addEventListener("click", () => {
+btnFilter[0].addEventListener("click", () => {
   let to = document.querySelector("#to").value;
   let from = document.querySelector("#from").value;
-  server.ThongKe.thongKeKhachHang({ TUNGAY: from, DENNGAY: to })
+  server.ThongKe.thongKeKhachHang({ 'TUNGAY': from, 'DENNGAY': to })
     .then((result) => {
-      // console.log(result)
+      console.log(result)
 
       KH.innerText = result.data[0].TONGKH;
       KHcu.innerText = result.data[0].TONGKHCU;
@@ -228,9 +274,9 @@ btnFilter[2].addEventListener("click", () => {
 btnFilter[1].addEventListener("click", () => {
   let to = document.querySelector("#toRV").value;
   let from = document.querySelector("#fromRV").value;
-  server.ThongKe.thongKeRaVao({ TUNGAY: from, DENNGAY: to })
+  server.ThongKe.thongKeRaVao({ 'TUNGAY': from, 'DENNGAY': to })
     .then((result) => {
-      console.log(result);
+      console.log({from, to});
 
       let xValues = [];
       let yValues = [];
@@ -269,7 +315,7 @@ btnFilter[1].addEventListener("click", () => {
 });
 
 //  LINE CHART LUOT RA VAO
-server.ThongKe.thongKeRaVao({ TUNGAY: " ", DENNGAY: " " })
+server.ThongKe.thongKeRaVao({ 'TUNGAY': " ", 'DENNGAY': " " })
   .then((result) => {
     console.log(result.data);
     let xValues = [];
@@ -307,10 +353,11 @@ server.ThongKe.thongKeRaVao({ TUNGAY: " ", DENNGAY: " " })
   })
   .catch((err) => {});
 
+  //THONG KE RA VAO LOC
   btnReset[1].addEventListener("click", ()=>{
-    server.ThongKe.thongKeRaVao({ TUNGAY: " ", DENNGAY: " " })
+    server.ThongKe.thongKeRaVao({ 'TUNGAY': " ", 'DENNGAY': " " })
   .then((result) => {
-    console.log(result.data);
+    // console.log(result.data);
     let xValues = [];
     let yValues = [];
 

@@ -11,6 +11,9 @@
     function preventBack() { window.history.forward(); }
     setTimeout("preventBack()", 0);
     window.onunload = function () { null };
+    if (!window.localStorage.getItem('username')) {
+        window.location.href = '/FrontEnd/UI/Login/Login.html';
+      }
   </script>
   <title>Quản lý dịch vụ</title>
 </head>
@@ -73,7 +76,7 @@
             </a>
           </li>
           <li class="log_out">
-            <a href="/FrontEnd/UI/Login/Login.html">
+            <a href="/FrontEnd/UI/Login/Login.html" onclick="window.localStorage.setItem('username','')">
               <i class="bx bx-log-out"></i>
               <span class="links_name">ĐĂNG XUẤT</span>
             </a>

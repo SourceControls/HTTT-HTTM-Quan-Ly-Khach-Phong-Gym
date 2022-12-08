@@ -13,6 +13,9 @@
     function preventBack() { window.history.forward(); }
     setTimeout("preventBack()", 0);
     window.onunload = function () { null };
+    if (!window.localStorage.getItem('username')) {
+        window.location.href = '/FrontEnd/UI/Login/Login.html';
+      }
   </script>
   <title>Thống kê</title>
 </head>

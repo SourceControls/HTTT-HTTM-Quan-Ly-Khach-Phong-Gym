@@ -13,6 +13,9 @@
         function preventBack() { window.history.forward(); }
         setTimeout("preventBack()", 0);
         window.onunload = function () { null };
+        if (!window.localStorage.getItem('username')) {
+        window.location.href = '/FrontEnd/UI/Login/Login.html';
+      }
     </script>
     <title>Thống kê</title>
 </head>
@@ -131,17 +134,17 @@
                                     </div>
                                 </div>
                                 <div class="chart">
-                                    <div id="piechart1" style="width: 240px; height: 180px"></div>
-                                    <div id="piechart2" style="width: 240px; height: 180px"></div>
+                                    <div id="piechart1" style="width: 340px; height: 220px"></div>
+                                    <div id="piechart2" style="width: 340px; height: 220px"></div>
                                 </div>
                             </div>
                             <div class="flexdown">
                                 <div class="body">
                                     <form>
                                         <label>Từ ngày:</label>
-                                        <input type="date" id="toRV" name="" />
+                                        <input type="date" id="fromRV" name="" />
                                         <label>Đến ngày:</label>
-                                        <input type="date" id="fromRV" name="to" />
+                                        <input type="date" id="toRV" name="to" />
                                     </form>
                                     <button type="submit" class="btn-filter">Lọc</button>
                                     <button type="submit" class="btn-reset">Làm mới</button>
