@@ -1,11 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="KhachHang.css" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet" />
 
     <link
       rel="stylesheet"
@@ -19,13 +13,88 @@
     <title>Quản lý khách hàng</title>
   </head>
 
-  <body>
-    <div class="overlay">
-      <div class="container">
-        <section class="sidebar">
-          <div class="logo-details">
-            <i class="bx bx-cube-alt"></i>
-            <span class="logo_name">GymCenter</span>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script type="text/javascript">
+    function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };
+  </script>
+  <title>Quản lý khách hàng</title>
+</head>
+
+<body>
+  <div class="overlay">
+    <div class="container">
+      <section class="sidebar">
+        <div class="logo-details">
+          <i class="bx bx-cube-alt"></i>
+          <span class="logo_name">GymCenter</span>
+        </div>
+        <ul class="nav-links">
+          <li>
+            <a href="/FrontEnd/UI/NhanVien/NhanVien.html">
+              <i class="bx bxs-user-account"></i>
+              <span class="links_name">NHÂN VIÊN</span>
+            </a>
+          </li>
+          <li>
+            <a href="/FrontEnd/UI/KhachHang/KhachHang.html">
+              <i class="bx bx-user"></i>
+              <span class="links_name">KHÁCH HÀNG</span>
+            </a>
+          </li>
+          <li>
+            <a href="/FrontEnd/UI/DichVu/DichVu.html">
+              <i class="bx bx-list-ul"></i>
+              <span class="links_name">DỊCH VỤ</span>
+            </a>
+          </li>
+          <li>
+            <a href="/FrontEnd/UI/ThucPhamBoSung/ThucPhamBoSung.html">
+              <i class="bx bxs-baguette"></i>
+              <span class="links_name">THỰC PHẨM BỔ SUNG</span>
+            </a>
+          </li>
+          <li>
+            <a href="/FrontEnd/UI/PhieuDangKy/PhieuDangKy.html">
+              <i class="bx bxs-notepad"></i>
+              <span class="links_name">PHIẾU ĐĂNG KÝ</span>
+            </a>
+          </li>
+          <li>
+            <a href="/FrontEnd/UI/LichSu/LichSu.html">
+              <i class="bx bxs-door-open"></i>
+              <span class="links_name">LỊCH SỬ VÀO PHÒNG</span>
+            </a>
+          </li>
+          <li>
+            <a href="/FrontEnd/UI/ThongKe/ThongKe.html">
+              <i class="bx bx-bar-chart-alt"></i>
+              <span class="links_name">THỐNG KÊ</span>
+            </a>
+          </li>
+          <li>
+            <a href="/FrontEnd/UI/DoiMatKhau/DoiMatKhau.html">
+              <i class="bx bx-book-alt"></i>
+              <span class="links_name">ĐỔI MẬT KHẨU</span>
+            </a>
+          </li>
+
+          <li class="log_out">
+            <a href="/FrontEnd/UI/Login/Login.html">
+              <i class="bx bx-log-out"></i>
+              <span class="links_name">ĐĂNG XUẤT</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <!-- HOME SECTION -->
+      <section class="home-section">
+        <!-- NAVBAR -->
+        <nav>
+          <div class="sidebar-button">
+            <i class="bx bx-menu sidebarBtn"></i>
           </div>
           <ul class="nav-links">
             <li>
@@ -94,45 +163,87 @@
             <div class="sidebar-button">
               <i class="bx bx-menu sidebarBtn"></i>
             </div>
-            <div class="page-header">
-              <h2>Danh Sách Khách Hàng</h2>
+          </div>
+        </nav>
+        <!-- TABLE -->
+        <div class="home-content">
+          <div class="body-header">
+            <button type="button" class="btn btn-add">Thêm mới</button>
+            <div class="search-box">
+              <input type="text" class="search-bar" placeholder="Tìm khách hàng..." />
+              <i class="bx bx-search search-btn" style="cursor: pointer"></i>
             </div>
-            <div class="profile-details">
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Mã khách hàng</th>
+                <th>Họ tên</th>
+                <th>SĐT</th>
+                <th>Giới tính</th>
+                <th>Năm sinh</th>
+                <th>Ngày tham gia</th>
+                <th>Hình ảnh</th>
+                <th></th>
+                <th style="width: 25px"></th>
+              </tr>
+            </thead>
+            <tbody class="tbl-khachHang"></tbody>
+          </table>
+        </div>
+      </section>
+      <!-- POPUP ADD -->
+      <div class="popup popup-add">
+        <div class="popup-header">
+          <h2>Thêm Khách Hàng</h2>
+        </div>
+        <div class="popup-body">
+          <div class="img-section">
+            <div class="img-box">
               <img src="defaultAvt.jpg" alt="" />
-              <div class="admin_name">
-                <span>Nguyễn Văn A</span>
-                <span>Nhân Viên</span>
-              </div>
             </div>
-          </nav>
-          <!-- TABLE -->
-          <div class="home-content">
-            <div class="body-header">
-              <button type="button" class="btn btn-add">Thêm mới</button>
-              <div class="search-box">
-                <input
-                  type="text"
-                  class="search-bar"
-                  placeholder="Tìm khách hàng..." />
-                <i class="bx bx-search search-btn" style="cursor: pointer"></i>
-              </div>
+          </div>
+          <form id="add-customer-form">
+            <label>Họ tên</label>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Họ tên" name="HOTEN" />
             </div>
-            <table>
-              <thead>
-                <tr>
-                  <th>Mã khách hàng</th>
-                  <th>Họ tên</th>
-                  <th>SĐT</th>
-                  <th>Giới tính</th>
-                  <th>Năm sinh</th>
-                  <th>Ngày tham gia</th>
-                  <th>Hình ảnh</th>
-                  <th></th>
-                  <th style="width: 25px"></th>
-                </tr>
-              </thead>
-              <tbody class="tbl-khachHang"></tbody>
-            </table>
+            <label>Năm sinh</label>
+            <div class="input-group">
+              <input type="tel" class="form-control" placeholder="Năm sinh" name="NAMSINH" />
+            </div>
+            <label>SĐT</label>
+            <div class="input-group">
+              <input type="tel" class="form-control" placeholder="Số điện thoại" name="SDT" />
+            </div>
+            <input type="radio" id="add-male" name="GIOITINH" value="NAM" checked />
+            <label for="male">Nam</label>
+            <input type="radio" id="add-female" name="GIOITINH" value="NỮ" />
+            <label for="female">Nữ</label>
+            <div class="input-group">
+              <input type="file" class="form-control image-input" name="HINHANH" />
+            </div>
+            <div class="button-center">
+              <button type="submit" class="btn-form btn-add-form">
+                Thêm
+              </button>
+              <button type="button" class="btn-form btn-cancel-form">
+                Hủy
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- POPUP UPDATE -->
+      <div class="popup popup-update">
+        <div class="popup-header">
+          <h2>Cập Nhật Khách Hàng</h2>
+        </div>
+        <div class="popup-body">
+          <div class="img-section">
+            <div class="img-box">
+              <img src="defaultAvt.jpg" alt="" />
+            </div>
           </div>
         </section>
       </div>
@@ -396,7 +507,6 @@
                   <th>Tên Sản Phẩm</th>
                   <th style="width: 40%">Mô Tả</th>
                   <th>Hình Ảnh</th>
-
                   <th style="width: 25px"></th>
                 </tr>
               </thead>

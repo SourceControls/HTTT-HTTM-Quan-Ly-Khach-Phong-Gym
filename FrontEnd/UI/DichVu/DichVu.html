@@ -1,258 +1,238 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="DichVu.css" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quản lý dịch vụ</title>
-  </head>
 
-  <body>
-    <div class="overlay">
-      <div class="container">
-        <section class="sidebar">
-          <div class="logo-details">
-            <i class="bx bx-cube-alt"></i>
-            <span class="logo_name">GymCenter</span>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="DichVu.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script type="text/javascript">
+    function preventBack() { window.history.forward(); }
+    setTimeout("preventBack()", 0);
+    window.onunload = function () { null };
+  </script>
+  <title>Quản lý dịch vụ</title>
+</head>
+
+<body>
+  <div class="overlay">
+    <div class="container">
+      <section class="sidebar">
+        <div class="logo-details">
+          <i class="bx bx-cube-alt"></i>
+          <span class="logo_name">GymCenter</span>
+        </div>
+        <ul class="nav-links">
+          <li>
+            <a href="/FrontEnd/UI/NhanVien/NhanVien.html">
+              <i class="bx bxs-user-account"></i>
+              <span class="links_name">NHÂN VIÊN</span>
+            </a>
+          </li>
+          <li>
+            <a href="/FrontEnd/UI/KhachHang/KhachHang.html">
+              <i class="bx bx-user"></i>
+              <span class="links_name">KHÁCH HÀNG</span>
+            </a>
+          </li>
+          <li>
+            <a href="/FrontEnd/UI/DichVu/DichVu.html">
+              <i class="bx bx-list-ul"></i>
+              <span class="links_name">DỊCH VỤ</span>
+            </a>
+          </li>
+          <li>
+            <a href="/FrontEnd/UI/ThucPhamBoSung/ThucPhamBoSung.html">
+              <i class="bx bxs-baguette"></i>
+              <span class="links_name">THỰC PHẨM BỔ SUNG</span>
+            </a>
+          </li>
+          <li>
+            <a href="/FrontEnd/UI/PhieuDangKy/PhieuDangKy.html">
+              <i class="bx bxs-notepad"></i>
+              <span class="links_name">PHIẾU ĐĂNG KÝ</span>
+            </a>
+          </li>
+          <li>
+            <a href="/FrontEnd/UI/LichSu/LichSu.html">
+              <i class="bx bxs-door-open"></i>
+              <span class="links_name">LỊCH SỬ VÀO PHÒNG</span>
+            </a>
+          </li>
+          <li>
+            <a href="/FrontEnd/UI/ThongKe/ThongKe.html">
+              <i class="bx bx-bar-chart-alt"></i>
+              <span class="links_name">THỐNG KÊ</span>
+            </a>
+          </li>
+          <li>
+            <a class="btn-change-password" href="/FrontEnd/UI/DoiMatKhau/DoiMatKhau.html">
+              <i class="bx bx-book-alt"></i>
+              <span class="links_name">ĐỔI MẬT KHẨU</span>
+            </a>
+          </li>
+          <li class="log_out">
+            <a href="/FrontEnd/UI/Login/Login.html">
+              <i class="bx bx-log-out"></i>
+              <span class="links_name">ĐĂNG XUẤT</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <!-- HOME SECTION -->
+      <section class="home-section">
+        <!-- NAVBAR -->
+        <nav>
+          <div class="sidebar-button">
+            <i class="bx bx-menu sidebarBtn"></i>
           </div>
-          <ul class="nav-links">
-            <li>
-              <a href="/FrontEnd/UI/NhanVien/NhanVien.html">
-                <i class="bx bxs-user-account"></i>
-                <span class="links_name">NHÂN VIÊN</span>
-              </a>
-            </li>
-            <li>
-              <a href="/FrontEnd/UI/KhachHang/KhachHang.html">
-                <i class="bx bx-user"></i>
-                <span class="links_name">KHÁCH HÀNG</span>
-              </a>
-            </li>
-            <li>
-              <a href="/FrontEnd/UI/DichVu/DichVu.html">
-                <i class="bx bx-list-ul"></i>
-                <span class="links_name">DỊCH VỤ</span>
-              </a>
-            </li>
-            <li>
-              <a href="/FrontEnd/UI/ThucPhamBoSung/ThucPhamBoSung.html">
-                <i class="bx bxs-baguette"></i>
-                <span class="links_name">THỰC PHẨM BỔ SUNG</span>
-              </a>
-            </li>
-            <li>
-              <a href="/FrontEnd/UI/PhieuDangKy/PhieuDangKy.html">
-                <i class="bx bxs-notepad"></i>
-                <span class="links_name">PHIẾU ĐĂNG KÝ</span>
-              </a>
-            </li>
-            <li>
-              <a href="/FrontEnd/UI/LichSu/LichSu.html">
-                <i class="bx bxs-door-open"></i>
-                <span class="links_name">LỊCH SỬ VÀO PHÒNG</span>
-              </a>
-            </li>
-            <li>
-              <a href="/FrontEnd/UI/ThongKe/ThongKe.html">
-                <i class="bx bx-bar-chart-alt"></i>
-                <span class="links_name">THỐNG KÊ</span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="btn-change-password"
-                href="/FrontEnd/UI/DoiMatKhau/DoiMatKhau.html">
-                <i class="bx bx-book-alt"></i>
-                <span class="links_name">ĐỔI MẬT KHẨU</span>
-              </a>
-            </li>
-            <li class="log_out">
-              <a href="/FrontEnd/UI/Login/Login.html">
-                <i class="bx bx-log-out"></i>
-                <span class="links_name">ĐĂNG XUẤT</span>
-              </a>
-            </li>
-          </ul>
-        </section>
-        <!-- HOME SECTION -->
-        <section class="home-section">
-          <!-- NAVBAR -->
-          <nav>
-            <div class="sidebar-button">
-              <i class="bx bx-menu sidebarBtn"></i>
-            </div>
-            <div class="page-header">
-              <h2>Danh Sách Dịch Vụ</h2>
-            </div>
-            <div class="profile-details">
-              <img src="h1.jpg" alt="" />
-              <div class="admin_name">
-                <span></span>
-                <span></span>
-              </div>
-            </div>
-          </nav>
-          <!-- TABLE -->
-          <div class="home-content">
-            <div class="body-header">
-              <button type="button" class="btn btn-add">Thêm mới</button>
-              <div class="search-box">
-                <input type="text" placeholder="Tìm dich vụ..." />
-                <i class="bx bx-search" style="cursor: pointer"></i>
-              </div>
-            </div>
-            <table>
-              <thead>
-                <tr>
-                  <th>Mã dịch vụ</th>
-                  <th>Tên dịch vụ</th>
-                  <th>Số ngày sử dụng</th>
-                  <th>Giá</th>
-                  <th>Hiện hành</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody id="list">
-              </tbody>
-            </table>
+          <div class="page-header">
+            <h2>Danh Sách Dịch Vụ</h2>
           </div>
-        </section>
-        <!-- POPUP ADD -->
-        <div class="popup popup-add">
-          <div class="popup-header">
-            <h2>Thêm Dịch Vụ</h2>
+          <div class="profile-details">
+            <img src="h1.jpg" alt="" />
+            <div class="admin_name">
+              <span></span>
+              <span></span>
+            </div>
           </div>
-          <div class="popup-body">
-            <form id="add-service-form">
-              <label>Tên dịch vụ</label>
-              <div class="input-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Tên dịch vụ" />
-              </div>
-              <label>Số ngày sử dụng</label>
-              <div class="input-group">
-                <input
-                  type="tel"
-                  class="form-control"
-                  placeholder="Số ngày sử dụng" />
-              </div>
-              <label>Giá</label>
-              <div class="input-group">
-                <input type="tel" class="form-control" placeholder="Giá" />
-              </div>
-              <input type="radio" class="form-control" />
-              <label>Hiện hành</label>
-            </form>
+        </nav>
+        <!-- TABLE -->
+        <div class="home-content">
+          <div class="body-header">
+            <button type="button" class="btn btn-add">Thêm mới</button>
+            <div class="search-box">
+              <input type="text" placeholder="Tìm dich vụ..." />
+              <i class="bx bx-search" style="cursor: pointer"></i>
+            </div>
           </div>
-          <div class="button-center">
-            <button type="submit" class="btn-form btn-add-form">Thêm</button>
-            <button type="submit" class="btn-form btn-cancel-form">Hủy</button>
+          <table>
+            <thead>
+              <tr>
+                <th>Mã dịch vụ</th>
+                <th>Tên dịch vụ</th>
+                <th>Số ngày sử dụng</th>
+                <th>Giá</th>
+                <th>Hiện hành</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="list">
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <!-- POPUP ADD -->
+      <div class="popup popup-add">
+        <div class="popup-header">
+          <h2>Thêm Dịch Vụ</h2>
+        </div>
+        <div class="popup-body">
+          <form id="add-service-form">
+            <label>Tên dịch vụ</label>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Tên dịch vụ" />
+            </div>
+            <label>Số ngày sử dụng</label>
+            <div class="input-group">
+              <input type="tel" class="form-control" placeholder="Số ngày sử dụng" />
+            </div>
+            <label>Giá</label>
+            <div class="input-group">
+              <input type="tel" class="form-control" placeholder="Giá" />
+            </div>
+            <input type="radio" class="form-control" />
+            <label>Hiện hành</label>
+          </form>
+        </div>
+        <div class="button-center">
+          <button type="submit" class="btn-form btn-add-form">Thêm</button>
+          <button type="submit" class="btn-form btn-cancel-form">Hủy</button>
+        </div>
+      </div>
+      <!-- POPUP UPDATE -->
+      <div class="popup popup-update">
+        <div class="popup-header">
+          <h2>Cập Nhật Dịch Vụ</h2>
+        </div>
+        <div class="popup-body">
+          <form id="add-service-form">
+            <label>Mã dịch vụ</label>
+            <div class="input-group">
+              <input type="text" class="form-control" disabled />
+            </div>
+            <label>Tên dịch vụ</label>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Tên dịch vụ" />
+            </div>
+            <label>Số ngày sử dụng</label>
+            <div class="input-group">
+              <input type="tel" class="form-control" placeholder="Số ngày sử dụng" />
+            </div>
+            <label>Giá</label>
+            <div class="input-group">
+              <input type="tel" class="form-control" placeholder="Giá" />
+            </div>
+            <input type="radio" class="form-control" />
+            <label>Hiện hành</label>
+          </form>
+        </div>
+        <div class="button-center">
+          <button type="submit" class="btn-form btn-update-form">
+            Cập nhật
+          </button>
+          <button type="submit" class="btn-form btn-cancel-form">Hủy</button>
+        </div>
+      </div>
+      <!-- POPUP CHANGE PASSWORD -->
+      <div class="popup popup-change-password">
+        <div class="popup-header">
+          <h2>Đổi Mật Khẩu</h2>
+        </div>
+        <div class="popup-body">
+          <form id="change-password-form">
+            <label>Mật khẩu cũ</label>
+            <div class="input-group">
+              <input type="password" class="form-control" placeholder="Mật khẩu cũ" />
+            </div>
+            <label>Mật khẩu mới</label>
+            <div class="input-group">
+              <input type="password" class="form-control" placeholder="Mật khẩu mới" />
+            </div>
+            <label>Nhập lại mật khẩu mới</label>
+            <div class="input-group">
+              <input type="password" class="form-control" placeholder="Nhập lại mật khẩu mới" />
+            </div>
+          </form>
+        </div>
+        <div class="button-center">
+          <button type="submit" class="btn-form btn-password-form">
+            Cập nhật
+          </button>
+          <button type="submit" class="btn-form btn-cancel-form">Hủy</button>
+        </div>
+      </div>
+      <!-- POPUP DELETE CONFIRM -->
+      <div class="popup popup-delete-confirm">
+        <div class="popup-body">
+          <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+          <div class="delete-confirm">
+            <h4>Chắc chắn xóa?</h4>
           </div>
         </div>
-        <!-- POPUP UPDATE -->
-        <div class="popup popup-update">
-          <div class="popup-header">
-            <h2>Cập Nhật Dịch Vụ</h2>
-          </div>
-          <div class="popup-body">
-            <form id="add-service-form">
-              <label>Mã dịch vụ</label>
-              <div class="input-group">
-                <input type="text" class="form-control" disabled />
-              </div>
-              <label>Tên dịch vụ</label>
-              <div class="input-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Tên dịch vụ" />
-              </div>
-              <label>Số ngày sử dụng</label>
-              <div class="input-group">
-                <input
-                  type="tel"
-                  class="form-control"
-                  placeholder="Số ngày sử dụng" />
-              </div>
-              <label>Giá</label>
-              <div class="input-group">
-                <input type="tel" class="form-control" placeholder="Giá" />
-              </div>
-              <input type="radio" class="form-control" />
-              <label>Hiện hành</label>
-            </form>
-          </div>
-          <div class="button-center">
-            <button type="submit" class="btn-form btn-update-form">
-              Cập nhật
-            </button>
-            <button type="submit" class="btn-form btn-cancel-form">Hủy</button>
-          </div>
-        </div>
-        <!-- POPUP CHANGE PASSWORD -->
-        <div class="popup popup-change-password">
-          <div class="popup-header">
-            <h2>Đổi Mật Khẩu</h2>
-          </div>
-          <div class="popup-body">
-            <form id="change-password-form">
-              <label>Mật khẩu cũ</label>
-              <div class="input-group">
-                <input
-                  type="password"
-                  class="form-control"
-                  placeholder="Mật khẩu cũ" />
-              </div>
-              <label>Mật khẩu mới</label>
-              <div class="input-group">
-                <input
-                  type="password"
-                  class="form-control"
-                  placeholder="Mật khẩu mới" />
-              </div>
-              <label>Nhập lại mật khẩu mới</label>
-              <div class="input-group">
-                <input
-                  type="password"
-                  class="form-control"
-                  placeholder="Nhập lại mật khẩu mới" />
-              </div>
-            </form>
-          </div>
-          <div class="button-center">
-            <button type="submit" class="btn-form btn-password-form">
-              Cập nhật
-            </button>
-            <button type="submit" class="btn-form btn-cancel-form">Hủy</button>
-          </div>
-        </div>
-        <!-- POPUP DELETE CONFIRM -->
-        <div class="popup popup-delete-confirm">
-          <div class="popup-body">
-            <i class="fa fa-times-circle-o" aria-hidden="true"></i>
-            <div class="delete-confirm">
-              <h4>Chắc chắn xóa?</h4>
-            </div>
-          </div>
-          <div class="button-center">
-            <button type="submit" class="btn-form btn-delete-form">
-              Chắc chắn
-            </button>
-            <button type="submit" class="btn-form btn-cancel-form">Hủy</button>
-          </div>
+        <div class="button-center">
+          <button type="submit" class="btn-form btn-delete-form">
+            Chắc chắn
+          </button>
+          <button type="submit" class="btn-form btn-cancel-form">Hủy</button>
         </div>
       </div>
     </div>
+  </div>
 
-    <script src="DichVu.js"></script>
-    <script type="module" src="module.js"></script>
-  </body>
+  <script src="DichVu.js"></script>
+  <script type="module" src="module.js"></script>
+</body>
+
 </html>

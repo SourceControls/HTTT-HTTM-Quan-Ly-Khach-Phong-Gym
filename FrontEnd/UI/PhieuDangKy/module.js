@@ -1,10 +1,10 @@
 import server from "../../server/main.js";
 
 let search = document.querySelector(".search");
+let nhanVienBox = document.querySelectorAll('.admin_name span');
+let nv_delete = document.querySelector('.nv-delete-input');
+let nv_pay = document.querySelectorAll('.pay-input')[5];
 async function initNhanVien() {
-  let nhanVienBox = document.querySelectorAll('.admin_name span');
-  let nv_delete = document.querySelector('.nv-delete-input');
-  let nv_pay = document.querySelectorAll('.pay-input')[5];
   let nhanVien = (await server.NhanVien.getList({ KEY: window.localStorage.getItem('username') })).data[0]
   nhanVienBox[0].innerText = nhanVien.HOTEN;
   nhanVienBox[1].innerText = nhanVien.MANV + ' - ' + nhanVien.CHUCVU;
@@ -36,7 +36,7 @@ server.PhieuDangKy.getList({ KEY: "" })
         <td style="padding-left: 18px;">${record.NGAYBD}</td>
         <td style="padding-left: 20px;">${record.NGAYKT}</td>
         <td style="padding-left: 33px;">${record.TRANGTHAI}</td>
-        <td style="padding-left: 33px;">${record.TONGTIEN}</td>
+        <td style="padding-left: 33px;">${record.TONGTIEN.toLocaleString('it-IT', {style : 'currency', currency : 'VND'})} </td>
   </tr>
     `;
     }
@@ -62,7 +62,7 @@ server.PhieuDangKy.getList({ KEY: "" })
         pay_input[2].value = today;
         pay_input[3].value = rows[i].getElementsByTagName("td")[4].innerText;
         pay_input[4].value = rows[i].getElementsByTagName("td")[9].innerText;
-        pay_input[5].value = nv.innerText;
+        pay_input[5].value = nv_delete.value;
       });
     }
 
@@ -80,7 +80,7 @@ server.PhieuDangKy.getList({ KEY: "" })
               view_payment_input[3].innerText = Object.values(result.data[0])[1];
               view_payment_input[4].innerText = Object.values(result.data[0])[5];
               view_payment_input[5].innerText = Object.values(result.data[0])[3];
-              view_payment_input[6].innerText = Object.values(result.data[0])[6];
+              view_payment_input[6].innerText = Object.values(result.data[0])[6].toLocaleString('it-IT', {style : 'currency', currency : 'VND'});
               popup_view_payment[0].classList.add("show");
             } else
               alert(result.data);
@@ -97,13 +97,14 @@ server.PhieuDangKy.getList({ KEY: "" })
         alert("Vui lòng chọn phiếu đăng ký");
       else {
         popup_delete_confirm[0].classList.add("show");
-        nv_delete_input[0].value = nv.innerText;
+        nv_delete_input[0].value = nv_delete.value;
         btn_delete_form.addEventListener("click", () => {
           server.PhieuDangKy.huyPhieuDangKy({
             MAPDK: panel_input[0].value,
-            MANVHUY: nv.innerText,
+            MANVHUY: nv_delete.value,
           })
             .then((result) => {
+              console.log(result)
               if (result.status) {
                 popup_delete_confirm[0].classList.remove("show");
                 alert("Hủy đăng ký thành công");
@@ -123,22 +124,22 @@ server.PhieuDangKy.getList({ KEY: "" })
       if (panel_input[0].value.length == 0 && panel_input[1].value.length == 0)
         alert("Vui lòng chọn phiếu đăng ký");
       else {
-        console.log(pay_input[4].value)
         popup_payment[0].classList.add("show");
         btn_pay_form.addEventListener("click", () => {
           server.PhieuThuTien.thanhToan({
-            SOTIENTHU: pay_input[4].value,
+            SOTIENTHU: pay_input[4].value.split('.').join("").replace('VND',''),
             MAPDK: panel_input[0].value,
-            MANVHUY: nv.innerText
+            MANV: nv_pay.value
           })
             .then((result) => {
+              console.log(result)
               if (result.status) {
                 popup_payment[0].classList.remove("show");
                 alert("Thanh toán thành công");
                 window.location.reload();
               } else {
-                popup_payment[0].classList.remove("show");
                 alert(result.data);
+                popup_payment[0].classList.remove("show");
               }
             })
             .catch((err) => { });
@@ -174,7 +175,7 @@ search.addEventListener("keyup", () => {
         <td style="padding-left: 18px;">${record.NGAYBD}</td>
         <td style="padding-left: 20px;">${record.NGAYKT}</td>
         <td style="padding-left: 33px;">${record.TRANGTHAI}</td>
-        <td style="padding-left: 33px;">${record.TONGTIEN}</td>
+        <td style="padding-left: 33px;">${record.TONGTIEN.toLocaleString('it-IT', {style : 'currency', currency : 'VND'})}</td>
   </tr>
     `;
         }
