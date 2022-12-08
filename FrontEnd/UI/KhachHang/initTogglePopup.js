@@ -1,21 +1,33 @@
-import loadListKhachHang from "./loadListKhachHang.js";
 import server from "../../server/main.js"
-import uploadImg from "../../Image/main.js";
 
-function init() {
+
+
+
+function showPopup(popupClass) {
+  document.querySelector(".container").setAttribute("style", "filter: brightness(0.6) blur(3px);");
+  document.querySelector("." + popupClass).classList.add("show");
+}
+function getParentId(e) {
+  return e.target.parentElement.parentElement.parentElement.id;
+}
+
+export default function init() {
   const btns_update = document.querySelectorAll(".btn-update");
   const btns_delete = document.querySelectorAll(".btn-delete");
   const btns_register = document.querySelectorAll(".btn-register");
   const btns_inbody = document.querySelectorAll(".btn-inbody");
   const btns_cancel = document.querySelectorAll(".btn-cancel-form");
   const popups = document.querySelectorAll('.popup');
-
-  function showPopup(popupClass) {
-    document.querySelector("." + popupClass).classList.add("show");
-  }
-  function getParentId(e) {
-    return e.target.parentElement.parentElement.parentElement.id;
-  }
+  const btn_add = document.querySelector(".btn-add");
+  const btn_chon_TPBS = document.querySelector(".btn-chon-TPBS");
+  //Show
+  btn_add.addEventListener("click", () => {
+    showPopup("popup-add");
+  });
+  btn_chon_TPBS.addEventListener("click", () => {
+    showPopup("popup-TPBS");
+    document.querySelector(".popup-inbody").classList.remove('show');
+  })
   btns_update.forEach((btn) => {
     btn.addEventListener("click", async (e) => {
       showPopup("popup-update");
@@ -123,7 +135,6 @@ function init() {
       lichSuInbody.forEach(e => {
         let row = tblLichSuInbody.insertRow(-1);
 
-        // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
         let cell1 = row.insertCell(0);
         let cell2 = row.insertCell(1);
         let cell3 = row.insertCell(2);
@@ -131,7 +142,6 @@ function init() {
         let cell5 = row.insertCell(4);
         let cell6 = row.insertCell(5);
         let cell7 = row.insertCell(6);
-        // Add some text to the new cells:
         cell1.innerHTML = e.NGAYGIO
         cell2.innerHTML = e.CHIEUCAO
         cell3.innerHTML = e.CANNANG
@@ -145,23 +155,20 @@ function init() {
     });
   })
 
-  //thoát popup
+  //hide popup
   btns_cancel.forEach((btn) => {
     btn.addEventListener("click", () => {
       popups.forEach((popup) => {
-        if (popup.classList.contains("show"))
+        if (popup.classList.contains("show")) {
           popup.classList.remove("show");
+          document.querySelector(".container  ").setAttribute("style", " filter: brightness(1) blur(0px);");
+        }
       })
     })
   })
 }
 
 
-export default function initPopups() {
-  init();
-
-
-}
 
 
 

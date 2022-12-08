@@ -1,5 +1,5 @@
 import server from "../../server/main.js";
-server.ThongKe.thongKeDoanhThu({ TUNGAY: '', DENNGAY: '' }).then(rs => console.log(rs))
+server.TaiKhoan.doiMatKhau({ TENDANGNHAP: 'NV00000001', MATKHAUMOI: '1' }).then(rs => console.log(rs))
 let btn = document.querySelector(".btn-login");
 
 btn.addEventListener("click", () => {
