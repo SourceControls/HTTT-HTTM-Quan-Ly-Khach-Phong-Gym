@@ -4,11 +4,11 @@ async function initNhanVien() {
     let nhanVien = Promise.resolve((await server.NhanVien.getList({ KEY: window.localStorage.getItem('username') })).data[0].CHUCVU)
     nhanVien.then(value => {
         return value; // 👉️ "hello"
-      }).catch(err => {
+    }).catch(err => {
         console.log(err);
-      });
-  }
-  
+    });
+}
+
 let btn = document.querySelector(".btn-login");
 
 btn.addEventListener("click", () => {

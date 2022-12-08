@@ -9,8 +9,13 @@ class ThongKeControllers {
     xemThongKeKh = async (req, res) => {
         const { TUNGAY, DENNGAY } = req.body
         let params = [
+<<<<<<< HEAD
             { name: 'TUNGAY', type: 'Date', value: TUNGAY},
             { name: 'DENNGAY', type: 'Date', value: DENNGAY},
+=======
+            { name: 'TUNGAY', type: 'Date', value: ''},
+            { name: 'DENNGAY', type: 'Date', value: ''},
+>>>>>>> 29b491d23787988fc26f1391b63e56e112026b92
         ]
         let rs = await DB.excute('SP_THONG_KE_KH', params)
         res.send(json(true, rs.recordset))

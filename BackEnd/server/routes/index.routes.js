@@ -8,6 +8,7 @@ const dichVuRouter = require('./dichVu.routes')
 const lichSuRouter = require('./lichSuVaoPhong.routes')
 const thongKeRouter = require('./thongKe.routes')
 const thucPhamRouter = require('./thucPham.routes')
+const lichSuMuaHangRouter = require('./lichSuMuaHang.routes')
 
 
 function routes(app) {
@@ -21,6 +22,7 @@ function routes(app) {
   app.use('/ThongKe', thongKeRouter)
   app.use('/LichSu', lichSuRouter)
   app.use('/ThucPham', thucPhamRouter)
+  app.use('/LichSuMuaHang', lichSuMuaHangRouter)
 }
 
 module.exports = routes

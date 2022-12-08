@@ -343,18 +343,13 @@ table tbody tr:hover {
   z-index: 1000;
   position: absolute;
   display: none;
-  left: 35%;
-  top: 8%;
-  transform: scale(0.5);
-  transition: opacity 200ms ease-in-out,
-    transform 200ms ease-in-out;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .show {
   display: block;
-  transform: scale(1);
-  transition: transform 500ms ease-in-out;
-  background-color: var(--purple);
 }
 
 .popup-add,
@@ -377,8 +372,6 @@ table tbody tr:hover {
 }
 
 .popup-delete-confirm {
-  top: 25%;
-  left: 40%;
   width: 400px;
 }
 
@@ -526,6 +519,7 @@ select {
   top: 12px;
   right: 30px;
 }
+
 .inbody-customer-info {
   min-width: 300px;
 }
@@ -539,13 +533,56 @@ select {
 }
 
 .inbody-recomend {
-  margin-top: 32px
+  margin-top: 32px;
+  position: relative;
 }
 
 .inbody-recomend tbody {
   height: 300px;
 }
 
+.bxs-cart-add {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 38px;
+  right: 32px;
+  cursor: pointer;
+}
+
+.bxs-cart-add:hover {
+  color: var(--blue);
+  transition: .3s;
+  transform: translateY(-50%) scale(1.2);
+}
+
+.btn-chon-TPBS {
+  position: absolute;
+  right: 0;
+  width: fit-content;
+  padding: 0px 12px;
+  border-radius: 20px;
+  top: -6px;
+}
+
+.popup-TPBS {
+  border-radius: 24px;
+  padding: 18px 32px 32px 32px;
+  background-color: #fff;
+  box-shadow: 2px 3px 12px rgb(84, 84, 84);
+}
+
+.popup-TPBS .btn-cancel-form {
+  position: absolute;
+  right: 28px;
+  padding: 0;
+  top: 8px;
+}
+
+tr,
+td {
+  cursor: default;
+}
 
 
 @media (max-width: 1240px) {
