@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="stylesheet" href="KhachHang.css" />
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      if (!window.localStorage.getItem('username')) {
+        window.location.href = '/FrontEnd/UI/Login/Login.html';
+      }
+    </script>
+    <title>Quản lý khách hàng</title>
+  </head>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -89,14 +96,72 @@
           <div class="sidebar-button">
             <i class="bx bx-menu sidebarBtn"></i>
           </div>
-          <div class="page-header">
-            <h2>Danh Sách Khách Hàng</h2>
-          </div>
-          <div class="profile-details">
-            <img src="defaultAvt.jpg" alt="" />
-            <div class="admin_name">
-              <span>Nguyễn Văn A</span>
-              <span>Nhân Viên</span>
+          <ul class="nav-links">
+            <li>
+              <a href="/FrontEnd/UI/NhanVien/NhanVien.html">
+                <i class="bx bxs-user-account"></i>
+                <span class="links_name">NHÂN VIÊN</span>
+              </a>
+            </li>
+            <li>
+              <a href="/FrontEnd/UI/KhachHang/KhachHang.html">
+                <i class="bx bx-user"></i>
+                <span class="links_name">KHÁCH HÀNG</span>
+              </a>
+            </li>
+            <li>
+              <a href="/FrontEnd/UI/DichVu/DichVu.html">
+                <i class="bx bx-list-ul"></i>
+                <span class="links_name">DỊCH VỤ</span>
+              </a>
+            </li>
+            <li>
+              <a href="/FrontEnd/UI/ThucPhamBoSung/ThucPhamBoSung.html">
+                <i class="bx bxs-baguette"></i>
+                <span class="links_name">THỰC PHẨM BỔ SUNG</span>
+              </a>
+            </li>
+            <li>
+              <a href="/FrontEnd/UI/PhieuDangKy/PhieuDangKy.html">
+                <i class="bx bxs-notepad"></i>
+                <span class="links_name">PHIẾU ĐĂNG KÝ</span>
+              </a>
+            </li>
+            <li>
+              <a href="/FrontEnd/UI/LichSu/LichSu.html">
+                <i class="bx bxs-door-open"></i>
+                <span class="links_name">LỊCH SỬ VÀO PHÒNG</span>
+              </a>
+            </li>
+            <li>
+              <a href="/FrontEnd/UI/ThongKe/ThongKe.html">
+                <i class="bx bx-bar-chart-alt"></i>
+                <span class="links_name">THỐNG KÊ</span>
+              </a>
+            </li>
+            <li>
+              <a href="/FrontEnd/UI/DoiMatKhau/DoiMatKhau.html">
+                <i class="bx bx-book-alt"></i>
+                <span class="links_name">ĐỔI MẬT KHẨU</span>
+              </a>
+            </li>
+
+            <li class="log_out">
+              <a
+                href="/FrontEnd/UI/Login/Login.html"
+                onclick="window.localStorage.setItem('username','')">
+                <i class="bx bx-log-out"></i>
+                <span class="links_name">ĐĂNG XUẤT</span>
+              </a>
+            </li>
+          </ul>
+        </section>
+        <!-- HOME SECTION -->
+        <section class="home-section">
+          <!-- NAVBAR -->
+          <nav>
+            <div class="sidebar-button">
+              <i class="bx bx-menu sidebarBtn"></i>
             </div>
           </div>
         </nav>
@@ -180,6 +245,79 @@
               <img src="defaultAvt.jpg" alt="" />
             </div>
           </div>
+        </section>
+      </div>
+      <!-- POPUP ADD -->
+      <div class="popup popup-add">
+        <div class="popup-header">
+          <h2>Thêm Khách Hàng</h2>
+        </div>
+        <div class="popup-body">
+          <div class="img-section">
+            <div class="img-box">
+              <img src="defaultAvt.jpg" alt="" />
+            </div>
+          </div>
+          <form id="add-customer-form">
+            <label>Họ tên</label>
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Họ tên"
+                name="HOTEN" />
+            </div>
+            <label>Năm sinh</label>
+            <div class="input-group">
+              <input
+                type="tel"
+                class="form-control"
+                placeholder="Năm sinh"
+                name="NAMSINH" />
+            </div>
+            <label>SĐT</label>
+            <div class="input-group">
+              <input
+                type="tel"
+                class="form-control"
+                placeholder="Số điện thoại"
+                name="SDT" />
+            </div>
+            <input
+              type="radio"
+              id="add-male"
+              name="GIOITINH"
+              value="NAM"
+              checked />
+            <label for="male">Nam</label>
+            <input type="radio" id="add-female" name="GIOITINH" value="NỮ" />
+            <label for="female">Nữ</label>
+            <div class="input-group">
+              <input
+                type="file"
+                class="form-control image-input"
+                name="HINHANH" />
+            </div>
+            <div class="button-center">
+              <button type="submit" class="btn-form btn-add-form">Thêm</button>
+              <button type="button" class="btn-form btn-cancel-form">
+                Hủy
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- POPUP UPDATE -->
+      <div class="popup popup-update">
+        <div class="popup-header">
+          <h2>Cập Nhật Khách Hàng</h2>
+        </div>
+        <div class="popup-body">
+          <div class="img-section">
+            <div class="img-box">
+              <img src="defaultAvt.jpg" alt="" />
+            </div>
+          </div>
           <form id="update-customer-form">
             <span>
               <h4>Mã khách hàng:</h4>
@@ -191,22 +329,48 @@
             </span>
             <label>Họ tên</label>
             <div class="input-group">
-              <input type="text" class="form-control HOTEN" placeholder="Họ tên" name="HOTEN" />
+              <input
+                type="text"
+                class="form-control HOTEN"
+                placeholder="Họ tên"
+                name="HOTEN" />
             </div>
             <label>Năm sinh</label>
             <div class="input-group">
-              <input type="tel" class="form-control NAMSINH" placeholder="Năm sinh" name="NAMSINH" />
+              <input
+                type="tel"
+                class="form-control NAMSINH"
+                placeholder="Năm sinh"
+                name="NAMSINH" />
             </div>
             <label>SĐT</label>
             <div class="input-group">
-              <input type="tel" class="form-control SDT" placeholder="SĐT" name="SDT" />
+              <input
+                type="tel"
+                class="form-control SDT"
+                placeholder="SĐT"
+                name="SDT" />
             </div>
-            <input type="radio" id="male" name="GIOITINH" value="NAM" class="GIOITINH" checked />
+            <input
+              type="radio"
+              id="male"
+              name="GIOITINH"
+              value="NAM"
+              class="GIOITINH"
+              checked />
             <label for="male">Nam</label>
-            <input type="radio" id="female" name="GIOITINH" value="NỮ" class="GIOITINH" />
+            <input
+              type="radio"
+              id="female"
+              name="GIOITINH"
+              value="NỮ"
+              class="GIOITINH" />
             <label for="female">Nữ</label>
             <div class="input-group">
-              <input type="file" class="form-control image-input HINHANH" name="HINHANH" />
+              <input
+                type="file"
+                class="form-control image-input HINHANH"
+                name="HINHANH" />
             </div>
             <div class="button-center">
               <button type="submit" class="btn-form btn-update-form">
@@ -233,11 +397,19 @@
           <form id="register-form">
             <label>Mã khách hàng:</label>
             <div class="input-group">
-              <input type="text" class="form-control MAKH" readonly="true" name="MAKH" />
+              <input
+                type="text"
+                class="form-control MAKH"
+                readonly="true"
+                name="MAKH" />
             </div>
             <label>Mã nhân viên:</label>
             <div class="input-group">
-              <input type="text" class="form-control MANV" readonly="true" name="MANV" />
+              <input
+                type="text"
+                class="form-control MANV"
+                readonly="true"
+                name="MANV" />
             </div>
             <label>Gói dịch vụ</label>
             <div class="input-group">
@@ -245,15 +417,26 @@
             </div>
             <label>Giá</label>
             <div class="input-group">
-              <input type="text" class="form-control giaDichVu" readonly="true" />
+              <input
+                type="text"
+                class="form-control giaDichVu"
+                readonly="true" />
             </div>
             <label>Khuyến mãi</label>
             <div class="input-group">
-              <input type="number" class="form-control TILEKM" placeholder="% khuyến mãi" name="TILEKM" />
+              <input
+                type="number"
+                class="form-control TILEKM"
+                placeholder="% khuyến mãi"
+                name="TILEKM" />
             </div>
             <label>Thành tiền</label>
             <div class="input-group">
-              <input type="text" class="form-control TONGTIEN" readonly="true" name="TONGTIEN" />
+              <input
+                type="text"
+                class="form-control TONGTIEN"
+                readonly="true"
+                name="TONGTIEN" />
             </div>
             <div class="button-center">
               <button type="submit" class="btn-form btn-register-form">
@@ -316,6 +499,7 @@
           </div>
           <div class="inbody-recomend">
             <h2>Gợi ý thực phẩm bổ sung</h2>
+            <button class="btn btn-chon-TPBS">Chọn sản phẩm khác</button>
             <table width="100%">
               <thead>
                 <tr>
@@ -331,29 +515,31 @@
                   <td style="width: 10%">SP01</td>
                   <td>Whey Gold Standard 5Lbs (2.3kg)</td>
                   <td style="width: 40%">
-                    Whey Gold luôn là biểu tượng tiêu chuẩn trong những sản
-                    phẩm tăng cơ cho người tập gym, với thành phần chuẩn mực
-                    nhất.
+                    Whey Gold luôn là biểu tượng tiêu chuẩn trong những sản phẩm
+                    tăng cơ cho người tập gym, với thành phần chuẩn mực nhất.
                   </td>
-                  <td>
-                    <img class="table-img"
+                  <td style="position: relative">
+                    <img
+                      class="table-img"
                       src="https://7ut8g5rmobj.cdn.hostvn.net/wp-content/uploads/2016/10/100-whey-gold-standard-5lbs-2-3kg-13-2-1.jpg"
                       alt="AVT" />
+                    <i class="bx bxs-cart-add"></i>
                   </td>
                 </tr>
                 <tr>
                   <td style="width: 10%">SP02</td>
                   <td>ISO Whey Zero 5Lbs (2.3kg)</td>
                   <td style="width: 40%">
-                    ISO Whey ZERO được chiết lọc tinh chất từ whey protein
-                    (WPI) tinh khiết nhất, với thành phần độc đáo ZERO
-                    lactose, ZERO trans fat và ZERO cholesterol, phát triển cơ
-                    bắp vượt trội.
+                    ISO Whey ZERO được chiết lọc tinh chất từ whey protein (WPI)
+                    tinh khiết nhất, với thành phần độc đáo ZERO lactose, ZERO
+                    trans fat và ZERO cholesterol, phát triển cơ bắp vượt trội.
                   </td>
-                  <td>
-                    <img class="table-img"
+                  <td style="position: relative">
+                    <img
+                      class="table-img"
                       src="https://7ut8g5rmobj.cdn.hostvn.net/wp-content/uploads/2019/03/Biotech-Iso-Whey-Zero-5lbs-1.jpg"
                       alt="AVT" />
+                    <i class="bx bxs-cart-add"></i>
                   </td>
                 </tr>
               </tbody>
@@ -362,10 +548,55 @@
         </div>
         <button class="btn-form btn-cancel-form">Thoát</button>
       </div>
+      <div class="popup popup-TPBS">
+        <button class="btn-form btn-cancel-form">Thoát</button>
+        <h2>Danh sách thực phẩm bổ sung</h2>
+        <table width="100%">
+          <thead>
+            <tr>
+              <th style="width: 10%">Mã Sản Phẩm</th>
+              <th>Tên Sản Phẩm</th>
+              <th style="width: 40%">Mô Tả</th>
+              <th>Hình Ảnh</th>
+              <th style="width: 25px"></th>
+            </tr>
+          </thead>
+          <tbody class="tbl-thucPhamBoSung">
+            <tr>
+              <td style="width: 10%">SP01</td>
+              <td>Whey Gold Standard 5Lbs (2.3kg)</td>
+              <td style="width: 40%">
+                Whey Gold luôn là biểu tượng tiêu chuẩn trong những sản phẩm
+                tăng cơ cho người tập gym, với thành phần chuẩn mực nhất.
+              </td>
+              <td style="position: relative">
+                <img
+                  class="table-img"
+                  src="https://7ut8g5rmobj.cdn.hostvn.net/wp-content/uploads/2016/10/100-whey-gold-standard-5lbs-2-3kg-13-2-1.jpg"
+                  alt="AVT" />
+                <i class="bx bxs-cart-add"></i>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 10%">SP02</td>
+              <td>ISO Whey Zero 5Lbs (2.3kg)</td>
+              <td style="width: 40%">
+                ISO Whey ZERO được chiết lọc tinh chất từ whey protein (WPI)
+                tinh khiết nhất, với thành phần độc đáo ZERO lactose, ZERO trans
+                fat và ZERO cholesterol, phát triển cơ bắp vượt trội.
+              </td>
+              <td style="position: relative">
+                <img
+                  class="table-img"
+                  src="https://7ut8g5rmobj.cdn.hostvn.net/wp-content/uploads/2019/03/Biotech-Iso-Whey-Zero-5lbs-1.jpg"
+                  alt="AVT" />
+                <i class="bx bxs-cart-add"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-
-  <script src="KhachHang.js" type="module"></script>
-</body>
-
+    <script src="KhachHang.js" type="module"></script>
+  </body>
 </html>

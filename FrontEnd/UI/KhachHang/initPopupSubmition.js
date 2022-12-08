@@ -2,17 +2,7 @@ import loadListKhachHang from "./loadListKhachHang.js";
 import server from "../../server/main.js"
 import uploadImg from "../../Image/main.js";
 
-
-function initPopupBtns() {
-  function showPopup(popupClass) {
-    document.querySelector("." + popupClass).classList.add("show");
-  }
-  //POPUP thêm khách hàng
-  const btn_add = document.querySelector(".btn-add");
-  btn_add.addEventListener("click", () => {
-    showPopup("popup-add");
-  });
-  // Tìm kiếm
+function initSubmitTimKiem() {
   const searchBar = document.querySelector('.search-bar')
   searchBar.addEventListener("keyup", () => {
     let KEY = searchBar.value;
@@ -23,23 +13,19 @@ function initPopupBtns() {
   })
 }
 
-async function initNhanVien() {
-  let nhanVienBox = document.querySelectorAll('.admin_name span');
-  let nhanVien = (await server.NhanVien.getList({ KEY: window.localStorage.getItem('username') })).data[0]
-  nhanVienBox[0].innerText = nhanVien.HOTEN;
-  nhanVienBox[1].innerText = nhanVien.MANV + ' - ' + nhanVien.CHUCVU;
-}
+function initSubmitThemKhachHang() {
 
-function initThemKhachHang() {
-  //Thêm khách hàng
   const imageInput_AddPopup = document.querySelector(".popup-add .image-input");
   const image_AddPopup = document.querySelector(".popup-add img");
+  const add_customer_form = document.querySelector("#add-customer-form");
+
+  //handle ảnh
   imageInput_AddPopup.addEventListener("change", () => {
     var file = imageInput_AddPopup.files[0];
     image_AddPopup.src = URL.createObjectURL(file);
   })
-  const add_customer_form = document.querySelector("#add-customer-form");
   add_customer_form.addEventListener("submit", async (e) => {
+    console.log('submited add KH');
     e.preventDefault();
     const khachHang = Object.fromEntries(new FormData(e.target));
     if (khachHang.HOTEN.trim().length == 0) {
@@ -73,7 +59,7 @@ function initThemKhachHang() {
 
 }
 
-function initCapNhatKhachHang() {
+function initSubmitCapNhatKhachHang() {
   //Lưu chỉnh sửa
   const imageInput_UpdatePopup = document.querySelector(".popup-update .image-input");
   const image_UpdatePopup = document.querySelector(".popup-update img");
@@ -83,6 +69,7 @@ function initCapNhatKhachHang() {
   })
   const update_customer_form = document.querySelector("#update-customer-form");
   update_customer_form.addEventListener("submit", async (e) => {
+    console.log('submited update KH');
     e.preventDefault();
     const khachHang = Object.fromEntries(new FormData(e.target));
     khachHang.MAKH = document.querySelector(".popup-update .MAKH").innerText;
@@ -113,10 +100,12 @@ function initCapNhatKhachHang() {
   });
 
 }
-function initXoaKhachHang() {
+function initSubmitXoaKhachHang() {
 
   const confirmDeleteBtn = document.querySelector(".btn-delete-form");
+  console.log(confirmDeleteBtn);
   confirmDeleteBtn.addEventListener("click", async (e) => {
+    console.log('submited xoa KH');
     let rs = await server.KhachHang.xoaKhachHang({ MAKH: e.target.MAKH })
     if (!rs.status) {
       alert(rs.data);
@@ -128,10 +117,11 @@ function initXoaKhachHang() {
     loadListKhachHang();
   })
 }
-function initDangKiDichVu() {
+function initSubmitDangKiDichVu() {
 
   const register_form = document.querySelector("#register-form");
   register_form.addEventListener("submit", async (e) => {
+    console.log('submited DKDV');
     e.preventDefault();
     let phieuDangKi = Object.fromEntries(new FormData(e.target));
     phieuDangKi.TONGTIEN = phieuDangKi.TONGTIEN.toString().replace('VND', '').trim();
@@ -145,11 +135,12 @@ function initDangKiDichVu() {
   });
 }
 
-export default function () {
-  initPopupBtns();
-  initThemKhachHang();
-  initCapNhatKhachHang();
-  initXoaKhachHang();
-  initDangKiDichVu();
-  initNhanVien();
+
+
+export default function init() {
+  initSubmitThemKhachHang();
+  initSubmitCapNhatKhachHang();
+  initSubmitXoaKhachHang();
+  initSubmitDangKiDichVu();
+  initSubmitTimKiem()
 }

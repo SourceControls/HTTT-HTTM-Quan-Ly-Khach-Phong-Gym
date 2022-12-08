@@ -1,5 +1,5 @@
 import server from '../../server/main.js';
-import initDynamicEvents from "./initDynamicEvents.js";
+import initTogglePopup from "./initTogglePopup.js";
 
 async function loadList(KEY) {
   const tblKhachHang = document.querySelector('.tbl-khachHang')
@@ -10,12 +10,16 @@ async function loadList(KEY) {
   }
   listKhachHang = listKhachHang.data;
   listKhachHang = listKhachHang.sort((a, b) => (a.MAKH > b.MAKH) ? -1 : 0);
+  let i = 0;
   listKhachHang.forEach(e => {
+    if (++i >= 5) {
+      console.log(1);
+      return;
+    }
     //set default image
     if (e.HINHANH.trim().length == 0) {
       e.HINHANH = "./defaultAvt.jpg"
     }
-    console.log(e.HINHANH);
     tblKhachHang.innerHTML += `
                <tr id="${e.MAKH}">
                   <td>${e.MAKH}</td>
@@ -40,6 +44,6 @@ async function loadList(KEY) {
 
 export default async function loadListKhachHang(KEY) {
   await loadList(KEY);
-  initDynamicEvents();
+  initTogglePopup();
 }
 
