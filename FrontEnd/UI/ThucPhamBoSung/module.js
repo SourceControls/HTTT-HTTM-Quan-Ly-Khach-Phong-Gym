@@ -71,7 +71,7 @@ async function initEvents() {
 
   /* POPUP UPDATE */
   for (var i = 0; i < btn_edit.length; i++) {
-    btn_edit[i].addEventListener("click", () => {
+    btn_edit[i].addEventListener("click", (e) => {
       popup_edit[0].classList.add("show");
     });
   }
@@ -126,7 +126,7 @@ async function initEvents() {
             alert("Thêm sản phẩm thất bại");
           }
         })
-        .catch((err) => {});
+        .catch((err) => { });
     }
   });
 
@@ -166,7 +166,7 @@ async function initEvents() {
                 alert("Cập nhật sản phẩm thất bại");
               }
             })
-            .catch((err) => {});
+            .catch((err) => { });
         }
       });
     });
@@ -192,7 +192,7 @@ async function initEvents() {
               alert(result.data);
             }
           })
-          .catch((err) => {});
+          .catch((err) => { });
       });
     });
   }

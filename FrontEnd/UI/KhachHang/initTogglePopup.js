@@ -80,7 +80,7 @@ export default function init() {
       let dichVuDropDown = document.querySelector(".listDichVu");
       dichVuDropDown.innerHTML = '';
       let tileKMInput = document.querySelector('.TILEKM');
-
+      //load data vào dropdown
       dichVu.data.forEach(dichVu => {
         let option = document.createElement("option");
         option.text = dichVu.TENDV;
@@ -105,6 +105,8 @@ export default function init() {
           tileKMInput.value = 0;
           tileKM = 0;
         }
+
+        document.querySelector(".giaDichVu").value = (dichVuDropDown.selectedOptions[0].gia).toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
         document.querySelector(".TONGTIEN").value = (dichVuDropDown.selectedOptions[0].gia * (1 - tileKM / 100)).toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
       }
       function isNumber(n) { return /^-?[\d.]+(?:e-?\d+)?$/.test(n); }

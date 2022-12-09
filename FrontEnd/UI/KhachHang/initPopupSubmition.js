@@ -124,7 +124,7 @@ function initSubmitDangKiDichVu() {
     console.log('submited DKDV');
     e.preventDefault();
     let phieuDangKi = Object.fromEntries(new FormData(e.target));
-    phieuDangKi.TONGTIEN = phieuDangKi.TONGTIEN.toString().replace('VND', '').trim();
+    phieuDangKi.TONGTIEN = phieuDangKi.TONGTIEN.toString().replaceAll('.', '').replace('VND', '').trim();
     console.log(phieuDangKi);
     let rs = await server.PhieuDangKy.dangKyDichVu(phieuDangKi)
     if (!rs.status) {
