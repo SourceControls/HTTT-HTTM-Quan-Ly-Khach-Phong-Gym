@@ -18,10 +18,8 @@ let KH = document.querySelectorAll(".text-block p")[0];
 let KHcu = document.querySelectorAll(".text-block p")[1];
 let KHmoi = document.querySelectorAll(".text-block p")[2];
 
-
-
 // THONG KE KHACH HANG
-server.ThongKe.thongKeKhachHang({ 'TUNGAY': '', 'DENNGAY': '' })
+server.ThongKe.thongKeKhachHang({ TUNGAY: "", DENNGAY: "" })
   .then((result) => {
     // console.log(result)
     KH.innerText = result.data[0].TONGKH;
@@ -47,9 +45,23 @@ server.ThongKe.thongKeKhachHang({ 'TUNGAY': '', 'DENNGAY': '' })
 
       var option1 = {
         title: "Giới tính",
+        titleTextStyle: {
+          fontSize: 18,
+        },
+        chartArea: {width: 280, height: 180},
+        tooltip: {textStyle:  {fontName: 'TimesNewRoman',fontSize: 14,bold: true}},
+        legend: {textStyle:  {fontName: 'TimesNewRoman',fontSize: 16,bold: true}},
+        fontSize: 18
       };
       var option2 = {
         title: "Độ tuổi",
+        titleTextStyle: {
+          fontSize: 18,
+        },
+        chartArea: {width: 280, height: 180},
+        tooltip: {textStyle:  {fontName: 'TimesNewRoman',fontSize: 14,bold: true}},
+        legend: {textStyle:  {fontName: 'TimesNewRoman',fontSize: 16,bold: true}},
+        fontSize: 18
       };
 
       var chart1 = new google.visualization.PieChart(
@@ -63,15 +75,15 @@ server.ThongKe.thongKeKhachHang({ 'TUNGAY': '', 'DENNGAY': '' })
       chart2.draw(data2, option2);
     }
   })
-  .catch((err) => { });
+  .catch((err) => {});
 
 // KHACH HANG LOC BUTTON
 btnFilter[0].addEventListener("click", () => {
   let to = document.querySelector("#to").value;
   let from = document.querySelector("#from").value;
-  server.ThongKe.thongKeKhachHang({ 'TUNGAY': from, 'DENNGAY': to })
+  server.ThongKe.thongKeKhachHang({ TUNGAY: from, DENNGAY: to })
     .then((result) => {
-      console.log(result)
+      console.log(result);
 
       KH.innerText = result.data[0].TONGKH;
       KHcu.innerText = result.data[0].TONGKHCU;
@@ -96,9 +108,23 @@ btnFilter[0].addEventListener("click", () => {
 
         var option1 = {
           title: "Giới tính",
+          titleTextStyle: {
+            fontSize: 18,
+          },
+          chartArea: {width: 400, height: 180},
+          tooltip: {textStyle:  {fontName: 'TimesNewRoman',fontSize: 14,bold: true}},
+          legend: {textStyle:  {fontName: 'TimesNewRoman',fontSize: 16,bold: true}},
+          fontSize: 18
         };
         var option2 = {
           title: "Độ tuổi",
+          titleTextStyle: {
+            fontSize: 18,
+          },
+          chartArea: {width: 400, height: 180},
+          tooltip: {textStyle:  {fontName: 'TimesNewRoman',fontSize: 14,bold: true}},
+          legend: {textStyle:  {fontName: 'TimesNewRoman',fontSize: 16,bold: true}},
+          fontSize: 18
         };
 
         var chart1 = new google.visualization.PieChart(
@@ -112,7 +138,7 @@ btnFilter[0].addEventListener("click", () => {
         chart2.draw(data2, option2);
       }
     })
-    .catch((err) => { });
+    .catch((err) => {});
 });
 
 // THONG KE DOANH THU
@@ -128,9 +154,9 @@ server.ThongKe.thongKeDoanhThu({ TUNGAY: " ", DENNGAY: " " })
               <td>${record.HOTEN}</td>
               <td style="padding-left: 22px">${record.SDT}</td>
               <td style="padding-left: 20px">${record.TONGDOANHTHU.toLocaleString(
-        "it-IT",
-        { style: "currency", currency: "VND" }
-      )}</td>
+                "it-IT",
+                { style: "currency", currency: "VND" }
+              )}</td>
         </tr>
       `;
     }
@@ -153,7 +179,7 @@ server.ThongKe.thongKeDoanhThu({ TUNGAY: " ", DENNGAY: " " })
       currency: "VND",
     });
   })
-  .catch((err) => { });
+  .catch((err) => {});
 
 // DOANH THU LOC BUTTON
 btnFilter[2].addEventListener("click", () => {
@@ -171,22 +197,22 @@ btnFilter[2].addEventListener("click", () => {
               <td>${record.HOTEN}</td>
               <td style="padding-left: 22px">${record.SDT}</td>
               <td style="padding-left: 20px">${record.TONGDOANHTHU.toLocaleString(
-          "it-IT",
-          { style: "currency", currency: "VND" }
-        )}</td>
+                "it-IT",
+                { style: "currency", currency: "VND" }
+              )}</td>
         </tr>
       `;
       }
       list.innerHTML = out;
     })
-    .catch((err) => { });
+    .catch((err) => {});
 });
 
 // LUOT RA VAO LOC BUTTON
 btnFilter[1].addEventListener("click", () => {
   let to = document.querySelector("#toRV").value;
   let from = document.querySelector("#fromRV").value;
-  server.ThongKe.thongKeRaVao({ 'TUNGAY': from, 'DENNGAY': to })
+  server.ThongKe.thongKeRaVao({ TUNGAY: from, DENNGAY: to })
     .then((result) => {
       console.log({ from, to });
 
@@ -194,7 +220,7 @@ btnFilter[1].addEventListener("click", () => {
       let yValues = [];
 
       for (let record of result.data) {
-        let gio = record.GIO + "h"
+        let gio = record.GIO + "h";
         xValues.push(gio);
       }
       for (let record of result.data) {
@@ -218,23 +244,23 @@ btnFilter[1].addEventListener("click", () => {
         options: {
           legend: { display: false },
           scales: {
-            yAxes: [{ ticks: { stepSize: 10, min: 0, max: 50 } }],
+            yAxes: [{ ticks: { stepSize: 2, min: 0, max: Math.max(...yValues) + 5 } }],
           },
         },
       });
     })
-    .catch((err) => { });
+    .catch((err) => {});
 });
 
 //  LINE CHART LUOT RA VAO
-server.ThongKe.thongKeRaVao({ 'TUNGAY': " ", 'DENNGAY': " " })
+server.ThongKe.thongKeRaVao({ TUNGAY: " ", DENNGAY: " " })
   .then((result) => {
     console.log(result.data);
     let xValues = [];
     let yValues = [];
 
     for (let record of result.data) {
-      let gio = record.GIO + "h"
+      let gio = record.GIO + "h";
       xValues.push(gio);
     }
     for (let record of result.data) {
@@ -258,9 +284,9 @@ server.ThongKe.thongKeRaVao({ 'TUNGAY': " ", 'DENNGAY': " " })
       options: {
         legend: { display: false },
         scales: {
-          yAxes: [{ ticks: { stepSize: 10, min: 0, max: 50 } }],
+          yAxes: [{ ticks: { stepSize: 5, min: 0, max: Math.max(...yValues) + 5 } }],
         },
       },
     });
   })
-  .catch((err) => { });
+  .catch((err) => {});

@@ -191,10 +191,10 @@ async function initEvent() {
         };
         server.DichVu.xoaDichVu(data)
           .then((result) => {
-            console.log(result)
+            // console.log(result)
             if (result.status) {
               alert("Xóa dịch vụ thành công")
-              window.location.reload();
+              loadListDV("");
               popup_delete_confirm[0].classList.remove("show");
             } else {
               popup_delete_confirm[0].classList.remove("show");
