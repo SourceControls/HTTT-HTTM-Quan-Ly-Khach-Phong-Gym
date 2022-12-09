@@ -36,7 +36,7 @@ server.PhieuDangKy.getList({ KEY: "" })
         <td style="padding-left: 18px;">${record.NGAYBD}</td>
         <td style="padding-left: 20px;">${record.NGAYKT}</td>
         <td style="padding-left: 33px;">${record.TRANGTHAI}</td>
-        <td style="padding-left: 33px;">${record.TONGTIEN.toLocaleString('it-IT', {style : 'currency', currency : 'VND'})} </td>
+        <td style="padding-left: 33px;">${record.TONGTIEN.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })} </td>
   </tr>
     `;
     }
@@ -80,7 +80,7 @@ server.PhieuDangKy.getList({ KEY: "" })
               view_payment_input[3].innerText = Object.values(result.data[0])[1];
               view_payment_input[4].innerText = Object.values(result.data[0])[5];
               view_payment_input[5].innerText = Object.values(result.data[0])[3];
-              view_payment_input[6].innerText = Object.values(result.data[0])[6].toLocaleString('it-IT', {style : 'currency', currency : 'VND'});
+              view_payment_input[6].innerText = Object.values(result.data[0])[6].toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
               popup_view_payment[0].classList.add("show");
             } else
               alert(result.data);
@@ -127,7 +127,7 @@ server.PhieuDangKy.getList({ KEY: "" })
         popup_payment[0].classList.add("show");
         btn_pay_form.addEventListener("click", () => {
           server.PhieuThuTien.thanhToan({
-            SOTIENTHU: pay_input[4].value.split('.').join("").replace('VND',''),
+            SOTIENTHU: pay_input[4].value.split('.').join("").replace('VND', ''),
             MAPDK: panel_input[0].value,
             MANV: nv_pay.value
           })
@@ -175,7 +175,7 @@ search.addEventListener("keyup", () => {
         <td style="padding-left: 18px;">${record.NGAYBD}</td>
         <td style="padding-left: 20px;">${record.NGAYKT}</td>
         <td style="padding-left: 33px;">${record.TRANGTHAI}</td>
-        <td style="padding-left: 33px;">${record.TONGTIEN.toLocaleString('it-IT', {style : 'currency', currency : 'VND'})}</td>
+        <td style="padding-left: 33px;">${record.TONGTIEN.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</td>
   </tr>
     `;
         }

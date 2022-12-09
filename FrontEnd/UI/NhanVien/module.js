@@ -15,13 +15,13 @@ server.NhanVien.getList({ 'KEY': '' })
     let out = "";
     console.log(result)
     for (let nv of result.data) {
-      let tk=""
-      if(nv.TAIKHOAN)
-      tk="Đã khóa"
-      else if(nv.TAIKHOAN===null)
-      tk="Chưa có tài khoản"
-      else 
-      tk="Đang hoạt động"
+      let tk = ""
+      if (nv.TAIKHOAN)
+        tk = "Khóa"
+      else if (nv.TAIKHOAN === null)
+        tk = ""
+      else
+        tk = "Đã cấp"
       out += `
     <tr>
        <td>${nv.MANV}</td>
@@ -219,7 +219,7 @@ server.NhanVien.getList({ 'KEY': '' })
         server.TaiKhoan.khoaOrMoKhoaTaiKhoan(data2)
           .then((result) => {
             console.log(result);
-            if (result.data.includes("Đã khóa tài khoản")) {
+            if (result.data.includes("Khóa tài khoản")) {
               popup_lock[0].classList.add("show");
               btn_lock_form.addEventListener("click", () => {
                 popup_lock[0].classList.remove("show");
@@ -291,13 +291,13 @@ search.addEventListener("keyup", () => {
       let list = document.querySelector("#NhanVienList");
       let out = "";
       for (let nv of result.data) {
-        let tk=""
-      if(result.data.TAIKHOAN)
-      tk="Đã khóa"
-      else if(!result.data.TAIKHOAN)
-      tk="Đang hoạt động"
-      else 
-      tk="Chưa có tài khoản"
+        let tk = ""
+        if (result.data.TAIKHOAN)
+          tk = "Khóa"
+        else if (!result.data.TAIKHOAN)
+          tk = "Đã cấp"
+        else
+          tk = ""
         out += `
     <tr>
        <td>${nv.MANV}</td>
@@ -521,7 +521,7 @@ search.addEventListener("keyup", () => {
           server.TaiKhoan.khoaOrMoKhoaTaiKhoan(data2)
             .then((result) => {
               console.log(result);
-              if (result.data.includes("Đã khóa tài khoản")) {
+              if (result.data.includes("Khóa tài khoản")) {
                 popup_lock[0].classList.add("show");
                 btn_lock_form.addEventListener("click", () => {
                   popup_lock[0].classList.remove("show");

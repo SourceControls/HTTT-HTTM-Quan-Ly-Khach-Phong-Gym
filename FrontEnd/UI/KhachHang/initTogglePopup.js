@@ -81,7 +81,10 @@ export default function init() {
       dichVuDropDown.innerHTML = '';
       let tileKMInput = document.querySelector('.TILEKM');
       //load data vào dropdown
+
       dichVu.data.forEach(dichVu => {
+        if (!dichVu.HIENHANH)
+          return;
         let option = document.createElement("option");
         option.text = dichVu.TENDV;
         option.value = dichVu.MADV;

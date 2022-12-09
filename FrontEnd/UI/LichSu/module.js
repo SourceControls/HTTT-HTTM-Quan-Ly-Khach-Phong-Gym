@@ -20,6 +20,22 @@ let input = document.querySelectorAll(".form-control");
 let rows = document.getElementsByTagName("tbody")[0].rows;
 let luot = document.querySelector(".text p");
 
+//GET tong so luot trong ngay: 
+function tinhTongSoLuotTrongNgay(listLichSu) {
+  let tongSoLuot = 0;
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+  today = dd + '/' + mm + '/' + yyyy;
+  listLichSu.forEach(e => {
+    if (today == e.NGAYGIO.trim()) {
+      tongSoLuot++;
+    }
+  });
+  return tongSoLuot
+}
+
 // GET LIST
 
 server.LichSuVaoPhong.getList({ KEY: "" })
@@ -29,12 +45,11 @@ server.LichSuVaoPhong.getList({ KEY: "" })
     for (let record of result.data) {
       out += `
       <tr>
-      <td style="padding-left: 10px;">${record.STT}</td>
-      <td style="padding-left: 8px;">${record.MAKH}</td>
-      <td style="padding-left: 8px;">${record.HOTEN}</td>
-      <td style="padding-left: 20px;">${record.GIOITINH}</td>
-      <td style="padding-left: 18px;">${record.NGAYGIO}</td>
-      <td style="padding-left: 18px;">${record.TONG}</td>
+      <td>${record.STT}</td>
+      <td>${record.MAKH}</td>
+      <td>${record.HOTEN}</td>
+      <td>${record.GIOITINH}</td>
+      <td>${record.NGAYGIO}</td>
   </tr>
     `;
     }
@@ -52,7 +67,7 @@ server.LichSuVaoPhong.getList({ KEY: "" })
     //   var file = imageInput_AddPopup.files[0];
     //   image_AddPopup.src = URL.createObjectURL(file);
     // });
-    luot.innerText = Number(rows.length);
+    luot.innerText = tinhTongSoLuotTrongNgay(result.data);
     for (let i = 0; i < rows.length; i++) {
       rows[i].addEventListener("click", () => {
         server.LichSuVaoPhong.chiTiet({ STT: result.data[i].STT })
@@ -66,11 +81,11 @@ server.LichSuVaoPhong.getList({ KEY: "" })
             input[5].value = result2.data[0].NGAYKT;
             img.src = result2.data[0].HINHANH;
           })
-          .catch((err) => {});
+          .catch((err) => { });
       });
     }
   })
-  .catch((err) => {});
+  .catch((err) => { });
 
 search.addEventListener("keyup", () => {
   let KEY = search.value;
@@ -86,19 +101,17 @@ search.addEventListener("keyup", () => {
         for (let record of result.data) {
           out += `
       <tr>
-      <td style="padding-left: 10px;">${record.STT}</td>
-      <td style="padding-left: 8px;">${record.MAKH}</td>
-      <td style="padding-left: 8px;">${record.HOTEN}</td>
-      <td style="padding-left: 20px;">${record.GIOITINH}</td>
-      <td style="padding-left: 18px;">${record.NGAYGIO}</td>
-      <td style="padding-left: 18px;">${record.TONG}</td>
+      <td >${record.STT}</td>
+      <td>${record.MAKH}</td>
+      <td>${record.HOTEN}</td>
+      <td>${record.GIOITINH}</td>
+      <td>${record.NGAYGIO}</td>
   </tr>
     `;
         }
         list.innerHTML = out;
         console.log(rows.length);
-        luot.innerText = Number(rows.length);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   }
 });

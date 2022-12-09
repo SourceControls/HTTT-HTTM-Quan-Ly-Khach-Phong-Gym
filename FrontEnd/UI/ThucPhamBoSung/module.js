@@ -19,12 +19,16 @@ async function loadList(KEY) {
   if (list.status) {
     let HTMLlist = document.querySelector("#list");
     let out = "";
+
     for (let sp of list.data) {
+      if (sp.HINHANH && sp.HINHANH.trim().length == 0) {
+        sp.HINHANH = 'defaultAvt.jpg'
+      }
       out += `
         <tr>
         <td style="width: 10%">${sp.MASP}</td>
         <td>${sp.TENSP}</td>
-        <td>
+        <td style="width:50%;text-align:justify">
         ${sp.MOTA}
         </td>
         <td>

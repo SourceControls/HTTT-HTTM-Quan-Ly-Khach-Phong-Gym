@@ -24,11 +24,10 @@ async function loadList(KEY) {
         <td style="padding-left: 11px">${dv.TENDV}</td>
         <td>${dv.SONGAYSUDUNG}</td>
         <td style="padding-left: 20px">${dv.GIA.toLocaleString("it-IT", {
-          style: "currency",
-          currency: "VND",
-        })}</td>
-        <td style="padding-left: 28px">${
-          dv.HIENHANH ? "Đang hiện hành" : "Ngừng hoạt động"
+        style: "currency",
+        currency: "VND",
+      })}</td>
+        <td style="padding-left: 28px">${dv.HIENHANH ? "Hiện hành" : "Ngừng hoạt động"
         }</td>
         <td>
           <div class="btn-container">
@@ -88,24 +87,24 @@ async function initEvent() {
     popup_delete_confirm[0].classList.remove("show");
   });
 
-// GET HIENHANH
-function hienHanh() {
-    if (input[2].checked||input[8].checked) return true;
+  // GET HIENHANH
+  function hienHanh() {
+    if (input[2].checked || input[8].checked) return true;
     else return false;
   }
   // THEM DICH VU
-btn_add_form.addEventListener("click", () => {
+  btn_add_form.addEventListener("click", () => {
     if (input[0].value.length == 0) alert("Tên không được để trống");
-    else if (input[1].value.length == 0){
-       alert("Số ngày sử dụng không được để trống");
+    else if (input[1].value.length == 0) {
+      alert("Số ngày sử dụng không được để trống");
     }
-    else if(isNaN(input[1].value))
-    alert("Số ngày sử dụng phải là số")
-    else if (input[2].value.length == 0){
+    else if (isNaN(input[1].value))
+      alert("Số ngày sử dụng phải là số")
+    else if (input[2].value.length == 0) {
       alert("Giá không được để trống");
-   }
-   else if(isNaN(input[2].value))
-   alert("Giá phải là số")
+    }
+    else if (isNaN(input[2].value))
+      alert("Giá phải là số")
     else {
       let data = {
         TENDV: input[0].value,
@@ -123,64 +122,64 @@ btn_add_form.addEventListener("click", () => {
             alert("Thêm dịch vụ thất bại");
           }
         })
-        .catch((err) => {});
+        .catch((err) => { });
     }
   });
 
-//   UPDATE DICH VU
-var rows = document.getElementsByTagName("tbody")[0].rows;
-for (var i = 0; i < btn_edit.length; i++) {
-  let x = i;
-  btn_edit[i].addEventListener("click", (event) => {
-    popup_edit[0].classList.add("show");
-    // SET INPUT VALUE
-    input[4].value = rows[x].getElementsByTagName("td")[0].innerText;
-    input[5].value = rows[x].getElementsByTagName("td")[1].innerText;
-    input[6].value = rows[x].getElementsByTagName("td")[2].innerText;
-    input[7].value = rows[x].getElementsByTagName("td")[3].innerText.split('.').join("").replace('VND','');
-    if (rows[x].getElementsByTagName("td")[4].innerText.includes('Đang hiện hành'))
-      input[8].checked = true
-    else
-      input[8].checked = false
+  //   UPDATE DICH VU
+  var rows = document.getElementsByTagName("tbody")[0].rows;
+  for (var i = 0; i < btn_edit.length; i++) {
+    let x = i;
+    btn_edit[i].addEventListener("click", (event) => {
+      popup_edit[0].classList.add("show");
+      // SET INPUT VALUE
+      input[4].value = rows[x].getElementsByTagName("td")[0].innerText;
+      input[5].value = rows[x].getElementsByTagName("td")[1].innerText;
+      input[6].value = rows[x].getElementsByTagName("td")[2].innerText;
+      input[7].value = rows[x].getElementsByTagName("td")[3].innerText.split('.').join("").replace('VND', '');
+      if (rows[x].getElementsByTagName("td")[4].innerText.includes('Hiện hành'))
+        input[8].checked = true
+      else
+        input[8].checked = false
 
-    btn_update_form.addEventListener("click", () => {
+      btn_update_form.addEventListener("click", () => {
         if (input[5].value.length == 0) alert("Tên không được để trống");
-        else if (input[6].value.length == 0){
-           alert("Số ngày sử dụng không được để trống");
+        else if (input[6].value.length == 0) {
+          alert("Số ngày sử dụng không được để trống");
         }
-        else if(isNaN(input[6].value))
-        alert("Số ngày sử dụng phải là số")
-        else if (input[7].value.length == 0){
+        else if (isNaN(input[6].value))
+          alert("Số ngày sử dụng phải là số")
+        else if (input[7].value.length == 0) {
           alert("Giá không được để trống");
-       }
-       else if(isNaN(input[7].value))
-       alert("Giá phải là số")
-      else {
-        let data = {
+        }
+        else if (isNaN(input[7].value))
+          alert("Giá phải là số")
+        else {
+          let data = {
             MADV: input[4].value,
             TENDV: input[5].value,
             SONGAYSUDUNG: input[6].value,
             GIA: input[7].value,
             HIENHANH: hienHanh()
-        }
-        server.DichVu.capNhatDichVu(data)
-          .then((result) => {
-            if(result.status){
-            popup_edit[0].classList.remove("show");
-            alert("Cập nhật dich vụ thành công")
-            window.location.reload();
-            }
-            else{
+          }
+          server.DichVu.capNhatDichVu(data)
+            .then((result) => {
+              if (result.status) {
+                popup_edit[0].classList.remove("show");
+                alert("Cập nhật dich vụ thành công")
+                window.location.reload();
+              }
+              else {
                 popup_edit[0].classList.remove("show");
                 alert(result.data)
-            }
-          })
-          .catch((err) => { });
-      }
+              }
+            })
+            .catch((err) => { });
+        }
+      });
     });
-  });
-}
-//   XOA DICH VU
+  }
+  //   XOA DICH VU
   for (var i = 0; i < btn_delete.length; i++) {
     let x = i;
     btn_delete[i].addEventListener("click", (event) => {
@@ -193,13 +192,13 @@ for (var i = 0; i < btn_edit.length; i++) {
         server.DichVu.xoaDichVu(data)
           .then((result) => {
             console.log(result)
-            if(result.status){
-            alert("Xóa dịch vụ thành công")
-            window.location.reload();
-            popup_delete_confirm[0].classList.remove("show");
-            }else {
-                popup_delete_confirm[0].classList.remove("show");
-                alert(result.data)
+            if (result.status) {
+              alert("Xóa dịch vụ thành công")
+              window.location.reload();
+              popup_delete_confirm[0].classList.remove("show");
+            } else {
+              popup_delete_confirm[0].classList.remove("show");
+              alert(result.data)
             }
           })
           .catch((err) => { });
