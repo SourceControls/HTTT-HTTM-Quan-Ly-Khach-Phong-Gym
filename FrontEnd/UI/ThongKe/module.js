@@ -38,9 +38,14 @@ server.ThongKe.thongKeKhachHang({ TUNGAY: "", DENNGAY: "" })
       ]);
       var data2 = google.visualization.arrayToDataTable([
         ["Age", "Person"],
-        ["6-14", result.data[0]["6-14"]],
-        ["15-24", result.data[0]["15-24"]],
-        ["Trên 24", result.data[0]["> 24"]],
+        ["<14", result.data[0]["<= 14"]],
+        ["15-19", result.data[0]["15-24"]],
+        ["20-24", result.data[0]["20-24"]],
+        ["25-29", result.data[0]["25-29"]],
+        ["30-39", result.data[0]["30-39"]],
+        ["40-49", result.data[0]["40-49"]],
+        ["50-69", result.data[0]["50-69"]],
+        [">70", result.data[0]["70+"]],
       ]);
 
       var option1 = {
@@ -48,9 +53,9 @@ server.ThongKe.thongKeKhachHang({ TUNGAY: "", DENNGAY: "" })
         titleTextStyle: {
           fontSize: 18,
         },
-        chartArea: {width: 280, height: 180},
-        tooltip: {textStyle:  {fontName: 'TimesNewRoman',fontSize: 14,bold: true}},
-        legend: {textStyle:  {fontName: 'TimesNewRoman',fontSize: 16,bold: true}},
+        chartArea: { width: 280, height: 180 },
+        tooltip: { textStyle: { fontName: 'TimesNewRoman', fontSize: 14, bold: true } },
+        legend: { textStyle: { fontName: 'TimesNewRoman', fontSize: 16, bold: true } },
         fontSize: 18
       };
       var option2 = {
@@ -58,9 +63,9 @@ server.ThongKe.thongKeKhachHang({ TUNGAY: "", DENNGAY: "" })
         titleTextStyle: {
           fontSize: 18,
         },
-        chartArea: {width: 280, height: 180},
-        tooltip: {textStyle:  {fontName: 'TimesNewRoman',fontSize: 14,bold: true}},
-        legend: {textStyle:  {fontName: 'TimesNewRoman',fontSize: 16,bold: true}},
+        chartArea: { width: 280, height: 180 },
+        tooltip: { textStyle: { fontName: 'TimesNewRoman', fontSize: 14, bold: true } },
+        legend: { textStyle: { fontName: 'TimesNewRoman', fontSize: 16, bold: true } },
         fontSize: 18
       };
 
@@ -75,7 +80,7 @@ server.ThongKe.thongKeKhachHang({ TUNGAY: "", DENNGAY: "" })
       chart2.draw(data2, option2);
     }
   })
-  .catch((err) => {});
+  .catch((err) => { });
 
 // KHACH HANG LOC BUTTON
 btnFilter[0].addEventListener("click", () => {
@@ -83,7 +88,6 @@ btnFilter[0].addEventListener("click", () => {
   let from = document.querySelector("#from").value;
   server.ThongKe.thongKeKhachHang({ TUNGAY: from, DENNGAY: to })
     .then((result) => {
-      console.log(result);
 
       KH.innerText = result.data[0].TONGKH;
       KHcu.innerText = result.data[0].TONGKHCU;
@@ -101,9 +105,14 @@ btnFilter[0].addEventListener("click", () => {
         ]);
         var data2 = google.visualization.arrayToDataTable([
           ["Age", "Person"],
-          ["6-14", result.data[0]["6-14"]],
-          ["15-24", result.data[0]["15-24"]],
-          ["Trên 24", result.data[0]["> 24"]],
+          ["<14", result.data[0]["<= 14"]],
+          ["15-19", result.data[0]["15-24"]],
+          ["20-24", result.data[0]["20-24"]],
+          ["25-29", result.data[0]["25-29"]],
+          ["30-39", result.data[0]["30-39"]],
+          ["40-49", result.data[0]["40-49"]],
+          ["50-69", result.data[0]["50-69"]],
+          [">70", result.data[0]["70+"]],
         ]);
 
         var option1 = {
@@ -111,9 +120,9 @@ btnFilter[0].addEventListener("click", () => {
           titleTextStyle: {
             fontSize: 18,
           },
-          chartArea: {width: 400, height: 180},
-          tooltip: {textStyle:  {fontName: 'TimesNewRoman',fontSize: 14,bold: true}},
-          legend: {textStyle:  {fontName: 'TimesNewRoman',fontSize: 16,bold: true}},
+          chartArea: { width: 400, height: 180 },
+          tooltip: { textStyle: { fontName: 'TimesNewRoman', fontSize: 14, bold: true } },
+          legend: { textStyle: { fontName: 'TimesNewRoman', fontSize: 16, bold: true } },
           fontSize: 18
         };
         var option2 = {
@@ -121,9 +130,9 @@ btnFilter[0].addEventListener("click", () => {
           titleTextStyle: {
             fontSize: 18,
           },
-          chartArea: {width: 400, height: 180},
-          tooltip: {textStyle:  {fontName: 'TimesNewRoman',fontSize: 14,bold: true}},
-          legend: {textStyle:  {fontName: 'TimesNewRoman',fontSize: 16,bold: true}},
+          chartArea: { width: 400, height: 180 },
+          tooltip: { textStyle: { fontName: 'TimesNewRoman', fontSize: 14, bold: true } },
+          legend: { textStyle: { fontName: 'TimesNewRoman', fontSize: 16, bold: true } },
           fontSize: 18
         };
 
@@ -138,7 +147,7 @@ btnFilter[0].addEventListener("click", () => {
         chart2.draw(data2, option2);
       }
     })
-    .catch((err) => {});
+    .catch((err) => { });
 });
 
 // THONG KE DOANH THU
@@ -154,9 +163,9 @@ server.ThongKe.thongKeDoanhThu({ TUNGAY: " ", DENNGAY: " " })
               <td>${record.HOTEN}</td>
               <td style="padding-left: 22px">${record.SDT}</td>
               <td style="padding-left: 20px">${record.TONGDOANHTHU.toLocaleString(
-                "it-IT",
-                { style: "currency", currency: "VND" }
-              )}</td>
+        "it-IT",
+        { style: "currency", currency: "VND" }
+      )}</td>
         </tr>
       `;
     }
@@ -179,7 +188,7 @@ server.ThongKe.thongKeDoanhThu({ TUNGAY: " ", DENNGAY: " " })
       currency: "VND",
     });
   })
-  .catch((err) => {});
+  .catch((err) => { });
 
 // DOANH THU LOC BUTTON
 btnFilter[2].addEventListener("click", () => {
@@ -197,15 +206,15 @@ btnFilter[2].addEventListener("click", () => {
               <td>${record.HOTEN}</td>
               <td style="padding-left: 22px">${record.SDT}</td>
               <td style="padding-left: 20px">${record.TONGDOANHTHU.toLocaleString(
-                "it-IT",
-                { style: "currency", currency: "VND" }
-              )}</td>
+          "it-IT",
+          { style: "currency", currency: "VND" }
+        )}</td>
         </tr>
       `;
       }
       list.innerHTML = out;
     })
-    .catch((err) => {});
+    .catch((err) => { });
 });
 
 // LUOT RA VAO LOC BUTTON
@@ -214,18 +223,8 @@ btnFilter[1].addEventListener("click", () => {
   let from = document.querySelector("#fromRV").value;
   server.ThongKe.thongKeRaVao({ TUNGAY: from, DENNGAY: to })
     .then((result) => {
-      console.log({ from, to });
-
-      let xValues = [];
-      let yValues = [];
-
-      for (let record of result.data) {
-        let gio = record.GIO + "h";
-        xValues.push(gio);
-      }
-      for (let record of result.data) {
-        yValues.push(Number(record.LUOTRAVAO));
-      }
+      let xValues = Object.keys(result.data[0]);
+      let yValues = Object.values(result.data[0]);
 
       new Chart("lineChart", {
         type: "line",
@@ -249,24 +248,14 @@ btnFilter[1].addEventListener("click", () => {
         },
       });
     })
-    .catch((err) => {});
+    .catch((err) => { });
 });
 
 //  LINE CHART LUOT RA VAO
 server.ThongKe.thongKeRaVao({ TUNGAY: " ", DENNGAY: " " })
   .then((result) => {
-    console.log(result.data);
-    let xValues = [];
-    let yValues = [];
-
-    for (let record of result.data) {
-      let gio = record.GIO + "h";
-      xValues.push(gio);
-    }
-    for (let record of result.data) {
-      yValues.push(Number(record.LUOTRAVAO));
-    }
-
+    let xValues = Object.keys(result.data[0]);
+    let yValues = Object.values(result.data[0]);
     new Chart("lineChart", {
       type: "line",
       data: {
@@ -289,4 +278,4 @@ server.ThongKe.thongKeRaVao({ TUNGAY: " ", DENNGAY: " " })
       },
     });
   })
-  .catch((err) => {});
+  .catch((err) => { });

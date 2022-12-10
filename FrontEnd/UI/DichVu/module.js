@@ -110,7 +110,7 @@ async function initEvent() {
         TENDV: input[0].value,
         SONGAYSUDUNG: input[1].value,
         GIA: input[2].value,
-        HIENHANH: hienHanh()
+        HIENHANH: true
       };
       server.DichVu.themDichVu(data)
         .then((result) => {

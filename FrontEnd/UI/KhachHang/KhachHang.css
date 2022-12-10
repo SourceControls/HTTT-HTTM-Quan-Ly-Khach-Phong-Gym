@@ -294,6 +294,7 @@ table tbody tr:hover {
   width: 65px;
   height: 69px;
   border-radius: 8px;
+  object-fit: contain;
 }
 
 .btn {
