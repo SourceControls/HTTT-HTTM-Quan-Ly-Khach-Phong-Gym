@@ -16,7 +16,7 @@ class LichSuMuaHangControllers {
         }
         let rs = await DB.excute('SP_TIM_KIEM_LSMH', params)
         if(rs.recordset.length == 0){
-            res.send(json(false, 'Không có kết quả phù hợp'))
+            res.send(json(false, []))
             return
         }
         res.send(json(true, rs.recordset))

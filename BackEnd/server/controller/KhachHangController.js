@@ -15,8 +15,7 @@ class KhachHangControllers {
         }
         let rs = await KhachHang.searchKhachHang(params)
         if (rs.recordset.length == 0) {
-            res.send(json(false, 'Không có kết quả phù hợp'))
-            console.log(json(false, 'Không có kết quả phù hợp'))
+            res.send(json(false, []))
             return
         }
         console.log("rows selected: " + rs.recordset.length);

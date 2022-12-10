@@ -17,8 +17,7 @@ class NhanVienControllers {
         }
         let rs = await NhanVien.searchNhanVien(params)
         if(rs.recordset.length == 0){
-            res.send(json(false, 'Không có kết quả phù hợp'))   
-            console.log(json(false, 'Không có kết quả phù hợp'))
+            res.send(json(false, []))   
             return
         }
         res.send(json(true, rs.recordset))
