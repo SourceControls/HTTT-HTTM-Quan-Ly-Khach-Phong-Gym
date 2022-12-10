@@ -17,8 +17,11 @@ class PhieuThuTienControllers {
         if (rs.returnValue == 0) {
             // return json(true, rs)
             res.send(json(false, `Phiếu này đã được thanh toán !!!`))
-        } else {
+        } else if (rs.returnValue == 1) {
+            // return json(true, rs)
+            res.send(json(false, `Phiếu này đã hủy`))
             // return json(false, rs)
+        } else {
             res.send(json(true, rs))
         }
     }

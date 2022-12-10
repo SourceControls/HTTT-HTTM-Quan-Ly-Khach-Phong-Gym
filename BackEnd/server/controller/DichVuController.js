@@ -52,7 +52,7 @@ class DichVuControllers {
         if (rs.returnValue == 1) {
             res.send(json(true, rs))
         } else {
-            res.send(json(false, 'Dịch vụ đang được sử dụng. Không thể sửa !!'))
+            res.send(json(false, 'Đã có khách hàng đăng ký dịch vụ. Không thể sửa !!'))
         }
     }
 
@@ -63,7 +63,7 @@ class DichVuControllers {
         if (rs.returnValue == 1) {
             res.send(json(true, rs))
         } else {
-            res.send(json(false, 'Dịch vụ đang được sử dụng. Không thể xóa !!'))
+            res.send(json(false, 'Đã có khách hàng đăng ký dịch vụ. Không thể xóa !!'))
         }
     }
 

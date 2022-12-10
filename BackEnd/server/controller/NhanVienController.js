@@ -60,19 +60,21 @@ class NhanVienControllers {
     }
 
     xoaNv = async (req, res) => {
-        const MANV = req.body
-        let params = [{ name: 'MANV', type: 'Char(10)', value: 'NV00000001' }]
+        const { MANV } = req.body
+        let params = [{ name: 'MANV', type: 'Char(10)', value: MANV }]
         let rs = await NhanVien.deleteNhanVien(params)
-        if (rs.rowsAffected > 0) {
-            res.send(json(true, rs))
+        if (rs.returnValue == 1 ) {
+            res.send(json(true, "Khóa tài khoản thành công"))
+        } else if(rs.returnValue == 2){
+            res.send(json(true, "Xóa nhân viên thành công"))
         } else {
             res.send(json(false, rs))
         }
     }
 
     timKiemNv = async (req, res) => {
-        const HOTEN = req.body
-        let params = [{ name: 'HOTEN', type: 'Nvarchar(50)', value: ' Yến' }]
+        const { HOTEN } = req.body
+        let params = [{ name: 'HOTEN', type: 'Nvarchar(50)', value: HOTEN }]
         let rs = await NhanVien.searchNhanVien(params)
         if (rs.recordset.length == 0) {
             res.send(json(false, 'Không có kết quả phù hợp'))
