@@ -17,7 +17,7 @@ class PhieuDangKyControllers {
         let rs = await PhieuDangKy.searchPhieuDangKy(params)
         if (rs.recordset.length == 0) {
             res.send(json(false, rs))
-            return json(false, 'Không có kết quả phù hợp')
+            return json(false, [])
         }
         res.send(json(true, rs.recordset))
     }
