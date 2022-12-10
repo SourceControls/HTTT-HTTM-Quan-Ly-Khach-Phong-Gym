@@ -342,6 +342,7 @@
     width:250px;
     height: 340px;
     border-radius: 15px;
+    margin-right: 7px;
   }
   .img-section{
     display: flex;

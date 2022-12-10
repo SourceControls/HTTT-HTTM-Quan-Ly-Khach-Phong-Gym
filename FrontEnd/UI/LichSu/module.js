@@ -38,7 +38,8 @@ function tinhTongSoLuotTrongNgay(listLichSu) {
 
 // GET LIST
 
-server.LichSuVaoPhong.getList({ KEY: "" })
+async function loadList(KEY){
+  server.LichSuVaoPhong.getList({ 'KEY': KEY })
   .then((result) => {
     let list = document.querySelector("#list");
     let out = "";
@@ -54,19 +55,6 @@ server.LichSuVaoPhong.getList({ KEY: "" })
     `;
     }
     list.innerHTML = out;
-    // async function img(data) {
-    //   if (data.HINHANH != "") data.HINHANH = await uploadImg(data.HINHANH);
-    //   else data.HINHANH = document.querySelector(".popup-add img").src;
-    // }
-    // // THEM SAN PHAM
-    // const imageInput_AddPopup = document.querySelector(
-    //   ".popup-add .image-input"
-    // );
-    // const image_AddPopup = document.querySelector(".popup-add img");
-    // imageInput_AddPopup.addEventListener("change", () => {
-    //   var file = imageInput_AddPopup.files[0];
-    //   image_AddPopup.src = URL.createObjectURL(file);
-    // });
     luot.innerText = tinhTongSoLuotTrongNgay(result.data);
     for (let i = 0; i < rows.length; i++) {
       rows[i].addEventListener("click", () => {
@@ -84,34 +72,31 @@ server.LichSuVaoPhong.getList({ KEY: "" })
           .catch((err) => { });
       });
     }
-  })
-  .catch((err) => { });
+  }).catch((err)=>({}))
+}
 
+
+    // async function img(data) {
+    //   if (data.HINHANH != "") data.HINHANH = await uploadImg(data.HINHANH);
+    //   else data.HINHANH = document.querySelector(".popup-add img").src;
+    // }
+    // // THEM SAN PHAM
+    // const imageInput_AddPopup = document.querySelector(
+    //   ".popup-add .image-input"
+    // );
+    // const image_AddPopup = document.querySelector(".popup-add img");
+    // imageInput_AddPopup.addEventListener("change", () => {
+    //   var file = imageInput_AddPopup.files[0];
+    //   image_AddPopup.src = URL.createObjectURL(file);
+    // });
+
+
+loadList('')
 search.addEventListener("keyup", () => {
   let KEY = search.value;
-  if (KEY.length == 0) window.location.reload();
+  if (KEY.length == 0) loadList('')
   else if (KEY) {
     KEY = KEY.trim();
-    server.LichSuVaoPhong.getList({
-      KEY: KEY,
-    })
-      .then((result) => {
-        let list = document.querySelector("#list");
-        let out = "";
-        for (let record of result.data) {
-          out += `
-      <tr>
-      <td >${record.STT}</td>
-      <td>${record.MAKH}</td>
-      <td>${record.HOTEN}</td>
-      <td>${record.GIOITINH}</td>
-      <td>${record.NGAYGIO}</td>
-  </tr>
-    `;
-        }
-        list.innerHTML = out;
-        console.log(rows.length);
-      })
-      .catch((err) => { });
+    loadList(KEY)
   }
 });

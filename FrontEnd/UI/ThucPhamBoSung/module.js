@@ -95,44 +95,88 @@ async function initEvents() {
   });
 
   var rows = document.getElementsByTagName("tbody")[0].rows;
-  async function img(data) {
-    if (data.HINHANH != "") data.HINHANH = await uploadImg(data.HINHANH);
-    else data.HINHANH = document.querySelector(".popup-add img").src;
+
+  function ThemSp() {
+
+    const imageInput_AddPopup = document.querySelector(".popup-add .image-input");
+    const image_AddPopup = document.querySelector(".popup-add img");
+    const add_product_form = document.querySelector("#add-product-form");
+  
+    //handle ảnh
+    imageInput_AddPopup.addEventListener("change", () => {
+      var file = imageInput_AddPopup.files[0];
+      image_AddPopup.src = URL.createObjectURL(file);
+    })
+    add_product_form.addEventListener("submit", async (e) => {
+      console.log('submited add SP');
+      e.preventDefault();
+      const sp = Object.fromEntries(new FormData(e.target));
+      if (sp.TENSP.trim().length == 0) {
+        alert("Tên sản phẩm không được để trống");
+        return;
+      }
+      if (sp.MOTA.trim().length == 0) {
+        alert("Mô tả không được để trống");
+        return;
+      }
+      //nếu k có ảnh thì set ảnh mặc định
+  
+      if (sp.HINHANH.name != '')
+      sp.HINHANH = await uploadImg(sp.HINHANH)
+      else
+      sp.HINHANH = document.querySelector('.popup-add img').src;
+
+      server.ThucPhamBoSung.themSanPham(sp).then((result)=>{
+        if (!result.status) {
+          alert(result.data);
+          return
+        }
+        document.querySelector(".popup-add").classList.remove('show');
+        alert("Thêm sản phẩm thành công");
+        loadListSP("");
+      })
+
+    });
+  
   }
   // THEM SAN PHAM
-  const imageInput_AddPopup = document.querySelector(".popup-add .image-input");
-  const image_AddPopup = document.querySelector(".popup-add img");
-  imageInput_AddPopup.addEventListener("change", () => {
-    var file = imageInput_AddPopup.files[0];
-    image_AddPopup.src = URL.createObjectURL(file);
-  });
-  btn_add_form.addEventListener("click", () => {
-    // alert("hello")
-    if (input[0].value.length == 0) {
-      alert("Tên sản phẩm không được để trống");
-    } else if (input[1].value.length == 0) {
-      alert("Mô tả sản phẩm không được để trống");
-    } else {
-      let data = {
-        TENSP: input[0].value,
-        MOTA: input[1].value,
-        HINHANH: "",
-      };
-      img(data);
-      server.ThucPhamBoSung.themSanPham(data)
-        .then((result) => {
-          // console.log(result.data);
-          if (result.status) {
-            popup_add[0].classList.remove("show");
-            alert("Thêm sản phẩm thành công");
-            window.location.reload();
-          } else {
-            alert("Thêm sản phẩm thất bại");
-          }
-        })
-        .catch((err) => { });
-    }
-  });
+  ThemSp()
+  // const imageInput_AddPopup = document.querySelector(".popup-add .image-input");
+  // const image_AddPopup = document.querySelector(".popup-add img");
+  // imageInput_AddPopup.addEventListener("change", () => {
+  //   var file = imageInput_AddPopup.files[0];
+  //   image_AddPopup.src = URL.createObjectURL(file);
+  // });
+  // btn_add_form.addEventListener("click", () => {
+  //   // alert("hello")
+  //   if (input[0].value.length == 0) {
+  //     alert("Tên sản phẩm không được để trống");
+  //   } else if (input[1].value.length == 0) {
+  //     alert("Mô tả sản phẩm không được để trống");
+  //   } else {
+  //     let data = {
+  //       TENSP: input[0].value,
+  //       MOTA: input[1].value,
+  //       HINHANH: imageInput_AddPopup.value,
+  //     };
+  //     console.log(data)
+
+  //     if (data.HINHANH != "") data.HINHANH =  uploadImg(data.HINHANH);
+  //     else data.HINHANH = document.querySelector(".popup-add img").src;
+  //     server.ThucPhamBoSung.themSanPham(data)
+  //       .then((result) => {
+  //         // console.log(result.data);
+  //         if (result.status) {
+  //           popup_add[0].classList.remove("show");
+  //           alert("Thêm sản phẩm thành công");
+  //           loadListSP("");
+  //         } else {
+  //           alert("Thêm sản phẩm thất bại");
+  //         }
+  //       })
+  //       .catch((err) => { });
+  //   }
+  // });
 
   // CAP NHAT SAN PHAM
   for (var i = 0; i < btn_edit.length; i++) {
@@ -164,7 +208,7 @@ async function initEvents() {
               if (result.status) {
                 popup_edit[0].classList.remove("show");
                 alert("Cập nhật sản phẩm thành công");
-                window.location.reload();
+                loadListSP("");
               } else {
                 popup_edit[0].classList.remove("show");
                 alert("Cập nhật sản phẩm thất bại");
@@ -189,7 +233,7 @@ async function initEvents() {
           .then((result) => {
             if (result.status) {
               alert("Xóa sản phẩm thành công");
-              window.location.reload();
+              loadListSP("");
               popup_delete_confirm[0].classList.remove("show");
             } else {
               popup_delete_confirm[0].classList.remove("show");
