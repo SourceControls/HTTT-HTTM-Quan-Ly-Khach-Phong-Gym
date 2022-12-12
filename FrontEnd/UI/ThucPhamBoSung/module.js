@@ -53,7 +53,7 @@ async function initEvents() {
   /* POPUP ADD */
   let btn_add = document.querySelector(".btn-add");
   let btn_add_form = document.querySelector(".btn-add-form");
-  let btn_update_form = document.querySelector(".btn-update-form");
+  let btn_update_form = document.querySelector("#update-product-form");
   let btn_delete_form = document.querySelector(".btn-delete-form");
   let btn_edit = document.querySelectorAll(".btn-edit");
   let input = document.querySelectorAll(".form-control");
@@ -179,6 +179,7 @@ async function initEvents() {
   // });
 
   // CAP NHAT SAN PHAM
+
   for (var i = 0; i < btn_edit.length; i++) {
     let x = i;
     btn_edit[i].addEventListener("click", (event) => {
@@ -187,35 +188,44 @@ async function initEvents() {
       input[3].value = rows[x].getElementsByTagName("td")[0].innerText;
       input[4].value = rows[x].getElementsByTagName("td")[1].innerText;
       input[5].value = rows[x].getElementsByTagName("td")[2].innerText;
+      
       // input[7].value = rows[x].getElementsByTagName("td")[3].innerText.split('.').join("").replace('VND','');
 
-      btn_update_form.addEventListener("click", () => {
-        if (input[3].value.length == 0)
+      const imageInput_UpdatePopup = document.querySelector(".popup-update .image-input");
+      const image_UpdatePopup = document.querySelector(".popup-update img");
+      imageInput_UpdatePopup.addEventListener("change", () => {
+        var file = imageInput_UpdatePopup.files[0];
+        image_UpdatePopup.src = URL.createObjectURL(file);
+      })
+      
+      btn_update_form.addEventListener("submit", async (e) => {
+        console.log('submited update KH');
+        e.preventDefault();
+        const tp = Object.fromEntries(new FormData(e.target));
+        tp.MASP = document.querySelector("#MASP").value;
+        if (tp.TENSP.trim().length == 0) {
           alert("Tên sản phẩm không được để trống");
-        else if (input[4].value.length == 0) {
-          alert("Mô tả sản phẩm không được để trống");
-        } else {
-          let data = {
-            MASP: input[3].value,
-            TENSP: input[4].value,
-            MOTA: input[5].value,
-            HINHANH: '',
-          };
-          img(data)
-          server.ThucPhamBoSung.capNhatSanPham(data)
-            .then((result) => {
-              console.log(result);
-              if (result.status) {
-                popup_edit[0].classList.remove("show");
-                alert("Cập nhật sản phẩm thành công");
-                loadListSP("");
-              } else {
-                popup_edit[0].classList.remove("show");
-                alert("Cập nhật sản phẩm thất bại");
-              }
-            })
-            .catch((err) => { });
+          return;
         }
+        if (tp.MOTA.trim().length == 0) {
+          alert("Mô tả không được để trống");
+          return;
+        }
+        //nếu k có ảnh thì set ảnh mặc định
+        if (tp.HINHANH.name != '')
+        tp.HINHANH = await uploadImg(tp.HINHANH)
+        else
+        tp.HINHANH = document.querySelector('.popup-update img').src;
+
+        server.ThucPhamBoSung.capNhatSanPham(tp).then((rs)=>{
+          if (!rs.status) {
+            alert(rs.data);
+            popup_edit[0].classList.remove("show");
+          }
+          alert("Cập nhật thành công!");
+          popup_edit[0].classList.remove("show");
+          loadListSP('');
+        })
       });
     });
   }
