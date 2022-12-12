@@ -15,15 +15,12 @@
       src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script type="text/javascript">
-      function preventBack() {
-        window.history.forward();
-      }
-      setTimeout('preventBack()', 0);
-      window.onunload = function () {
-        null;
-      };
       if (!window.localStorage.getItem('username')) {
         window.location.href = '/FrontEnd/UI/Login/Login.html';
+      }
+      if (window.localStorage.getItem('chucvu') == 'TIEPTAN') {
+        alert('Không có quyền truy cập');
+        window.location.href = '/FrontEnd/UI/KhachHang/KhachHang.html';
       }
     </script>
     <title>Thống kê</title>

@@ -71,6 +71,23 @@ class Server {
       let api = 'http://localhost:8080/KhachHang/Inbody'
       return excute(api, data)
     },
+    recommend(Inbody) {
+      console.log("Gợi ý cho Inbody:", Inbody);
+      return fetch(`http://127.0.0.1:8000/recommend?tuoi=${Inbody.TUOI}&gioiTinh=${Inbody.GIOITINH}&BMI=${Inbody.BMI}&tiLeMo=${Inbody.TILEMO}&tiLeCo=${Inbody.TILECO}`).
+        then(rs => rs.json()).then(rs => {
+          let rs2 = []
+          Object.keys(rs).forEach(function (key) {
+            if (rs[key] == 0)
+              delete rs[key]
+            else {
+              rs2.push({ MASP: key, TILE: rs[key] })
+            }
+          });
+
+          rs2.sort((a, b) => (a.tile > b.tile) ? -1 : 1);
+          return rs2
+        })
+    }
   }
   PhieuDangKy = {
     getList(data = {}) {

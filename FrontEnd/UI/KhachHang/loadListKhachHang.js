@@ -31,10 +31,10 @@ async function loadList(KEY) {
                   <td><img class="table-img" src="${e.HINHANH}" alt="AVT" /></td>
                   <td>
                     <div class="btn-container">
-                      <i class="bx bxs-edit btn-update"></i>
-                      <i class="bx bx-trash btn-delete"></i>
-                      <i class="bx bx-notepad btn-register"></i>
-                      <i class="bx bx-history btn-inbody"></i>
+                      <i class="bx bxs-edit btn-update" title="Cập nhật thông tin"></i>
+                      <i class="bx bx-trash btn-delete"  title="Xóa khách hàng"></i>
+                      <i class="bx bx-notepad btn-register" title="Đăng kí dịch vụ"></i>
+                      <i class="bx bx-history btn-inbody" title="Lịch sử inbody"></i>
                     </div>
                   </td>
                 </tr>
