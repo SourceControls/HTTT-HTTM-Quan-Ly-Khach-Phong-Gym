@@ -23,6 +23,25 @@ async function loadList(KEY) {
       if (nv.TAIKHOAN) tk = "Khóa";
       else if (nv.TAIKHOAN === null) tk = "";
       else tk = "Đã cấp";
+      if (window.localStorage.getItem('username').trim() == nv.MANV.trim()) {
+        out += `
+                <tr>
+                <td>${nv.MANV}</td>
+                <td>${nv.HOTEN}</td>
+                <td style="padding-left: 15px;">${nv.SDT}</td>
+                <td style="padding-left: 16px;">${nv.CHUCVU}</td>
+                <td style="padding-left: 20px;">${tk}</td>
+                  <td>
+                      <div class="btn-container">
+                          <i class='bx bxs-edit btn-edit'></i>
+                          <i class='bx bx-trash btn-delete' style="display:none"></i>
+                          <i class='bx bx-user-plus btn-account'style="display:none"></i>
+                          <i class='bx bx-lock btn-lock' style="display:none" ></i>
+                      </div>
+                  </td>
+                </tr>`;
+        continue
+      }
       out += `
                 <tr>
                 <td>${nv.MANV}</td>
@@ -109,7 +128,7 @@ async function initEvents() {
               alert("Thêm nhân viên thất bại");
             }
           })
-          .catch((err) => {});
+          .catch((err) => { });
       }
     });
   });
@@ -155,7 +174,7 @@ async function initEvents() {
               alert("Cập nhật nhân viên thành công");
               loadListNV("");
             })
-            .catch((err) => {});
+            .catch((err) => { });
         }
       });
     });
@@ -184,7 +203,7 @@ async function initEvents() {
             create_name[0].value = data1.TENDANGNHAP;
           }
         })
-        .catch((err) => {});
+        .catch((err) => { });
     });
   }
 
@@ -201,17 +220,17 @@ async function initEvents() {
         server.NhanVien.xoaNhanVien(data)
           .then((result) => {
             // console.log(result);
-            if(result.status){
-            // console.log(result);
-            alert("Xóa nhân viên thành công");
-            loadListNV("");
-            popup_delete_confirm[0].classList.remove("show");
-            }else{
+            if (result.status) {
+              // console.log(result);
+              alert("Xóa nhân viên thành công");
+              loadListNV("");
+              popup_delete_confirm[0].classList.remove("show");
+            } else {
               alert("Xóa nhân viên thất bại!")
               popup_delete_confirm[0].classList.remove("show");
             }
           })
-          .catch((err) => {});
+          .catch((err) => { });
       });
     });
   }
@@ -249,7 +268,7 @@ async function initEvents() {
             });
           }
         })
-        .catch((err) => {});
+        .catch((err) => { });
     });
   }
   btn_cancel[0].addEventListener("click", () => {

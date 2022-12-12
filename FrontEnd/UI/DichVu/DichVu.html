@@ -11,13 +11,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="text/javascript">
-      function preventBack() {
-        window.history.forward();
-      }
-      setTimeout('preventBack()', 0);
-      window.onunload = function () {
-        null;
-      };
       if (!window.localStorage.getItem('username')) {
         window.location.href = '/FrontEnd/UI/Login/Login.html';
       }

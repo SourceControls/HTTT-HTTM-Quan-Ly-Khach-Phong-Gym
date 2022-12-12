@@ -125,6 +125,7 @@ export default function init() {
     });
   })
   btns_inbody.forEach((btn) => {
+    //tải list inbody
     btn.addEventListener("click", async (e) => {
       let idKH = getParentId(e);
       let khachHang = (await server.KhachHang.getList({ KEY: idKH })).data[0];
@@ -133,10 +134,10 @@ export default function init() {
       document.querySelector('.popup-inbody .MAKH').innerText = idKH;
       document.querySelector('.popup-inbody img').src = khachHang.HINHANH;
       document.querySelector('.popup-inbody .HOTEN').innerText = khachHang.HOTEN;
-
+      //add inbody row
       let lichSuInbody = (await server.KhachHang.getListInbody({ MAKH: idKH })).data;
       let tblLichSuInbody = document.querySelector('.inbody-table tbody');
-      document.querySelector('.inbody-table tbody').innerHTML = '';
+      tblLichSuInbody.innerHTML = '';
       lichSuInbody.forEach(e => {
         let row = tblLichSuInbody.insertRow(-1);
 
@@ -155,7 +156,35 @@ export default function init() {
         cell6.innerHTML = e.KHOILUONG_CO
         cell7.innerHTML = e.BMI.toFixed(1)
       })
-      console.log(lichSuInbody);
+      let lastInbody = lichSuInbody[lichSuInbody.length - 1];
+      // lastInbody.
+      lastInbody.TILEMO = lastInbody.TILE_MO;
+      lastInbody.TILECO = (lastInbody.KHOILUONG_CO * 100 / lastInbody.CANNANG).toFixed(2);
+      let listSPGoiY = await server.KhachHang.recommend(lastInbody)
+      let tblSPGoiY = document.querySelector('.inbody-recomend tbody');
+      tblSPGoiY.innerHTML = '';
+      listSPGoiY.forEach(async (e) => {
+        let sp = (await server.ThucPhamBoSung.getList({ KEY: e.MASP })).data;
+        //add thuc pham bo sung row
+        sp.forEach(e => {
+          tblSPGoiY.innerHTML += `
+            <tr>
+                  <td style="width: 10%">${e.MASP}</td>
+                  <td>${e.TENSP}</td>
+                  <td style="width: 40%">
+                    ${e.MOTA}
+                  </td>
+                  <td style="position: relative">
+                    <img
+                      class="table-img"
+                      src="${e.HINHANH}"
+                      alt="ANHSP" />
+                    <i class="bx bxs-cart-add"></i>
+                  </td>
+                </tr>
+          `
+        })
+      });
       showPopup("popup-inbody");
     });
   })

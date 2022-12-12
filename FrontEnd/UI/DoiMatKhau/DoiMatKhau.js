@@ -43,6 +43,7 @@ async function initNhanVien() {
     let nhanVien = (await server.NhanVien.getList({ KEY: window.localStorage.getItem('username') })).data[0]
     nhanVienBox[0].innerText = nhanVien.HOTEN;
     nhanVienBox[1].innerText = nhanVien.MANV + ' - ' + nhanVien.CHUCVU;
+
 }
 
 

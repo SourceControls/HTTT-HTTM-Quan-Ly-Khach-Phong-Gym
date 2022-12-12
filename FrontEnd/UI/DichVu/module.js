@@ -18,6 +18,28 @@ async function loadList(KEY) {
     let HTMLlist = document.querySelector("#list");
     let out = "";
     for (let dv of list.data) {
+      if (window.localStorage.getItem("chucvu") == "TIEPTAN") {
+        out += `
+        <tr>
+        <td>${dv.MADV}</td>
+        <td style="padding-left: 11px">${dv.TENDV}</td>
+        <td>${dv.SONGAYSUDUNG}</td>
+        <td style="padding-left: 20px">${dv.GIA.toLocaleString("it-IT", {
+          style: "currency",
+          currency: "VND",
+        })}</td>
+        <td style="padding-left: 28px">${dv.HIENHANH ? "Hiện hành" : "Ngừng hoạt động"
+          }</td>
+        <td>
+          <div class="btn-container>
+              <i class="bx bxs-edit btn-edit style="display:none""></i>
+              <i class="bx bx-trash btn-delete style="display:none""></i>
+          </div>
+        </td>
+      </tr>
+      `;
+        continue
+      }
       out += `
         <tr>
         <td>${dv.MADV}</td>
@@ -58,6 +80,9 @@ async function initEvent() {
     "popup-delete-confirm"
   );
 
+  if (window.localStorage.getItem("chucvu") == "TIEPTAN") {
+    btn_add.style.display = "none";
+  }
   btn_add.addEventListener("click", () => {
     popup_add[0].classList.add("show");
   });

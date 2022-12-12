@@ -101,7 +101,7 @@ async function initEvents() {
     const imageInput_AddPopup = document.querySelector(".popup-add .image-input");
     const image_AddPopup = document.querySelector(".popup-add img");
     const add_product_form = document.querySelector("#add-product-form");
-  
+
     //handle ảnh
     imageInput_AddPopup.addEventListener("change", () => {
       var file = imageInput_AddPopup.files[0];
@@ -120,13 +120,13 @@ async function initEvents() {
         return;
       }
       //nếu k có ảnh thì set ảnh mặc định
-  
-      if (sp.HINHANH.name != '')
-      sp.HINHANH = await uploadImg(sp.HINHANH)
-      else
-      sp.HINHANH = document.querySelector('.popup-add img').src;
 
-      server.ThucPhamBoSung.themSanPham(sp).then((result)=>{
+      if (sp.HINHANH.name != '')
+        sp.HINHANH = await uploadImg(sp.HINHANH)
+      else
+        sp.HINHANH = document.querySelector('.popup-add img').src;
+
+      server.ThucPhamBoSung.themSanPham(sp).then((result) => {
         if (!result.status) {
           alert(result.data);
           return
@@ -137,7 +137,7 @@ async function initEvents() {
       })
 
     });
-  
+
   }
   // THEM SAN PHAM
   ThemSp()
