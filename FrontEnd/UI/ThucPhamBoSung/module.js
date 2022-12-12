@@ -38,8 +38,8 @@ async function loadList(KEY) {
         </td>
         <td>
             <div style="padding-left: 15px" class="btn-container">
-                <i class="bx bxs-edit btn-edit"></i>
-                <i class="bx bx-trash btn-delete"></i>
+                <i class="bx bxs-edit btn-edit" title="Cập nhật sản phẩm"></i>
+                <i class="bx bx-trash btn-delete" title="Xóa sản phẩm"></i>
             </div>
         </td>
     </tr>
@@ -197,7 +197,7 @@ async function initEvents() {
         var file = imageInput_UpdatePopup.files[0];
         image_UpdatePopup.src = URL.createObjectURL(file);
       })
-      
+
       btn_update_form.addEventListener("submit", async (e) => {
         console.log('submited update KH');
         e.preventDefault();

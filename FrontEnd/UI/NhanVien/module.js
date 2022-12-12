@@ -33,10 +33,10 @@ async function loadList(KEY) {
                 <td style="padding-left: 20px;">${tk}</td>
                   <td>
                       <div class="btn-container">
-                          <i class='bx bxs-edit btn-edit'></i>
-                          <i class='bx bx-trash btn-delete' style="display:none"></i>
-                          <i class='bx bx-user-plus btn-account'style="display:none"></i>
-                          <i class='bx bx-lock btn-lock' style="display:none" ></i>
+                          <i class='bx bxs-edit btn-edit' ></i>
+                          <i class='bx bx-trash btn-delete'  style="display:none"></i>
+                          <i class='bx bx-user-plus btn-account'  style="display:none"></i>
+                          <i class='bx bx-lock btn-lock'  style="display:none" ></i>
                       </div>
                   </td>
                 </tr>`;
@@ -51,10 +51,10 @@ async function loadList(KEY) {
                 <td style="padding-left: 20px;">${tk}</td>
                   <td>
                       <div class="btn-container">
-                          <i class='bx bxs-edit btn-edit'></i>
-                          <i class='bx bx-trash btn-delete'></i>
-                          <i class='bx bx-user-plus btn-account'></i>
-                          <i class='bx bx-lock btn-lock' ></i>
+                          <i class='bx bxs-edit btn-edit' title="Cập nhật nhân viên"></i>
+                          <i class='bx bx-trash btn-delete' title="Xóa nhân viên"></i>
+                          <i class='bx bx-user-plus btn-account' title="Cấp TK/Reset MK"></i>
+                          <i class='bx bx-lock btn-lock' title="Khóa/Mở khóa TK"></i>
                       </div>
                   </td>
                 </tr>

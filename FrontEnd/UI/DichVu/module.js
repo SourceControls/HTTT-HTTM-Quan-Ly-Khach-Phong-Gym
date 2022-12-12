@@ -32,8 +32,8 @@ async function loadList(KEY) {
           }</td>
         <td>
           <div class="btn-container>
-              <i class="bx bxs-edit btn-edit style="display:none""></i>
-              <i class="bx bx-trash btn-delete style="display:none""></i>
+              <i class="bx bxs-edit btn-edit" style="display:none">ggg</i>
+              <i class="bx bx-trash btn-delete" style="display:none"></i>
           </div>
         </td>
       </tr>
@@ -53,8 +53,8 @@ async function loadList(KEY) {
         }</td>
         <td>
           <div class="btn-container">
-              <i class="bx bxs-edit btn-edit"></i>
-              <i class="bx bx-trash btn-delete"></i>
+              <i class="bx bxs-edit btn-edit" title="Cập nhật dịch vụ"></i>
+              <i class="bx bx-trash btn-delete" title="Xóa dịch vụ"></i>
           </div>
         </td>
       </tr>
