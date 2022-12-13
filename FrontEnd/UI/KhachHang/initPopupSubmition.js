@@ -92,6 +92,7 @@ function initSubmitCapNhatKhachHang() {
       khachHang.HINHANH = document.querySelector('.popup-update img').src;
     let rs = await server.KhachHang.capNhatKhachHang(khachHang)
     if (!rs.status) {
+
       alert(rs.data);
       return
     }
@@ -103,7 +104,6 @@ function initSubmitCapNhatKhachHang() {
 function initSubmitXoaKhachHang() {
 
   const confirmDeleteBtn = document.querySelector(".btn-delete-form");
-  console.log(confirmDeleteBtn);
   confirmDeleteBtn.addEventListener("click", async (e) => {
     console.log('submited xoa KH');
     let rs = await server.KhachHang.xoaKhachHang({ MAKH: e.target.MAKH })
@@ -134,6 +134,29 @@ function initSubmitDangKiDichVu() {
     alert("Đăng kí dịch vụ thành công!");
   });
 }
+
+async function initBtnSubmitMuaHang(suggest = true) {
+  let muaHangBtns = document.querySelectorAll(".btn-muahang");
+  if (suggest)
+    muaHangBtns = document.querySelectorAll(".btn-muahang-suggest");
+  if (!muaHangBtns)
+    return;
+  muaHangBtns.forEach(e => {
+    e.addEventListener("click", (e) => {
+      let [STT, MASP] = e.target.id.split(".")
+      server.LichSuMuaHang.insert({ STT, MASP, MATCHSUGGEST: suggest }).then(rs => {
+        if (rs.status) {
+          alert("Ghi nhận mua hàng thành công")
+        } else {
+          alert("Khách đã mua sản phẩm này rồi!")
+          console.log(rs.data);
+        }
+      });
+    })
+  })
+}
+
+export { initBtnSubmitMuaHang }
 
 
 

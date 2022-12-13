@@ -1,6 +1,7 @@
 import server from "../../server/main.js"
+import { initBtnSubmitMuaHang } from "./initPopupSubmition.js";
 
-
+var lastInbodyID = -1;
 
 
 function showPopup(popupClass) {
@@ -24,7 +25,30 @@ export default function init() {
   btn_add.addEventListener("click", () => {
     showPopup("popup-add");
   });
-  btn_chon_TPBS.addEventListener("click", () => {
+  btn_chon_TPBS.addEventListener("click", async () => {
+    let tblTPBS = document.querySelectorAll(".tbl-thucPhamBoSung")[1];
+    console.log(tblTPBS);
+    let listTPBS = (await server.ThucPhamBoSung.getList()).data;
+    tblTPBS.innerHTML = '';
+    listTPBS.forEach(e => {
+      tblTPBS.innerHTML += `
+      <tr>
+          <td style="width: 10%">${e.MASP}</td>
+          <td>${e.TENSP}</td>
+          <td style="width: 40%">
+            ${e.MOTA}
+          </td>
+          <td style="position: relative">
+            <img
+              class="table-img"
+              src="${e.HINHANH}"
+              alt="ANHSP" />
+            <i class="bx bxs-cart-add btn-muahang" id="${lastInbodyID}.${e.MASP}" title="Ghi nhận mua hàng"></i>
+          </td>
+      </tr>
+                `
+    })
+    initBtnSubmitMuaHang(false);
     showPopup("popup-TPBS");
     document.querySelector(".popup-inbody").classList.remove('show');
   })
@@ -160,6 +184,7 @@ export default function init() {
       // lastInbody.
       lastInbody.TILEMO = lastInbody.TILE_MO;
       lastInbody.TILECO = (lastInbody.KHOILUONG_CO * 100 / lastInbody.CANNANG).toFixed(2);
+      lastInbodyID = lastInbody.STT;
       let listSPGoiY = await server.KhachHang.recommend(lastInbody)
       let tblSPGoiY = document.querySelector('.inbody-recomend tbody');
       tblSPGoiY.innerHTML = '';
@@ -167,6 +192,7 @@ export default function init() {
         let sp = (await server.ThucPhamBoSung.getList({ KEY: e.MASP })).data;
         //add thuc pham bo sung row
         sp.forEach(e => {
+          //thêm sản phẩm vào
           tblSPGoiY.innerHTML += `
             <tr>
                   <td style="width: 10%">${e.MASP}</td>
@@ -179,11 +205,13 @@ export default function init() {
                       class="table-img"
                       src="${e.HINHANH}"
                       alt="ANHSP" />
-                    <i class="bx bxs-cart-add"></i>
+                    <i class="bx bxs-cart-add btn-muahang-suggest" id="${lastInbody.STT}.${e.MASP}" title="Ghi nhận mua hàng"></i>
                   </td>
                 </tr>
           `
         })
+        initBtnSubmitMuaHang();
+
       });
       showPopup("popup-inbody");
     });

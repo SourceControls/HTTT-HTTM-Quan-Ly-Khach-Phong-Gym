@@ -192,7 +192,18 @@ class Server {
       return excute(api, data)
     }
   }
-
+  LichSuMuaHang = {
+    getList(data = {}) {
+      //key: KEY
+      let api = 'http://localhost:8080/LichSuMuaHang/GetList'
+      return excute(api, data)
+    },
+    insert(data = {}) {
+      //key: STT, MASP, MATCHSUGGEST
+      let api = 'http://localhost:8080/LichSuMuaHang/Insert'
+      return excute(api, data)
+    }
+  }
 }
 
 
