@@ -141,42 +141,6 @@ async function initEvents() {
   }
   // THEM SAN PHAM
   ThemSp()
-  // const imageInput_AddPopup = document.querySelector(".popup-add .image-input");
-  // const image_AddPopup = document.querySelector(".popup-add img");
-  // imageInput_AddPopup.addEventListener("change", () => {
-  //   var file = imageInput_AddPopup.files[0];
-  //   image_AddPopup.src = URL.createObjectURL(file);
-  // });
-  // btn_add_form.addEventListener("click", () => {
-  //   // alert("hello")
-  //   if (input[0].value.length == 0) {
-  //     alert("Tên sản phẩm không được để trống");
-  //   } else if (input[1].value.length == 0) {
-  //     alert("Mô tả sản phẩm không được để trống");
-  //   } else {
-  //     let data = {
-  //       TENSP: input[0].value,
-  //       MOTA: input[1].value,
-  //       HINHANH: imageInput_AddPopup.value,
-  //     };
-  //     console.log(data)
-
-  //     if (data.HINHANH != "") data.HINHANH =  uploadImg(data.HINHANH);
-  //     else data.HINHANH = document.querySelector(".popup-add img").src;
-  //     server.ThucPhamBoSung.themSanPham(data)
-  //       .then((result) => {
-  //         // console.log(result.data);
-  //         if (result.status) {
-  //           popup_add[0].classList.remove("show");
-  //           alert("Thêm sản phẩm thành công");
-  //           loadListSP("");
-  //         } else {
-  //           alert("Thêm sản phẩm thất bại");
-  //         }
-  //       })
-  //       .catch((err) => { });
-  //   }
-  // });
 
   // CAP NHAT SAN PHAM
 
@@ -188,19 +152,24 @@ async function initEvents() {
       input[3].value = rows[x].getElementsByTagName("td")[0].innerText;
       input[4].value = rows[x].getElementsByTagName("td")[1].innerText;
       input[5].value = rows[x].getElementsByTagName("td")[2].innerText;
-      
-      // input[7].value = rows[x].getElementsByTagName("td")[3].innerText.split('.').join("").replace('VND','');
-
+      server.ThucPhamBoSung.getList({'KEY':rows[x].getElementsByTagName("td")[0].innerText}).then((rs)=>{
+        // console.log(rs.data[0].HINHANHrs.data[0].HINHANH)
+        document.querySelector(".popup-update img").src = rs.data[0].HINHANH;
+      })
       const imageInput_UpdatePopup = document.querySelector(".popup-update .image-input");
       const image_UpdatePopup = document.querySelector(".popup-update img");
       imageInput_UpdatePopup.addEventListener("change", () => {
         var file = imageInput_UpdatePopup.files[0];
         image_UpdatePopup.src = URL.createObjectURL(file);
       })
+    })
+      // input[7].value = rows[x].getElementsByTagName("td")[3].innerText.split('.').join("").replace('VND','');
+    }
 
       btn_update_form.addEventListener("submit", async (e) => {
         console.log('submited update KH');
         e.preventDefault();
+        e.stopImmediatePropagation()
         const tp = Object.fromEntries(new FormData(e.target));
         tp.MASP = document.querySelector("#MASP").value;
         if (tp.TENSP.trim().length == 0) {
@@ -216,19 +185,26 @@ async function initEvents() {
         tp.HINHANH = await uploadImg(tp.HINHANH)
         else
         tp.HINHANH = document.querySelector('.popup-update img').src;
-
-        server.ThucPhamBoSung.capNhatSanPham(tp).then((rs)=>{
-          if (!rs.status) {
-            alert(rs.data);
+        
+        let update = await server.ThucPhamBoSung.capNhatSanPham(tp)
+        if (!update.status) {
+              alert(rs.data);
+              popup_edit[0].classList.remove("show");
+            }
+            alert("Cập nhật thành công!");
             popup_edit[0].classList.remove("show");
-          }
-          alert("Cập nhật thành công!");
-          popup_edit[0].classList.remove("show");
-          loadListSP('');
-        })
+            loadListSP('');
+        // server.ThucPhamBoSung.capNhatSanPham(tp).then((rs)=>{
+        //   if (!rs.status) {
+        //     alert(rs.data);
+        //     popup_edit[0].classList.remove("show");
+        //   }
+        //   alert("Cập nhật thành công!");
+        //   popup_edit[0].classList.remove("show");
+        //   loadListSP('');
+        // })
       });
-    });
-  }
+
   // XOA SAN PHAM
   for (var i = 0; i < btn_delete.length; i++) {
     let x = i;
