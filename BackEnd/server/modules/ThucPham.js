@@ -22,6 +22,9 @@ class ThucPham {
   static deleteThucPham(params) {
     return DB.excute('SP_XOA_THUC_PHAM', params)
   }
+  static searchMachineLearning(TUNGAY, DENNGAY) {
+    return DB.query(`select * from V_MACHINE_LEARNING WHERE NGAY BETWEEN '${TUNGAY}' AND '${DENNGAY}'`)
+  }
 }
 
 module.exports = ThucPham

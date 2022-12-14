@@ -73,7 +73,7 @@ class Server {
     },
     recommend(Inbody) {
       console.log("Gợi ý cho Inbody:", Inbody);
-      return fetch(`http://127.0.0.1:8000/recommend?tuoi=${Inbody.TUOI}&gioiTinh=${Inbody.GIOITINH}&BMI=${Inbody.BMI}&tiLeMo=${Inbody.TILEMO}&tiLeCo=${Inbody.TILECO}`).
+      return fetch(`http://127.0.0.1:8000/recommend?tuoi=${Inbody.TUOI}&gioiTinh=${Inbody.GIOITINH}&BMI=${Inbody.BMI.toFixed(1)}&tiLeMo=${Inbody.TILEMO}&tiLeCo=${Inbody.TILECO}`).
         then(rs => rs.json()).then(rs => {
           let rs2 = []
           Object.keys(rs).forEach(function (key) {
@@ -83,8 +83,9 @@ class Server {
               rs2.push({ MASP: key, TILE: rs[key] })
             }
           });
-
-          rs2.sort((a, b) => (a.tile > b.tile) ? -1 : 1);
+          console.log(rs2);
+          rs2.sort((a, b) => (a.TILE > b.TILE) ? -1 : 1);
+          console.log(rs2);
           return rs2
         })
     }
@@ -189,6 +190,11 @@ class Server {
     xoaSanPham(data = {}) {
       //key = MASP
       let api = 'http://localhost:8080/ThucPham/Delete'
+      return excute(api, data)
+    },
+    getListMachineLearning(data = {}) {
+      //key = TUNGAY,DENNGAY 'YYYY-MM-DD'
+      let api = 'http://localhost:8080/ThucPham/GetListMachineLearning'
       return excute(api, data)
     }
   }

@@ -27,7 +27,6 @@ export default function init() {
   });
   btn_chon_TPBS.addEventListener("click", async () => {
     let tblTPBS = document.querySelectorAll(".tbl-thucPhamBoSung")[1];
-    console.log(tblTPBS);
     let listTPBS = (await server.ThucPhamBoSung.getList()).data;
     tblTPBS.innerHTML = '';
     listTPBS.forEach(e => {
@@ -185,7 +184,7 @@ export default function init() {
       lastInbody.TILEMO = lastInbody.TILE_MO;
       lastInbody.TILECO = (lastInbody.KHOILUONG_CO * 100 / lastInbody.CANNANG).toFixed(2);
       lastInbodyID = lastInbody.STT;
-      let listSPGoiY = await server.KhachHang.recommend(lastInbody)
+      let listSPGoiY = await server.KhachHang.recommend(lastInbody);
       let tblSPGoiY = document.querySelector('.inbody-recomend tbody');
       tblSPGoiY.innerHTML = '';
       listSPGoiY.forEach(async (e) => {

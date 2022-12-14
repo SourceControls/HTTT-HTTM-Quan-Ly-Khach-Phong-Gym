@@ -31,4 +31,5 @@ async def read_item(tuoi: int, gioiTinh: str, BMI: float, tiLeMo: float, tiLeCo:
     rs = model.predict_proba([[tuoi, gioiTinh, BMI, tiLeMo, tiLeCo]])[0]
     rs = dict(zip(labels, rs))
     print([tuoi, gioiTinh, BMI, tiLeMo, tiLeCo])
+    print(rs)
     return rs

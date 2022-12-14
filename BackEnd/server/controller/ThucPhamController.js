@@ -69,6 +69,19 @@ class ThucPhamControllers {
         }
         res.send(json(false, rs))
     }
+    getListMachineLearning = async (req, res) => {
+        const { TUNGAY, DENNGAY } = req.body
+        if (!TUNGAY || !DENNGAY) {
+            res.send(json(false, "Chọn đủ ngày bắt đầu và ngày kết thúc"))
+            return
+        }
+        let rs = await ThucPham.searchMachineLearning(TUNGAY, DENNGAY)
+        if (rs.length == 0) {
+            res.send(json(false, []))
+            return
+        }
+        res.send(json(true, rs))
+    }
 
 }
 

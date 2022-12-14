@@ -3,9 +3,9 @@ import server from '../server/main.js'
 
 
 
-server.ThucPhamBoSung.xoaSanPham({
-  MASP: 'TP00000003',
-  TENSP: 'Whey 5.02lbs', MOTA: 'Tăng cân tăng cơ, giảm mỡ', HINHANH: './'
+server.ThucPhamBoSung.getListMachineLearning({
+  TUNGAY: '2022-11-15',
+  DENNGAY: '2022-11-20',
 }).then((result) => {
   console.log(result);
 }).catch((err) => {
