@@ -1,9 +1,9 @@
-# cd BackEnd; cd recomendation-system; uvicorn server:app --reload
+# uvicorn server:app --reload
 
 
 # Importing Necessary modules
 from typing import Union
-from fastapi import FastAPI
+from fastapi import FastAPI, File, UploadFile
 import uvicorn
 from pydantic import BaseModel
 from joblib import dump, load
@@ -33,3 +33,12 @@ async def read_item(tuoi: int, gioiTinh: str, BMI: float, tiLeMo: float, tiLeCo:
     print([tuoi, gioiTinh, BMI, tiLeMo, tiLeCo])
     print(rs)
     return rs
+
+
+@app.post('/updateModel/')
+def create_upload_file(file: UploadFile):
+    file_location = f"model.mol"
+    with open(file_location, "wb+") as file_object:
+        file_object.write(file.file.read())
+    print("updated model")
+    return {'fileName': file.filename}

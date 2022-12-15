@@ -3,15 +3,21 @@ import server from '../server/main.js'
 
 
 
-server.ThucPhamBoSung.getListMachineLearning({
-  TUNGAY: '2022-11-15',
-  DENNGAY: '2022-11-20',
-}).then((result) => {
-  console.log(result);
-}).catch((err) => {
+// server.KhachHang.updateModel({}).then((result) => {
+//   console.log(result);
+// }).catch((err) => {
 
-});;
+// });;
 
+var btn = document.querySelector('button')
+btn.onclick = () => {
+  let file = document.querySelector('input').files[0];
+  server.KhachHang.updateModel(file).then((result) => {
+    console.log(result);
+  }).catch((err) => {
+
+  });;
+}
 
 
 

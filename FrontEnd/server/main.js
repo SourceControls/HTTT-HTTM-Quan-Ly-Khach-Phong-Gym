@@ -88,6 +88,21 @@ class Server {
           console.log(rs2);
           return rs2
         })
+    },
+    updateModel(file) {
+      //key = FILE
+      let api = 'http://127.0.0.1:8000/updateModel/'
+      const formData = new FormData();
+      formData.append('file', file);
+      return fetch(api, {
+        method: "POST",
+        body: formData
+      }).then(res => {
+        return res.json();
+      }).catch(function (err) {
+        console.log("Error!! " + err);
+        return false;
+      });
     }
   }
   PhieuDangKy = {
@@ -197,6 +212,7 @@ class Server {
       let api = 'http://localhost:8080/ThucPham/GetListMachineLearning'
       return excute(api, data)
     }
+
   }
   LichSuMuaHang = {
     getList(data = {}) {
