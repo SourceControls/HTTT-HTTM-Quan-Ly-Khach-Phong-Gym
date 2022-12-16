@@ -63,7 +63,24 @@ async function initEvents() {
   let popup_delete_confirm = document.getElementsByClassName(
     "popup-delete-confirm"
   );
-
+  let btn_mol_file = document.querySelector('.btn-mol-file');
+  btn_mol_file.onclick = () => {
+    let file = document.querySelector('.mol-file');
+    if (!file.files) {
+      alert("Chưa chọn file")
+      return;
+    }
+    if (!file.files[0].name.includes('.mol')) {
+      alert("File không hợp lệ")
+      return;
+    }
+    server.KhachHang.updateModel(file.files[0]).then(rs => {
+      if (rs.message)
+        alert(rs.message)
+      else
+        alert("Cập nhật thất bại")
+    })
+  }
   btn_add.addEventListener("click", () => {
     popup_add[0].classList.add("show");
   });
@@ -181,10 +198,12 @@ async function initEvents() {
       return;
     }
     //nếu k có ảnh thì set ảnh mặc định
-    if (tp.HINHANH.name != "") tp.HINHANH = await uploadImg(tp.HINHANH);
-    else tp.HINHANH = document.querySelector(".popup-update img").src;
+    if (tp.HINHANH.name != '')
+      tp.HINHANH = await uploadImg(tp.HINHANH)
+    else
+      tp.HINHANH = document.querySelector('.popup-update img').src;
 
-    let update = await server.ThucPhamBoSung.capNhatSanPham(tp);
+    let update = await server.ThucPhamBoSung.capNhatSanPham(tp)
     if (!update.status) {
       alert(rs.data);
       popup_edit[0].classList.remove("show");
