@@ -106,6 +106,21 @@
                 <div class="home-content">
                     <div class="body-header">
                         <button type="button" class="btn btn-add">Thêm mới</button>
+                        <div class="export">
+                            <form>
+                              <label for="from">Từ ngày:</label>
+                              <input type="date" id="from" name="from" />
+                              <label for="to">Đến ngày:</label>
+                              <input type="date" id="to" name="to" />
+                            </form>
+                            <div>
+                            <button class="btn-export btn-m btn-export">Xuất csv</button>
+                            </div>
+                          </div>
+                          <div class="file">
+                             <input type="file">
+                            <button class="btn-export btn-m">Cập nhật hệ thống gợi ý</button>
+                          </div>
                         <div class="search-box">
                             <input type="text" placeholder="Tìm sản phẩm..." />
                             <i class="bx bx-search" style="cursor: pointer"></i>
