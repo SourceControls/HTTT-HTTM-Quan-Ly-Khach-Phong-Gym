@@ -16,9 +16,11 @@ def main():
     return {'message': 'Recomendation system!'}
 
 
+model = load('model.mol')
+
+
 @app.get('/recommend/')
 async def read_item(tuoi: int, gioiTinh: str, BMI: float, tiLeMo: float, tiLeCo: float):
-    model = load('model.mol')
     labels = model.classes_
     # print(model.predict_proba([[45, 100, 22.6, 11.2, 29.9]]))
     # http://127.0.0.1:8000/recommend?tuoi=45&gioiTinh=100&BMI=22.6&tiLeMo=11.2&tiLeCo=29.9
@@ -41,4 +43,5 @@ def create_upload_file(file: UploadFile):
     with open(file_location, "wb+") as file_object:
         file_object.write(file.file.read())
     print("updated model")
-    return {'fileName': file.filename}
+    model = load('model.mol')
+    return {'message': "Cập nhật thành công"}

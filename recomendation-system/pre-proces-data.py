@@ -15,17 +15,20 @@ ds = pd.read_csv('Data_train.csv')
 features = ds.values[:, :5]
 labels = np.transpose(ds.values[:, 5])
 
+X_train = features
+y_train = labels
+
 X_train, X_test, y_train, y_test = train_test_split(
-    features, labels, test_size=0.25, random_state=20)
+    features, labels, test_size=0.25, random_state=0)
 
 
-for i in range(30):
-    model = KNeighborsClassifier(n_neighbors=i+1).fit(X_train, y_train)
-    print("K = "+str(i+1)+", Score = " +
-          str(round(model.score(X_test, y_test), 2)))
+# for i in range(30):
+# model = KNeighborsClassifier(n_neighbors=i+1).fit(X_train, y_train)
+# print("K = "+str(i+1)+", Score = " +
+#   str(round(model.score(X_test, y_test), 2)))
 
-# model = KNeighborsClassifier(n_neighbors=12).fit(X_train, y_train)
-# print(model.score(X_test, y_test))
+model = KNeighborsClassifier(n_neighbors=11).fit(X_train, y_train)
+print(model.score(X_test, y_test))
 
 # save model
 dump(model, 'model.mol')

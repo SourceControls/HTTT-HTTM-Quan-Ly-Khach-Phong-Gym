@@ -64,7 +64,24 @@ async function initEvents() {
   let popup_delete_confirm = document.getElementsByClassName(
     "popup-delete-confirm"
   );
-
+  let btn_mol_file = document.querySelector('.btn-mol-file');
+  btn_mol_file.onclick = () => {
+    let file = document.querySelector('.mol-file');
+    if (!file.files) {
+      alert("Chưa chọn file")
+      return;
+    }
+    if (!file.files[0].name.includes('.mol')) {
+      alert("File không hợp lệ")
+      return;
+    }
+    server.KhachHang.updateModel(file.files[0]).then(rs => {
+      if (rs.message)
+        alert(rs.message)
+      else
+        alert("Cập nhật thất bại")
+    })
+  }
   btn_add.addEventListener("click", () => {
     popup_add[0].classList.add("show");
   });
@@ -152,7 +169,7 @@ async function initEvents() {
       input[3].value = rows[x].getElementsByTagName("td")[0].innerText;
       input[4].value = rows[x].getElementsByTagName("td")[1].innerText;
       input[5].value = rows[x].getElementsByTagName("td")[2].innerText;
-      server.ThucPhamBoSung.getList({'KEY':rows[x].getElementsByTagName("td")[0].innerText}).then((rs)=>{
+      server.ThucPhamBoSung.getList({ 'KEY': rows[x].getElementsByTagName("td")[0].innerText }).then((rs) => {
         // console.log(rs.data[0].HINHANHrs.data[0].HINHANH)
         document.querySelector(".popup-update img").src = rs.data[0].HINHANH;
       })
@@ -163,47 +180,47 @@ async function initEvents() {
         image_UpdatePopup.src = URL.createObjectURL(file);
       })
     })
-      // input[7].value = rows[x].getElementsByTagName("td")[3].innerText.split('.').join("").replace('VND','');
-    }
+    // input[7].value = rows[x].getElementsByTagName("td")[3].innerText.split('.').join("").replace('VND','');
+  }
 
-      btn_update_form.addEventListener("submit", async (e) => {
-        console.log('submited update KH');
-        e.preventDefault();
-        e.stopImmediatePropagation()
-        const tp = Object.fromEntries(new FormData(e.target));
-        tp.MASP = document.querySelector("#MASP").value;
-        if (tp.TENSP.trim().length == 0) {
-          alert("Tên sản phẩm không được để trống");
-          return;
-        }
-        if (tp.MOTA.trim().length == 0) {
-          alert("Mô tả không được để trống");
-          return;
-        }
-        //nếu k có ảnh thì set ảnh mặc định
-        if (tp.HINHANH.name != '')
-        tp.HINHANH = await uploadImg(tp.HINHANH)
-        else
-        tp.HINHANH = document.querySelector('.popup-update img').src;
-        
-        let update = await server.ThucPhamBoSung.capNhatSanPham(tp)
-        if (!update.status) {
-              alert(rs.data);
-              popup_edit[0].classList.remove("show");
-            }
-            alert("Cập nhật thành công!");
-            popup_edit[0].classList.remove("show");
-            loadListSP('');
-        // server.ThucPhamBoSung.capNhatSanPham(tp).then((rs)=>{
-        //   if (!rs.status) {
-        //     alert(rs.data);
-        //     popup_edit[0].classList.remove("show");
-        //   }
-        //   alert("Cập nhật thành công!");
-        //   popup_edit[0].classList.remove("show");
-        //   loadListSP('');
-        // })
-      });
+  btn_update_form.addEventListener("submit", async (e) => {
+    console.log('submited update KH');
+    e.preventDefault();
+    e.stopImmediatePropagation()
+    const tp = Object.fromEntries(new FormData(e.target));
+    tp.MASP = document.querySelector("#MASP").value;
+    if (tp.TENSP.trim().length == 0) {
+      alert("Tên sản phẩm không được để trống");
+      return;
+    }
+    if (tp.MOTA.trim().length == 0) {
+      alert("Mô tả không được để trống");
+      return;
+    }
+    //nếu k có ảnh thì set ảnh mặc định
+    if (tp.HINHANH.name != '')
+      tp.HINHANH = await uploadImg(tp.HINHANH)
+    else
+      tp.HINHANH = document.querySelector('.popup-update img').src;
+
+    let update = await server.ThucPhamBoSung.capNhatSanPham(tp)
+    if (!update.status) {
+      alert(rs.data);
+      popup_edit[0].classList.remove("show");
+    }
+    alert("Cập nhật thành công!");
+    popup_edit[0].classList.remove("show");
+    loadListSP('');
+    // server.ThucPhamBoSung.capNhatSanPham(tp).then((rs)=>{
+    //   if (!rs.status) {
+    //     alert(rs.data);
+    //     popup_edit[0].classList.remove("show");
+    //   }
+    //   alert("Cập nhật thành công!");
+    //   popup_edit[0].classList.remove("show");
+    //   loadListSP('');
+    // })
+  });
 
   // XOA SAN PHAM
   for (var i = 0; i < btn_delete.length; i++) {
@@ -234,16 +251,16 @@ async function initEvents() {
   // XUAT FILE
 
   let link = document.querySelector(".btn-export")
-  link.addEventListener("click",(e)=>{
+  link.addEventListener("click", (e) => {
     let from = document.querySelector(".from").value
     let to = document.querySelector(".to").value
     e.preventDefault()
-     if(from>to){
+    if (from > to) {
       alert("Thời gian không hợp lệ!")
       e.preventDefault()
       return
     }
-    if(from.length==0||to.length==0){
+    if (from.length == 0 || to.length == 0) {
       alert("Bạn chưa nhập thời gian!")
       e.preventDefault()
       return
@@ -252,9 +269,9 @@ async function initEvents() {
   })
 
   function downloadCSVFile(csv_data) {
-    var BOM = "\uFEFF"; 
+    var BOM = "\uFEFF";
     var csv_data = BOM + csv_data;
-    let CSVFile = new Blob([csv_data], {type: "text/csv"});
+    let CSVFile = new Blob([csv_data], { type: "text/csv" });
 
     var temp_link = document.createElement('a');
 
@@ -266,18 +283,18 @@ async function initEvents() {
     document.body.appendChild(temp_link);
     temp_link.click();
     document.body.removeChild(temp_link);
-}
+  }
   function tableToCSV() {
     let from = document.querySelector(".from").value
     let to = document.querySelector(".to").value
     let csv = ['MAKH,TUOI,GIOITINH,BMI,TILEMO,TILOCO,MASP,NGAY,GOIY_THANHCONG']
-    server.ThucPhamBoSung.getListMachineLearning({'TUNGAY': from, 'DENNGAY':to}).then((result)=>{
-      for(let rs of result.data){
-      csv.push(rs.MAKH+','+rs.TUOI+','+rs.GIOITINH+','+rs.BMI+','+rs.TILEMO+','+rs.TILECO+','+rs.MASP+','+rs.NGAY+','+rs.GOIY_THANHCONG)
+    server.ThucPhamBoSung.getListMachineLearning({ 'TUNGAY': from, 'DENNGAY': to }).then((result) => {
+      for (let rs of result.data) {
+        csv.push(rs.MAKH + ',' + rs.TUOI + ',' + rs.GIOITINH + ',' + rs.BMI + ',' + rs.TILEMO + ',' + rs.TILECO + ',' + rs.MASP + ',' + rs.NGAY + ',' + rs.GOIY_THANHCONG)
       }
       downloadCSVFile(csv.join("\n"))
     })
-}
+  }
 }
 
 
