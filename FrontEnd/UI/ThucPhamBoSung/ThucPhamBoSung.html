@@ -12,69 +12,69 @@
         setTimeout("preventBack()", 0);
         window.onunload = function () { null };
         if (!window.localStorage.getItem('username')) {
-        window.location.href = '/FrontEnd/UI/Login/Login.html';
-      }
+            window.location.href = '/FrontEnd/UI/Login/Login.html';
+        }
     </script>
     <title>Quản lý thực phẩm bổ sung</title>
-  </head>
+</head>
 
 <body>
     <div class="overlay">
-      <div class="container">
-        <section class="sidebar">
-          <div class="logo-details">
-            <i class="bx bx-cube-alt"></i>
-            <span class="logo_name">GymCenter</span>
-          </div>
-          <ul class="nav-links">
-            <li>
-              <a href="/FrontEnd/UI/NhanVien/NhanVien.html">
-                <i class="bx bxs-user-account"></i>
-                <span class="links_name">NHÂN VIÊN</span>
-              </a>
-            </li>
-            <li>
-              <a href="/FrontEnd/UI/KhachHang/KhachHang.html">
-                <i class="bx bx-user"></i>
-                <span class="links_name">KHÁCH HÀNG</span>
-              </a>
-            </li>
-            <li>
-              <a href="/FrontEnd/UI/DichVu/DichVu.html">
-                <i class="bx bx-list-ul"></i>
-                <span class="links_name">DỊCH VỤ</span>
-              </a>
-            </li>
-            <li style="background: #081d45">
-              <a href="/FrontEnd/UI/ThucPhamBoSung/ThucPhamBoSung.html">
-                <i class="bx bxs-baguette"></i>
-                <span class="links_name">THỰC PHẨM BỔ SUNG</span>
-              </a>
-            </li>
-            <li>
-              <a href="/FrontEnd/UI/PhieuDangKy/PhieuDangKy.html">
-                <i class="bx bxs-notepad"></i>
-                <span class="links_name">PHIẾU ĐĂNG KÝ</span>
-              </a>
-            </li>
-            <li>
-              <a href="/FrontEnd/UI/LichSu/LichSu.html">
-                <i class="bx bxs-door-open"></i>
-                <span class="links_name">LỊCH SỬ VÀO PHÒNG</span>
-              </a>
-            </li>
-            <li>
-              <a href="/FrontEnd/UI/ThongKe/ThongKe.html">
-                <i class="bx bx-bar-chart-alt"></i>
-                <span class="links_name">THỐNG KÊ</span>
-              </a>
-            </li>
-            <li>
-              <a href="/FrontEnd/UI/DoiMatKhau/DoiMatKhau.html">
-                <i class="bx bx-book-alt"></i>
-                <span class="links_name">ĐỔI MẬT KHẨU</span>
-              </a>
-            </li>
+        <div class="container">
+            <section class="sidebar">
+                <div class="logo-details">
+                    <i class="bx bx-cube-alt"></i>
+                    <span class="logo_name">GymCenter</span>
+                </div>
+                <ul class="nav-links">
+                    <li>
+                        <a href="/FrontEnd/UI/NhanVien/NhanVien.html">
+                            <i class="bx bxs-user-account"></i>
+                            <span class="links_name">NHÂN VIÊN</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/FrontEnd/UI/KhachHang/KhachHang.html">
+                            <i class="bx bx-user"></i>
+                            <span class="links_name">KHÁCH HÀNG</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/FrontEnd/UI/DichVu/DichVu.html">
+                            <i class="bx bx-list-ul"></i>
+                            <span class="links_name">DỊCH VỤ</span>
+                        </a>
+                    </li>
+                    <li style="background: #081d45">
+                        <a href="/FrontEnd/UI/ThucPhamBoSung/ThucPhamBoSung.html">
+                            <i class="bx bxs-baguette"></i>
+                            <span class="links_name">THỰC PHẨM BỔ SUNG</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/FrontEnd/UI/PhieuDangKy/PhieuDangKy.html">
+                            <i class="bx bxs-notepad"></i>
+                            <span class="links_name">PHIẾU ĐĂNG KÝ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/FrontEnd/UI/LichSu/LichSu.html">
+                            <i class="bx bxs-door-open"></i>
+                            <span class="links_name">LỊCH SỬ VÀO PHÒNG</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/FrontEnd/UI/ThongKe/ThongKe.html">
+                            <i class="bx bx-bar-chart-alt"></i>
+                            <span class="links_name">THỐNG KÊ</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/FrontEnd/UI/DoiMatKhau/DoiMatKhau.html">
+                            <i class="bx bx-book-alt"></i>
+                            <span class="links_name">ĐỔI MẬT KHẨU</span>
+                        </a>
+                    </li>
 
                     <li class="log_out">
                         <a href="/FrontEnd/UI/Login/Login.html">
@@ -106,6 +106,27 @@
                 <div class="home-content">
                     <div class="body-header">
                         <button type="button" class="btn btn-add">Thêm mới</button>
+                        <div class="panel">
+                            <div class="export">
+                                <form>
+                                    <div >
+                                        <label>Từ ngày:</label>
+                                        <input type="date" class="from" name="from" />
+                                    </div>
+                                    <div style="width: 150px;">
+                                        <label>Đến ngày:</label>
+                                        <input type="date" class="to" name="to"/>
+                                    </div>
+                                </form>
+                                <a href="" class="btn-export">Xuất file csv</a>
+                            </div>
+                            <div class="upload-mol">
+                                <div class="">
+                                <input type="file" class="mol-file form-control" name="file" />
+                            </div>
+                                <button type="button" class="btn-mol-file">Cập nhật hệ thống gợi ý</button>
+                            </div>
+                        </div>
                         <div class="search-box">
                             <input type="text" placeholder="Tìm sản phẩm..." />
                             <i class="bx bx-search" style="cursor: pointer"></i>
@@ -173,11 +194,11 @@
                     <form id="update-product-form">
                         <label>Mã sản phẩm</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" disabled id="MASP"/>
+                            <input type="text" class="form-control" disabled id="MASP" />
                         </div>
                         <label>Tên sản phẩm</label>
                         <div class="input-group">
-                            <input type="text" class="form-control" name="TENSP"/>
+                            <input type="text" class="form-control" name="TENSP" />
                         </div>
                         <label>Mô tả</label>
                         <div class="input-group">
@@ -190,14 +211,14 @@
                         <div class="button-center">
                             <button type="submit" class="btn-form btn-update-form">
                                 Cập nhật
-                            </button>   
+                            </button>
                             <button type="button" class="btn-form btn-cancel">Hủy</button>
                         </div>
                     </form>
                 </div>
 
             </div>
-            
+
             <!-- POPUP DELETE CONFIRM -->
             <div class="popup popup-delete-confirm">
                 <div class="popup-body">
@@ -213,7 +234,7 @@
                     <button type="button" class="btn-form btn-cancel">Hủy</button>
                 </div>
             </div>
-            
+
         </div>
     </div>
 
@@ -222,8 +243,3 @@
 </body>
 
 </html>
-
-
-
-
-

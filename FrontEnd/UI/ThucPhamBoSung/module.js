@@ -230,6 +230,54 @@ async function initEvents() {
       });
     });
   }
+
+  // XUAT FILE
+
+  let link = document.querySelector(".btn-export")
+  link.addEventListener("click",(e)=>{
+    let from = document.querySelector(".from").value
+    let to = document.querySelector(".to").value
+    e.preventDefault()
+     if(from>to){
+      alert("Thời gian không hợp lệ!")
+      e.preventDefault()
+      return
+    }
+    if(from.length==0||to.length==0){
+      alert("Bạn chưa nhập thời gian!")
+      e.preventDefault()
+      return
+    }
+    tableToCSV()
+  })
+
+  function downloadCSVFile(csv_data) {
+    var BOM = "\uFEFF"; 
+    var csv_data = BOM + csv_data;
+    let CSVFile = new Blob([csv_data], {type: "text/csv"});
+
+    var temp_link = document.createElement('a');
+
+    temp_link.download = "Machine Learning";
+    var url = window.URL.createObjectURL(CSVFile);
+    temp_link.href = url;
+
+    temp_link.style.display = "none";
+    document.body.appendChild(temp_link);
+    temp_link.click();
+    document.body.removeChild(temp_link);
+}
+  function tableToCSV() {
+    let from = document.querySelector(".from").value
+    let to = document.querySelector(".to").value
+    let csv = ['MAKH,TUOI,GIOITINH,BMI,TILEMO,TILOCO,MASP,NGAY,GOIY_THANHCONG']
+    server.ThucPhamBoSung.getListMachineLearning({'TUNGAY': from, 'DENNGAY':to}).then((result)=>{
+      for(let rs of result.data){
+      csv.push(rs.MAKH+','+rs.TUOI+','+rs.GIOITINH+','+rs.BMI+','+rs.TILEMO+','+rs.TILECO+','+rs.MASP+','+rs.NGAY+','+rs.GOIY_THANHCONG)
+      }
+      downloadCSVFile(csv.join("\n"))
+    })
+}
 }
 
 
