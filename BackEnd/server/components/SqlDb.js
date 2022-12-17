@@ -4,7 +4,9 @@ const config = {
     password: '123', //123
     server: 'localhost', //localhost
     database: 'QLPG',
-    driver: 'msnodesqlv8'
+    driver: 'msnodesqlv8',
+    connectionTimeout: 30000
+
 }
 
 

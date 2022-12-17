@@ -259,17 +259,14 @@ nav .profile-details i {
 
 .file {
   display: flex;
-  flex-direction: column;
 }
 
 .file button {
-  margin-top: 2px;
+  margin-left: 12px;
 }
 
 .file input {
-  padding: 2px;
   border: 1px solid #C8C8C8;
-  margin-bottom: 3px;
 }
 
 .export {
