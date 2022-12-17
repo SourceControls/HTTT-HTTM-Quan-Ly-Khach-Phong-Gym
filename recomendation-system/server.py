@@ -25,6 +25,8 @@ async def read_item(tuoi: int, gioiTinh: str, BMI: float, tiLeMo: float, tiLeCo:
     # print(model.predict_proba([[45, 100, 22.6, 11.2, 29.9]]))
     # http://127.0.0.1:8000/recommend?tuoi=45&gioiTinh=100&BMI=22.6&tiLeMo=11.2&tiLeCo=29.9
     print([tuoi, gioiTinh, BMI, tiLeMo, tiLeCo])
+
+    # chuẩn hóa data
     if (gioiTinh == "NAM"):
         gioiTinh = 2
     else:
@@ -33,12 +35,15 @@ async def read_item(tuoi: int, gioiTinh: str, BMI: float, tiLeMo: float, tiLeCo:
     BMI /= 40
     tiLeMo /= 40
     tiLeCo /= 45
+
     rs = []
     rs = model.predict_proba([[tuoi, gioiTinh, BMI, tiLeMo, tiLeCo]])[0]
     rs = dict(zip(labels, rs))
     print([tuoi, gioiTinh, BMI, tiLeMo, tiLeCo])
     print(rs)
     return rs
+
+# cập nhật model thông qua phần mềm
 
 
 @app.post('/updateModel/')
