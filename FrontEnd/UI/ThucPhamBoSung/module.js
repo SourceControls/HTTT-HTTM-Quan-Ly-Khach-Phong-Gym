@@ -13,7 +13,6 @@ async function initNhanVien() {
 }
 initNhanVien();
 
-
 async function loadList(KEY) {
   let list = await server.ThucPhamBoSung.getList({ KEY });
   if (list.status) {
@@ -22,7 +21,7 @@ async function loadList(KEY) {
 
     for (let sp of list.data) {
       if (sp.HINHANH && sp.HINHANH.trim().length == 0) {
-        sp.HINHANH = 'defaultAvt.jpg'
+        sp.HINHANH = "defaultAvt.jpg";
       }
       out += `
         <tr>
@@ -114,8 +113,9 @@ async function initEvents() {
   var rows = document.getElementsByTagName("tbody")[0].rows;
 
   function ThemSp() {
-
-    const imageInput_AddPopup = document.querySelector(".popup-add .image-input");
+    const imageInput_AddPopup = document.querySelector(
+      ".popup-add .image-input"
+    );
     const image_AddPopup = document.querySelector(".popup-add img");
     const add_product_form = document.querySelector("#add-product-form");
 
@@ -123,9 +123,9 @@ async function initEvents() {
     imageInput_AddPopup.addEventListener("change", () => {
       var file = imageInput_AddPopup.files[0];
       image_AddPopup.src = URL.createObjectURL(file);
-    })
+    });
     add_product_form.addEventListener("submit", async (e) => {
-      console.log('submited add SP');
+      console.log("submited add SP");
       e.preventDefault();
       const sp = Object.fromEntries(new FormData(e.target));
       if (sp.TENSP.trim().length == 0) {
@@ -138,26 +138,22 @@ async function initEvents() {
       }
       //nếu k có ảnh thì set ảnh mặc định
 
-      if (sp.HINHANH.name != '')
-        sp.HINHANH = await uploadImg(sp.HINHANH)
-      else
-        sp.HINHANH = document.querySelector('.popup-add img').src;
+      if (sp.HINHANH.name != "") sp.HINHANH = await uploadImg(sp.HINHANH);
+      else sp.HINHANH = document.querySelector(".popup-add img").src;
 
       server.ThucPhamBoSung.themSanPham(sp).then((result) => {
         if (!result.status) {
           alert(result.data);
-          return
+          return;
         }
-        document.querySelector(".popup-add").classList.remove('show');
+        document.querySelector(".popup-add").classList.remove("show");
         alert("Thêm sản phẩm thành công");
         loadListSP("");
-      })
-
+      });
     });
-
   }
   // THEM SAN PHAM
-  ThemSp()
+  ThemSp();
 
   // CAP NHAT SAN PHAM
 
@@ -169,24 +165,28 @@ async function initEvents() {
       input[3].value = rows[x].getElementsByTagName("td")[0].innerText;
       input[4].value = rows[x].getElementsByTagName("td")[1].innerText;
       input[5].value = rows[x].getElementsByTagName("td")[2].innerText;
-      server.ThucPhamBoSung.getList({ 'KEY': rows[x].getElementsByTagName("td")[0].innerText }).then((rs) => {
+      server.ThucPhamBoSung.getList({
+        KEY: rows[x].getElementsByTagName("td")[0].innerText,
+      }).then((rs) => {
         // console.log(rs.data[0].HINHANHrs.data[0].HINHANH)
         document.querySelector(".popup-update img").src = rs.data[0].HINHANH;
-      })
-      const imageInput_UpdatePopup = document.querySelector(".popup-update .image-input");
+      });
+      const imageInput_UpdatePopup = document.querySelector(
+        ".popup-update .image-input"
+      );
       const image_UpdatePopup = document.querySelector(".popup-update img");
       imageInput_UpdatePopup.addEventListener("change", () => {
         var file = imageInput_UpdatePopup.files[0];
         image_UpdatePopup.src = URL.createObjectURL(file);
-      })
-    })
+      });
+    });
     // input[7].value = rows[x].getElementsByTagName("td")[3].innerText.split('.').join("").replace('VND','');
   }
 
   btn_update_form.addEventListener("submit", async (e) => {
-    console.log('submited update KH');
+    console.log("submited update KH");
     e.preventDefault();
-    e.stopImmediatePropagation()
+    e.stopImmediatePropagation();
     const tp = Object.fromEntries(new FormData(e.target));
     tp.MASP = document.querySelector("#MASP").value;
     if (tp.TENSP.trim().length == 0) {
@@ -210,7 +210,7 @@ async function initEvents() {
     }
     alert("Cập nhật thành công!");
     popup_edit[0].classList.remove("show");
-    loadListSP('');
+    loadListSP("");
     // server.ThucPhamBoSung.capNhatSanPham(tp).then((rs)=>{
     //   if (!rs.status) {
     //     alert(rs.data);
@@ -248,34 +248,65 @@ async function initEvents() {
     });
   }
 
-  // XUAT FILE
-
-  let link = document.querySelector(".btn-export")
-  link.addEventListener("click", (e) => {
-    let from = document.querySelector(".from").value
-    let to = document.querySelector(".to").value
-    e.preventDefault()
-    if (from > to) {
-      alert("Thời gian không hợp lệ!")
-      e.preventDefault()
-      return
-    }
+  // export
+  let export_btn = document.querySelector(".btn-export");
+  export_btn.addEventListener("click", () => {
+    let from = document.querySelector("#from").value;
+    let to = document.querySelector("#to").value;
+    console.log({ from, to })
     if (from.length == 0 || to.length == 0) {
-      alert("Bạn chưa nhập thời gian!")
-      e.preventDefault()
+      alert("Bạn chưa nhập đầy đủ ngày!")
       return
     }
-    tableToCSV()
-  })
+    if (to < from) {
+      alert("Ngày không hợp lệ!")
+      return
+    }
+    tableToCSV();
+  });
 
+  function tableToCSV() {
+    // Variable to store the final csv data
+    let from = document.querySelector("#from").value;
+    let to = document.querySelector("#to").value;
+    let csv = ["MAKH,TUOI,GIOITINH,BMI,TILEMO,TILECO,MASP,NGAY,GOIY_THANHCONG"];
+    server.ThucPhamBoSung.getListMachineLearning({
+      TUNGAY: from,
+      DENNGAY: to,
+    }).then((result) => {
+      for (let data of result.data) {
+        csv.push(
+          data.MAKH +
+          "," +
+          data.TUOI +
+          "," +
+          data.GIOITINH +
+          "," +
+          data.BMI +
+          "," +
+          data.TILEMO +
+          "," +
+          data.TILECO +
+          "," +
+          data.MASP +
+          "," +
+          data.NGAY +
+          "," +
+          data.GOIY_THANHCONG
+        );
+      }
+      csv = csv.join("\n");
+      var BOM = "\uFEFF";
+      var csvContent = BOM + csv;
+      downloadCSVFile(csvContent);
+    });
+  }
   function downloadCSVFile(csv_data) {
-    var BOM = "\uFEFF";
-    var csv_data = BOM + csv_data;
     let CSVFile = new Blob([csv_data], { type: "text/csv" });
 
-    var temp_link = document.createElement('a');
+    var temp_link = document.createElement("a");
 
-    temp_link.download = "Machine Learning";
+    temp_link.download = "GfG.csv";
     var url = window.URL.createObjectURL(CSVFile);
     temp_link.href = url;
 
@@ -284,26 +315,14 @@ async function initEvents() {
     temp_link.click();
     document.body.removeChild(temp_link);
   }
-  function tableToCSV() {
-    let from = document.querySelector(".from").value
-    let to = document.querySelector(".to").value
-    let csv = ['MAKH,TUOI,GIOITINH,BMI,TILEMO,TILOCO,MASP,NGAY,GOIY_THANHCONG']
-    server.ThucPhamBoSung.getListMachineLearning({ 'TUNGAY': from, 'DENNGAY': to }).then((result) => {
-      for (let rs of result.data) {
-        csv.push(rs.MAKH + ',' + rs.TUOI + ',' + rs.GIOITINH + ',' + rs.BMI + ',' + rs.TILEMO + ',' + rs.TILECO + ',' + rs.MASP + ',' + rs.NGAY + ',' + rs.GOIY_THANHCONG)
-      }
-      downloadCSVFile(csv.join("\n"))
-    })
-  }
 }
-
 
 async function loadListSP(KEY) {
   await loadList(KEY);
   initEvents();
 }
 
-loadListSP('');
+loadListSP("");
 
 const searchBar = document.querySelector(".search-box input");
 searchBar.addEventListener("keyup", () => {

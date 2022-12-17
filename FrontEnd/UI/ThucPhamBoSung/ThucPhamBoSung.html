@@ -106,27 +106,21 @@
                 <div class="home-content">
                     <div class="body-header">
                         <button type="button" class="btn btn-add">Thêm mới</button>
-                        <div class="panel">
-                            <div class="export">
-                                <form>
-                                    <div >
-                                        <label>Từ ngày:</label>
-                                        <input type="date" class="from" name="from" />
-                                    </div>
-                                    <div style="width: 150px;">
-                                        <label>Đến ngày:</label>
-                                        <input type="date" class="to" name="to"/>
-                                    </div>
-                                </form>
-                                <a href="" class="btn-export">Xuất file csv</a>
+                        <div class="export">
+                            <form>
+                              <label for="from">Từ ngày:</label>
+                              <input type="date" id="from" name="from" />
+                              <label for="to">Đến ngày:</label>
+                              <input type="date" id="to" name="to" />
+                            </form>
+                            <div>
+                            <button class="btn-export btn-m btn-export">Xuất csv</button>
                             </div>
-                            <div class="upload-mol">
-                                <div class="">
-                                <input type="file" class="mol-file form-control" name="file" />
-                            </div>
-                                <button type="button" class="btn-mol-file">Cập nhật hệ thống gợi ý</button>
-                            </div>
-                        </div>
+                          </div>
+                          <div class="file">
+                             <input type="file" class="mol-file">
+                            <button class="btn-export btn-m btn-mol-file">Cập nhật hệ thống gợi ý</button>
+                          </div>
                         <div class="search-box">
                             <input type="text" placeholder="Tìm sản phẩm..." />
                             <i class="bx bx-search" style="cursor: pointer"></i>
