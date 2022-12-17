@@ -9,13 +9,7 @@ async function loadList(KEY) {
     return;
   }
   listKhachHang = listKhachHang.data;
-  listKhachHang = listKhachHang.sort((a, b) => (a.MAKH > b.MAKH) ? -1 : 0);
-  let i = 0;
   listKhachHang.forEach(e => {
-    if (++i >= 5) {
-      console.log(1);
-      return;
-    }
     //set default image
     if (e.HINHANH.trim().length == 0) {
       e.HINHANH = "./defaultAvt.jpg"

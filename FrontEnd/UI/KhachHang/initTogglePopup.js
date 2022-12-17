@@ -154,9 +154,10 @@ export default function init() {
       let khachHang = (await server.KhachHang.getList({ KEY: idKH })).data[0];
       if (khachHang.HINHANH.trim().length == 0)
         khachHang.HINHANH = './defaultAvt.jpg'
+      //init thông tin khách hàng
       document.querySelector('.popup-inbody .MAKH').innerText = idKH;
       document.querySelector('.popup-inbody img').src = khachHang.HINHANH;
-      document.querySelector('.popup-inbody .HOTEN').innerText = khachHang.HOTEN;
+      document.querySelector('.popup-inbody .HOTEN').innerText = khachHang.HOTEN + " - " + khachHang.GIOITINH + ' - ' + (new Date().getFullYear() - parseInt(khachHang.NAMSINH.trim())) + 'Tuổi';
       //add inbody row
       let lichSuInbody = (await server.KhachHang.getListInbody({ MAKH: idKH })).data;
       let tblLichSuInbody = document.querySelector('.inbody-table tbody');
