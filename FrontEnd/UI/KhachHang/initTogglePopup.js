@@ -223,7 +223,7 @@ export default function init() {
       popups.forEach((popup) => {
         if (popup.classList.contains("show")) {
           popup.classList.remove("show");
-          document.querySelector(".container  ").setAttribute("style", " filter: brightness(1) blur(0px);");
+          document.querySelector(".container").setAttribute("style", " filter: brightness(1) blur(0px);");
         }
       })
     })

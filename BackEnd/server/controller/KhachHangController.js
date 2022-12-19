@@ -32,6 +32,8 @@ class KhachHangControllers {
             { name: 'HINHANH', type: 'Char(200)', value: HINHANH },
         ]
         let rs = await KhachHang.insertKhachHang(params)
+        console.log(rs.returnValue);
+        console.log(params);
         if (rs.returnValue == 1) {
             // return json(true, rs)
             res.send(json(false, 'Số điện thoại không hợp lệ'))

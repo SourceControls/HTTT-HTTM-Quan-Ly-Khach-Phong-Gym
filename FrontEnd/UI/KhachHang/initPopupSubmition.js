@@ -52,7 +52,6 @@ function initSubmitThemKhachHang() {
       alert(rs.data);
       return
     }
-    document.querySelector(".popup-add").classList.remove('show');
     alert("Thêm khách hàng thành công");
     loadListKhachHang();
   });
@@ -86,7 +85,7 @@ function initSubmitCapNhatKhachHang() {
       return;
     }
     //nếu k có ảnh thì set ảnh mặc định
-    if (khachHang.HINHANH)
+    if (khachHang.HINHANH && khachHang.HINHANH.name)
       khachHang.HINHANH = await uploadImg(khachHang.HINHANH)
     else
       khachHang.HINHANH = document.querySelector('.popup-update img').src;
@@ -113,6 +112,8 @@ function initSubmitXoaKhachHang() {
       return
     }
     document.querySelector(".popup-delete-confirm").classList.remove('show');
+    document.querySelector(".container").setAttribute("style", " filter: brightness(1) blur(0px);");
+
     alert("Xóa khách hàng thành công");
     loadListKhachHang();
   })

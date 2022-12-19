@@ -28,14 +28,9 @@ async def read_item(tuoi: int, gioiTinh: str, BMI: float, tiLeMo: float, tiLeCo:
 
     # chuẩn hóa data
     if (gioiTinh == "NAM"):
-        gioiTinh = 2
+        gioiTinh = 100
     else:
         gioiTinh = 0
-    tuoi /= 100
-    BMI /= 40
-    tiLeMo /= 40
-    tiLeCo /= 45
-
     rs = []
     rs = model.predict_proba([[tuoi, gioiTinh, BMI, tiLeMo, tiLeCo]])[0]
     rs = dict(zip(labels, rs))
