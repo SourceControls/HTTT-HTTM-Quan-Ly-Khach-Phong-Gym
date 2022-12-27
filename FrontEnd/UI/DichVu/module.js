@@ -168,7 +168,8 @@ async function initEvent() {
       else
         input[7].checked = false
 
-      btn_update_form.addEventListener("click", () => {
+      btn_update_form.addEventListener("click", (e) => {
+        e.stopImmediatePropagation();
         if (input[4].value.length == 0) alert("Tên không được để trống");
         else if (input[5].value.length == 0) {
           alert("Số ngày sử dụng không được để trống");
@@ -211,7 +212,8 @@ async function initEvent() {
     btn_delete[i].addEventListener("click", (event) => {
       popup_delete_confirm[0].classList.add("show");
       var td = rows[x].getElementsByTagName("td")[0].innerText;
-      btn_delete_form.addEventListener("click", () => {
+      btn_delete_form.addEventListener("click", (e) => {
+        e.stopImmediatePropagation();
         let data = {
           MADV: td,
         };

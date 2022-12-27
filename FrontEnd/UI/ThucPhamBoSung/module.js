@@ -127,6 +127,7 @@ async function initEvents() {
     add_product_form.addEventListener("submit", async (e) => {
       console.log("submited add SP");
       e.preventDefault();
+      e.stopImmediatePropagation();
       const sp = Object.fromEntries(new FormData(e.target));
       if (sp.TENSP.trim().length == 0) {
         alert("Tên sản phẩm không được để trống");
@@ -228,7 +229,8 @@ async function initEvents() {
     btn_delete[i].addEventListener("click", (event) => {
       popup_delete_confirm[0].classList.add("show");
       var td = rows[x].getElementsByTagName("td")[0].innerText;
-      btn_delete_form.addEventListener("click", () => {
+      btn_delete_form.addEventListener("click", (e) => {
+        e.stopImmediatePropagation();
         let data = {
           MASP: td,
         };
