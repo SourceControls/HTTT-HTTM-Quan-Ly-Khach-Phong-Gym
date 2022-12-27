@@ -118,7 +118,8 @@ async function initEvent() {
     else return false;
   }
   // THEM DICH VU
-  btn_add_form.addEventListener("click", () => {
+  btn_add_form.addEventListener("click", (e) => {
+    e.stopImmediatePropagation();
     if (input[0].value.length == 0) alert("Tên không được để trống");
     else if (input[1].value.length == 0) {
       alert("Số ngày sử dụng không được để trống");
