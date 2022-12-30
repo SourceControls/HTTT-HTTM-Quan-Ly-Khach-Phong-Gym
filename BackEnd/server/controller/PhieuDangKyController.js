@@ -24,6 +24,7 @@ class PhieuDangKyControllers {
 
     themPhieu = async (req, res) => {
         let { TILEKM, TONGTIEN, MAKH, MANV, MADV } = req.body
+
         let params = [
             { name: 'TILEKM', type: 'Int', value: TILEKM },
             { name: 'TONGTIEN', type: 'Money', value: TONGTIEN },

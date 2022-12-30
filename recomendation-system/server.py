@@ -28,9 +28,14 @@ async def read_item(tuoi: int, gioiTinh: str, BMI: float, tiLeMo: float, tiLeCo:
 
     # chuẩn hóa data
     if (gioiTinh == "NAM"):
-        gioiTinh = 100
+        gioiTinh = 1
     else:
         gioiTinh = 0
+    tuoi /= 100
+    BMI /= 40
+    tiLeMo /= 40
+    tiLeCo /= 50
+
     rs = []
     rs = model.predict_proba([[tuoi, gioiTinh, BMI, tiLeMo, tiLeCo]])[0]
     rs = dict(zip(labels, rs))
@@ -46,6 +51,6 @@ def create_upload_file(file: UploadFile):
     file_location = f"model.mol"
     with open(file_location, "wb+") as file_object:
         file_object.write(file.file.read())
-    print("updated model")
+    print("updated model") 
     model = load('model.mol')
     return {'message': "Cập nhật thành công"}

@@ -1,6 +1,5 @@
 import server from "../../server/main.js";
-server.TaiKhoan.doiMatKhau({ TENDANGNHAP: 'NV00000002', MATKHAUMOI: '1' })
-alert("Auto đổi mật khẩu NV01, mặc định là 1, có thể tắt dòng code này!")
+server.TaiKhoan.doiMatKhau({ TENDANGNHAP: 'NV00000001', MATKHAUMOI: '1' })
 
 async function initNhanVien() {
     let nhanVien = Promise.resolve((await server.NhanVien.getList({ KEY: window.localStorage.getItem('username') })).data[0].CHUCVU)

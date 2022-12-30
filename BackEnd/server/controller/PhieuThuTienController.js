@@ -7,6 +7,7 @@ class PhieuThuTienControllers {
     }
 
     themPtt = async (req, res) => {
+
         const { SOTIENTHU, MAPDK, MANV } = req.body
         let params = [
             { name: 'SOTIENTHU', type: 'Money', value: SOTIENTHU },
@@ -14,6 +15,7 @@ class PhieuThuTienControllers {
             { name: 'MANV', type: 'Char(10)', value: MANV },
         ]
         let rs = await PhieuThuTien.insertPhieuThuTien(params)
+        console.log(rs);
         if (rs.returnValue == 0) {
             // return json(true, rs)
             res.send(json(false, `Phiếu này đã được thanh toán !!!`))
