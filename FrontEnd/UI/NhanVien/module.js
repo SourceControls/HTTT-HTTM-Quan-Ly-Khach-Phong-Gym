@@ -107,7 +107,8 @@ async function initEvents() {
   // THEM NHAN VIEN
   btn_add.addEventListener("click", () => {
     popup_add[0].classList.add("show");
-    btn_add_form.addEventListener("click", () => {
+    btn_add_form.addEventListener("click", (e) => {
+      e.stopImmediatePropagation();
       if (add_input[0].value.length == 0)
         alert("Họ tên nhân viên không được để trống");
       else if (!reg.test(add_input[1].value) || add_input[1].value.length == 0)
@@ -123,6 +124,7 @@ async function initEvents() {
             if (result.data.returnValue == 1) {
               popup_add[0].classList.remove("show");
               alert("Thêm nhân viên thành công");
+              add_input[0].value = add_input[1].value = ''
               loadListNV("");
             } else {
               alert("Thêm nhân viên thất bại");
@@ -151,7 +153,8 @@ async function initEvents() {
       var td = rows[x].getElementsByTagName("td")[0].innerText;
       update_input[0].value = td;
 
-      btn_update_form.addEventListener("click", () => {
+      btn_update_form.addEventListener("click", (e) => {
+        e.stopImmediatePropagation();
         if (update_input[1].value.length == 0)
           alert("Họ tên nhân viên không được để trống");
         else if (
@@ -213,7 +216,8 @@ async function initEvents() {
     btn_delete[i].addEventListener("click", () => {
       popup_delete_confirm[0].classList.add("show");
       var td = rows[x].getElementsByTagName("td")[0].innerText;
-      btn_delete_form.addEventListener("click", () => {
+      btn_delete_form.addEventListener("click", (e) => {
+        e.stopImmediatePropagation();
         let data = {
           MANV: td,
         }

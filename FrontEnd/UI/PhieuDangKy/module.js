@@ -129,7 +129,8 @@ async function initEvent() {
       alert("Vui lòng chọn phiếu đăng ký");
     else {
       popup_payment[0].classList.add("show");
-      btn_pay_form.addEventListener("click", () => {
+      btn_pay_form.addEventListener("click", (e) => {
+        e.stopImmediatePropagation();
         server.PhieuThuTien.thanhToan({
           SOTIENTHU: pay_input[4].value.split('.').join("").replace('VND', ''),
           MAPDK: panel_input[0].value,
